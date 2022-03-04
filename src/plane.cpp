@@ -9,7 +9,8 @@ Plane::Plane(int s,float div){
 }
 
 // FIXME ver depois a parte das divisions por cada eixo !!!
-vector<Point> Plane::pointsGenerator() {
+vector<Point> Plane::pointsGenerator()
+{
     vector<Point> points;
     float half = side / 2;
 

@@ -21,6 +21,13 @@ void Point::addVector(Vector v)
     z += v.getZ();
 }
 
+string Point::toString()
+{
+    ostringstream point;
+    point << x << ' ' << y << ' ' << z;
+    return point.str();
+}
+
 void Point::setX(float a) { x = a; }
 
 void Point::setY(float b) { y = b; }

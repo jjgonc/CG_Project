@@ -14,6 +14,7 @@ private:
 
 public:
     Plane(int s,float div);
+
     vector<Point> pointsGenerator();
 };
 
