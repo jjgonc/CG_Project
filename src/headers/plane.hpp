@@ -1,17 +1,20 @@
 #ifndef CG_PROJECT_PLANE_HPP
 #define CG_PROJECT_PLANE_HPP
 
+using namespace std;
+
 #include "point.hpp"
 #include <vector>
 
-class Plane {
+class Plane
+{
 private:
     float side;
     float divisions;
 
 public:
     Plane(int argc, char **args);
-    std::vector<Point> draw() const;
+    vector<Point> pointsGenerator();
 };
 
-#endif //CG_PROJECT_PLANE_HPP
+#endif // CG_PROJECT_PLANE_HPP
