@@ -2,26 +2,29 @@
 #define POINT_H
 #include <string>
 #include <iostream>
+#include "vector.hpp"
 #include <sstream>
 
+using namespace std;
 
-class Point {
-    private:
-        float x;
-        float y;
-        float z;
+class Point
+{
+private:
+    float x;
+    float y;
+    float z;
 
-    //colocar aqui os métodos publicos
-    public:
-        Point(float, float, float);
-        void addVector(Vector v);
-        float getX() const;
-        float getY() const;
-        float getZ() const;
+    // colocar aqui os métodos publicos
+public:
+    Point(float, float, float);
+    void addVector(Vector v);
+    float getX() const;
+    float getY() const;
+    float getZ() const;
 
-        void setX(float a);
-        void setY(float b);
-        void setZ(float c);
+    void setX(float a);
+    void setY(float b);
+    void setZ(float c);
 };
 
 #endif
