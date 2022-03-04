@@ -1,0 +1,4 @@
+#ifndef CG_PROJECT_BOX_HPP
+#define CG_PROJECT_BOX_HPP
+
+#endif //CG_PROJECT_BOX_HPP

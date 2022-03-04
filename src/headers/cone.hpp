@@ -1,0 +1,4 @@
+#ifndef CG_PROJECT_CONE_HPP
+#define CG_PROJECT_CONE_HPP
+
+#endif //CG_PROJECT_CONE_HPP
