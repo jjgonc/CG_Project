@@ -1,4 +1,5 @@
 #include "point.hpp"
+#include "vector.hpp"
 #include "math.h"
 #include <cmath>
 #include <sstream>

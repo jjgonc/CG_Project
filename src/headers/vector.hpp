@@ -5,7 +5,7 @@
 #include <iostream>
 #include <sstream>
 
-class Vector {
+class Vector{
 private:
     float x, y, z;
 
