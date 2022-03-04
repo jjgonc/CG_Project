@@ -14,7 +14,7 @@ class Point {
     //colocar aqui os métodos publicos
     public:
         Point(float, float, float);
-        void addVector(Vector);
+        void addVector(Vector v);
         float getX() const;
         float getY() const;
         float getZ() const;
