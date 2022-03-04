@@ -9,11 +9,11 @@ using namespace std;
 class Plane
 {
 private:
-    float side;
+    int side;
     float divisions;
 
 public:
-    Plane(float s,float div);
+    Plane(int s,float div);
     vector<Point> pointsGenerator();
 };
 

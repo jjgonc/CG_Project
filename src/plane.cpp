@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Plane::Plane(float s,float div){
+Plane::Plane(int s,float div){
     side = s;
     divisions = div;
 }
