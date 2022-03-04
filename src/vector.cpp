@@ -1,20 +1,21 @@
-#include "vector.hpp"
+#include "headers/vector.hpp"
 
-Vector::Vector(float a, float b, float c) {
+Vector::Vector(float a, float b, float c)
+{
     x = a;
     y = b;
     z = c;
 }
 
-
-
-void Vector::multiply(float m) {
+void Vector::multiply(float m)
+{
     x *= m;
     y *= m;
     z *= m;
 }
 
-void Vector::divide(float d) {
+void Vector::divide(float d)
+{
     x /= d;
     y /= d;
     z /= d;

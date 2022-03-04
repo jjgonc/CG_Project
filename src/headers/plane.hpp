@@ -13,7 +13,7 @@ private:
     float divisions;
 
 public:
-    Plane(float s,float div);
+    Plane(float s, float div);
     vector<Point> pointsGenerator();
 };
 
