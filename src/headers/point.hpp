@@ -17,14 +17,13 @@ private:
     // colocar aqui os métodos publicos
 public:
     Point(float, float, float);
-    void addVector(Vector v);
+    void addVector(Vector);
     float getX() const;
     float getY() const;
     float getZ() const;
-
-    void setX(float a);
-    void setY(float b);
-    void setZ(float c);
+    void setX(float);
+    void setY(float);
+    void setZ(float);
 };
 
 #endif
