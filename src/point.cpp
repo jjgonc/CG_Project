@@ -1,6 +1,9 @@
+#include "point.hpp"
+#include "math.h"
 #include <cmath>
 #include <sstream>
-#include "point.hpp"
+
+#define _USE_MATH_DEFINES
 
 
 
@@ -10,7 +13,11 @@ Point::Point(float a, float b, float c) {
     z = c;
 }
 
-
+void Point::addVector(Vector v) {
+    x += v.getX();
+    y += v.getY();
+    z += v.getZ();
+}
 
 
 void Point::setX(float a) { x = a;  }

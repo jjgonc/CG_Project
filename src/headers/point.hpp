@@ -1,5 +1,5 @@
-// ver para que serve o #define e o #ifndef e o #endif
-
+#ifndef POINT_H
+#define POINT_H
 #include <string>
 #include <iostream>
 #include <sstream>
@@ -14,6 +14,7 @@ class Point {
     //colocar aqui os métodos publicos
     public:
         Point(float, float, float);
+        void addVector(Vector);
         float getX() const;
         float getY() const;
         float getZ() const;
@@ -22,3 +23,5 @@ class Point {
         void setY(float b);
         void setZ(float c);
 };
+
+#endif
