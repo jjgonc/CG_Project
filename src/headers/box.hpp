@@ -3,15 +3,17 @@
 #include "point.hpp"
 #include <vector>
 
+using namespace std;
 
-class Box{
-    private:
-        float edge;
-        int grid;
+class Box
+{
+private:
+    float edge;
+    int grid;
 
-    public:
-        Box(float e, int g);
-        std::vector<Point> drawBox(float edge, int grid);
+public:
+    Box(float e, int g);
+    vector<Point> pointsGenerator();
 };
 
-#endif //CG_PROJECT_BOX_HPP
+#endif // CG_PROJECT_BOX_HPP

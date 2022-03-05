@@ -1,6 +1,7 @@
 
 #include "headers/point.hpp"
 #include "headers/plane.hpp"
+#include "headers/box.hpp"
 #include <string>
 #include <ostream>
 #include <iostream>
@@ -32,7 +33,11 @@ int main(int argc, char **argv)
     }
 
     else if (primitive == "box")
-        printf("ola");
+    {
+        float edge = stof(argv[2]);
+        int grid = stoi(argv[3]);
+        write3D(Box(edge, grid), argv[4]);
+    }
 
     else if (primitive == "sphere")
         printf("ola");
