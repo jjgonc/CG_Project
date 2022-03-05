@@ -1,5 +1,5 @@
-#ifndef POINT_H
-#define POINT_H
+#ifndef CG_PROJECT_POINT_H
+#define CG_PROJECT_POINT_H
 #include <string>
 #include <iostream>
 #include "vector.hpp"

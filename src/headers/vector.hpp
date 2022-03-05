@@ -1,5 +1,5 @@
-#ifndef VECTOR_H
-#define VECTOR_H
+#ifndef CG_PROJECT_VECTOR_H
+#define CG_PROJECT_VECTOR_H
 
 #include <string>
 #include <iostream>
