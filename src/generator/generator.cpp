@@ -13,7 +13,7 @@ template <typename T>
 
 void write3D(T primitive, string fileName)
 {
-    ofstream file3d(fileName);
+    ofstream file3d("../vertices/" + fileName);
     for (Point p : primitive.pointsGenerator())
     {
         file3d << p.toString() << "\n";
