@@ -3,13 +3,14 @@
 
 using namespace std;
 
-Plane::Plane(float s,float div){
+Plane::Plane(int s,float div){
     side = s;
     divisions = div;
 }
 
 // FIXME ver depois a parte das divisions por cada eixo !!!
-vector<Point> Plane::pointsGenerator() {
+vector<Point> Plane::pointsGenerator()
+{
     vector<Point> points;
     float half = side / 2;
 
