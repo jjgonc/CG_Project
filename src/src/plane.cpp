@@ -21,10 +21,15 @@ vector<Point> Plane::pointsGenerator()
             points.push_back(Point(px * i - side/2 ,0, pz * q - side/2));
             points.push_back(Point(px * i - side/2 ,0, pz * q - side/2 + pz));
             points.push_back(Point(px * i - side/2 + px ,0, pz * q - side/2));
+            
+            
 
             points.push_back(Point(px * i - side/2 ,0, pz * q - side/2 + pz));
-            points.push_back(Point(px * i - side/2 + px ,0, pz * q - side/2));
             points.push_back(Point(px * i - side/2 + px ,0, pz * q - side/2 + pz));
+            points.push_back(Point(px * i - side/2 + px ,0, pz * q - side/2));
+            
+            
+            
         }
     }
 
