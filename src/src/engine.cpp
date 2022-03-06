@@ -34,7 +34,7 @@ void drawTriangle(Point p1, Point p2, Point p3)
     glColor3f((float)rand() / RAND_MAX, (float)rand() / RAND_MAX, (float)rand() / RAND_MAX);
     glBegin(GL_TRIANGLES);
     glVertex3f(p1.getX(), p1.getY(), p1.getZ());
-    glVertex3f(p2.getY(), p2.getY(), p2.getZ());
+    glVertex3f(p2.getX(), p2.getY(), p2.getZ());
     glVertex3f(p3.getX(), p3.getY(), p3.getZ());
     glEnd();
 }
