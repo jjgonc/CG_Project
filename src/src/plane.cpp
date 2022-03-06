@@ -3,32 +3,30 @@
 
 using namespace std;
 
-Plane::Plane(int s, float div)
-{
+Plane::Plane(int s,float div){
     side = s;
     divisions = div;
 }
 
-// FIXME ver depois a parte das divisions por cada eixo !!!
 vector<Point> Plane::pointsGenerator()
 {
     vector<Point> points;
-    float half = side / 2;
+    float px = side / divisions;
+    float pz = side / divisions;
 
-    Point p0 = Point(-half, 0, -half);
-    Point p1 = Point(-half, 0, half);
-    Point p2 = Point(half, 0, -half);
-    Point p3 = Point(half, 0, half);
 
-    // back triangle
-    points.push_back(p0);
-    points.push_back(p1);
-    points.push_back(p2);
 
-    // front triangle
-    points.push_back(p2);
-    points.push_back(p1);
-    points.push_back(p3);
+    for (int i = 0; i < divisions; i++) {
+        for (int q = 0; q < divisions; q++) {
+            points.push_back(Point(px * i - side/2 ,0, pz * q - side/2));
+            points.push_back(Point(px * i - side/2 ,0, pz * q - side/2 + pz));
+            points.push_back(Point(px * i - side/2 + px ,0, pz * q - side/2));
+
+            points.push_back(Point(px * i - side/2 ,0, pz * q - side/2 + pz));
+            points.push_back(Point(px * i - side/2 + px ,0, pz * q - side/2));
+            points.push_back(Point(px * i - side/2 + px ,0, pz * q - side/2 + pz));
+        }
+    }
 
     return points;
 }

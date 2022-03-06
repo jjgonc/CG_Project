@@ -63,10 +63,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project"
+CMAKE_SOURCE_DIR = /Users/ruimoreira/Desktop/CG_Project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/cmake-build-debug"
+CMAKE_BINARY_DIR = /Users/ruimoreira/Desktop/CG_Project/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/CG_Project.dir/depend.make
@@ -79,68 +79,68 @@ include CMakeFiles/CG_Project.dir/flags.make
 
 CMakeFiles/CG_Project.dir/src/box.cpp.o: CMakeFiles/CG_Project.dir/flags.make
 CMakeFiles/CG_Project.dir/src/box.cpp.o: ../src/box.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/CG_Project.dir/src/box.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CG_Project.dir/src/box.cpp.o -c "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/box.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ruimoreira/Desktop/CG_Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/CG_Project.dir/src/box.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CG_Project.dir/src/box.cpp.o -c /Users/ruimoreira/Desktop/CG_Project/src/box.cpp
 
 CMakeFiles/CG_Project.dir/src/box.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CG_Project.dir/src/box.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/box.cpp" > CMakeFiles/CG_Project.dir/src/box.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ruimoreira/Desktop/CG_Project/src/box.cpp > CMakeFiles/CG_Project.dir/src/box.cpp.i
 
 CMakeFiles/CG_Project.dir/src/box.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CG_Project.dir/src/box.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/box.cpp" -o CMakeFiles/CG_Project.dir/src/box.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ruimoreira/Desktop/CG_Project/src/box.cpp -o CMakeFiles/CG_Project.dir/src/box.cpp.s
 
 CMakeFiles/CG_Project.dir/src/cone.cpp.o: CMakeFiles/CG_Project.dir/flags.make
 CMakeFiles/CG_Project.dir/src/cone.cpp.o: ../src/cone.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/CG_Project.dir/src/cone.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CG_Project.dir/src/cone.cpp.o -c "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/cone.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ruimoreira/Desktop/CG_Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/CG_Project.dir/src/cone.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CG_Project.dir/src/cone.cpp.o -c /Users/ruimoreira/Desktop/CG_Project/src/cone.cpp
 
 CMakeFiles/CG_Project.dir/src/cone.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CG_Project.dir/src/cone.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/cone.cpp" > CMakeFiles/CG_Project.dir/src/cone.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ruimoreira/Desktop/CG_Project/src/cone.cpp > CMakeFiles/CG_Project.dir/src/cone.cpp.i
 
 CMakeFiles/CG_Project.dir/src/cone.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CG_Project.dir/src/cone.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/cone.cpp" -o CMakeFiles/CG_Project.dir/src/cone.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ruimoreira/Desktop/CG_Project/src/cone.cpp -o CMakeFiles/CG_Project.dir/src/cone.cpp.s
 
 CMakeFiles/CG_Project.dir/src/plane.cpp.o: CMakeFiles/CG_Project.dir/flags.make
 CMakeFiles/CG_Project.dir/src/plane.cpp.o: ../src/plane.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/CG_Project.dir/src/plane.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CG_Project.dir/src/plane.cpp.o -c "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/plane.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ruimoreira/Desktop/CG_Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/CG_Project.dir/src/plane.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CG_Project.dir/src/plane.cpp.o -c /Users/ruimoreira/Desktop/CG_Project/src/plane.cpp
 
 CMakeFiles/CG_Project.dir/src/plane.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CG_Project.dir/src/plane.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/plane.cpp" > CMakeFiles/CG_Project.dir/src/plane.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ruimoreira/Desktop/CG_Project/src/plane.cpp > CMakeFiles/CG_Project.dir/src/plane.cpp.i
 
 CMakeFiles/CG_Project.dir/src/plane.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CG_Project.dir/src/plane.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/plane.cpp" -o CMakeFiles/CG_Project.dir/src/plane.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ruimoreira/Desktop/CG_Project/src/plane.cpp -o CMakeFiles/CG_Project.dir/src/plane.cpp.s
 
 CMakeFiles/CG_Project.dir/src/point.cpp.o: CMakeFiles/CG_Project.dir/flags.make
 CMakeFiles/CG_Project.dir/src/point.cpp.o: ../src/point.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/CG_Project.dir/src/point.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CG_Project.dir/src/point.cpp.o -c "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/point.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ruimoreira/Desktop/CG_Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/CG_Project.dir/src/point.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CG_Project.dir/src/point.cpp.o -c /Users/ruimoreira/Desktop/CG_Project/src/point.cpp
 
 CMakeFiles/CG_Project.dir/src/point.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CG_Project.dir/src/point.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/point.cpp" > CMakeFiles/CG_Project.dir/src/point.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ruimoreira/Desktop/CG_Project/src/point.cpp > CMakeFiles/CG_Project.dir/src/point.cpp.i
 
 CMakeFiles/CG_Project.dir/src/point.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CG_Project.dir/src/point.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/point.cpp" -o CMakeFiles/CG_Project.dir/src/point.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ruimoreira/Desktop/CG_Project/src/point.cpp -o CMakeFiles/CG_Project.dir/src/point.cpp.s
 
 CMakeFiles/CG_Project.dir/src/sphere.cpp.o: CMakeFiles/CG_Project.dir/flags.make
 CMakeFiles/CG_Project.dir/src/sphere.cpp.o: ../src/sphere.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/CG_Project.dir/src/sphere.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CG_Project.dir/src/sphere.cpp.o -c "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/sphere.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ruimoreira/Desktop/CG_Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/CG_Project.dir/src/sphere.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CG_Project.dir/src/sphere.cpp.o -c /Users/ruimoreira/Desktop/CG_Project/src/sphere.cpp
 
 CMakeFiles/CG_Project.dir/src/sphere.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CG_Project.dir/src/sphere.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/sphere.cpp" > CMakeFiles/CG_Project.dir/src/sphere.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ruimoreira/Desktop/CG_Project/src/sphere.cpp > CMakeFiles/CG_Project.dir/src/sphere.cpp.i
 
 CMakeFiles/CG_Project.dir/src/sphere.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CG_Project.dir/src/sphere.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/sphere.cpp" -o CMakeFiles/CG_Project.dir/src/sphere.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ruimoreira/Desktop/CG_Project/src/sphere.cpp -o CMakeFiles/CG_Project.dir/src/sphere.cpp.s
 
 # Object files for target CG_Project
 CG_Project_OBJECTS = \
@@ -160,7 +160,7 @@ CG_Project: CMakeFiles/CG_Project.dir/src/point.cpp.o
 CG_Project: CMakeFiles/CG_Project.dir/src/sphere.cpp.o
 CG_Project: CMakeFiles/CG_Project.dir/build.make
 CG_Project: CMakeFiles/CG_Project.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable CG_Project"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ruimoreira/Desktop/CG_Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable CG_Project"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CG_Project.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -173,6 +173,6 @@ CMakeFiles/CG_Project.dir/clean:
 .PHONY : CMakeFiles/CG_Project.dir/clean
 
 CMakeFiles/CG_Project.dir/depend:
-	cd "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project" "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project" "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/cmake-build-debug" "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/cmake-build-debug" "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/cmake-build-debug/CMakeFiles/CG_Project.dir/DependInfo.cmake" --color=$(COLOR)
+	cd /Users/ruimoreira/Desktop/CG_Project/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/ruimoreira/Desktop/CG_Project /Users/ruimoreira/Desktop/CG_Project /Users/ruimoreira/Desktop/CG_Project/cmake-build-debug /Users/ruimoreira/Desktop/CG_Project/cmake-build-debug /Users/ruimoreira/Desktop/CG_Project/cmake-build-debug/CMakeFiles/CG_Project.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/CG_Project.dir/depend
 

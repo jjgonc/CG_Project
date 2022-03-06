@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/box.cpp" "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/cmake-build-debug/CMakeFiles/CG_Project.dir/src/box.cpp.o"
-  "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/cone.cpp" "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/cmake-build-debug/CMakeFiles/CG_Project.dir/src/cone.cpp.o"
-  "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/plane.cpp" "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/cmake-build-debug/CMakeFiles/CG_Project.dir/src/plane.cpp.o"
-  "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/point.cpp" "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/cmake-build-debug/CMakeFiles/CG_Project.dir/src/point.cpp.o"
-  "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/src/sphere.cpp" "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/cmake-build-debug/CMakeFiles/CG_Project.dir/src/sphere.cpp.o"
+  "/Users/ruimoreira/Desktop/CG_Project/src/box.cpp" "/Users/ruimoreira/Desktop/CG_Project/cmake-build-debug/CMakeFiles/CG_Project.dir/src/box.cpp.o"
+  "/Users/ruimoreira/Desktop/CG_Project/src/cone.cpp" "/Users/ruimoreira/Desktop/CG_Project/cmake-build-debug/CMakeFiles/CG_Project.dir/src/cone.cpp.o"
+  "/Users/ruimoreira/Desktop/CG_Project/src/plane.cpp" "/Users/ruimoreira/Desktop/CG_Project/cmake-build-debug/CMakeFiles/CG_Project.dir/src/plane.cpp.o"
+  "/Users/ruimoreira/Desktop/CG_Project/src/point.cpp" "/Users/ruimoreira/Desktop/CG_Project/cmake-build-debug/CMakeFiles/CG_Project.dir/src/point.cpp.o"
+  "/Users/ruimoreira/Desktop/CG_Project/src/sphere.cpp" "/Users/ruimoreira/Desktop/CG_Project/cmake-build-debug/CMakeFiles/CG_Project.dir/src/sphere.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
