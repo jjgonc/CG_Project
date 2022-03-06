@@ -11,6 +11,8 @@
 
 using namespace std;
 
+string modelFileName;
+
 vector<Point> readPoints(string fileName)
 {
     float x, y, z;
@@ -32,7 +34,7 @@ void drawTriangle(Point p1, Point p2, Point p3)
     glColor3f((float)rand() / RAND_MAX, (float)rand() / RAND_MAX, (float)rand() / RAND_MAX);
     glBegin(GL_TRIANGLES);
     glVertex3f(p1.getX(), p1.getY(), p1.getZ());
-    glVertex3f(p2.getY(), p2.getY(), p2.getZ());
+    glVertex3f(p2.getX(), p2.getY(), p2.getZ());
     glVertex3f(p3.getX(), p3.getY(), p3.getZ());
     glEnd();
 }
@@ -40,7 +42,7 @@ void drawTriangle(Point p1, Point p2, Point p3)
 void draw_model(string fileName)
 {
 
-    vector<Point> points = readPoints(fileName);
+    vector<Point> points = readPoints("../vertices/" + fileName);
 
     for (int i = 0; i < points.size(); i += 3)
         drawTriangle(points[i], points[i + 1], points[i + 2]);
@@ -108,7 +110,7 @@ void renderScene(void)
 
     // draw model
 
-    draw_model("plane.3d");
+    draw_model(modelFileName);
 
     // End of frame
     glutSwapBuffers();
@@ -118,6 +120,8 @@ void renderScene(void)
 
 int main(int argc, char **argv)
 {
+
+    modelFileName = argv[1];
 
     // init GLUT and the window
     glutInit(&argc, argv);
