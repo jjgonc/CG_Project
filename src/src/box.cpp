@@ -17,7 +17,7 @@ vector<Point> Box::pointsGenerator()
     vector<Point> points;
 
     float subEdge = edge / grid;
-    float halfEdge = edge/2.0;   //ignorar pq nao estamos a centrar na origem
+    float halfEdge = edge/2.0; 
 
     for (int i = 0; i < grid; i++)
     {
@@ -25,7 +25,7 @@ vector<Point> Box::pointsGenerator()
         {
 
             // face 1 - virada para a frente
-            Point p1_frente = Point(-halfEdge + i * subEdge, -halfEdge + j * subEdge, halfEdge);
+            Point p1_frente = Point(-halfEdge + i * subEdge, -halfEdge + j * subEdge, halfEdge);            //começa do lado esquerdo e vai somando subEdges
             Point p2_frente = Point(-halfEdge + (i+1) * subEdge, -halfEdge + j * subEdge, halfEdge);
             Point p3_frente = Point(-halfEdge + (i + 1) * subEdge, -halfEdge + (j+1) * subEdge, halfEdge);
             Point p4_frente = Point(-halfEdge + i * subEdge, -halfEdge + (j+1) * subEdge, halfEdge);
