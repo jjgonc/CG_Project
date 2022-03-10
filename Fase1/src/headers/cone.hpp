@@ -5,15 +5,15 @@
 
 class Cone
 {
-private:
-    float radius;
-    float height;
-    int slices;
-    int stacks;
-
-public:
-    Cone(float r, float h, int sl, int st);
-    std::vector<Point> pointsGenerator();
+    private:
+        float radius;
+        float height;
+        int slices;
+        int stacks;
+    
+    public:
+        Cone(float r, float h, int sl, int st);
+        std::vector<Point> pointsGenerator();
 };
 
 
