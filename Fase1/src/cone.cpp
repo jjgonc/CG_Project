@@ -29,7 +29,7 @@ std::vector<Point> Cone::pointsGenerator() {
         
         float nextRadius, nextRadius2, stackHeight, stackHeight2;   
         
-        for(int j=0; j<stacks; i++) {
+        for(int j=0; j<stacks; j++) {
             stackHeight = (height/stacks) * j;
             nextRadius = (height - stackHeight) * radius/height;
             stackHeight2 = (height/stacks) * (j+1);

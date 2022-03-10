@@ -2,6 +2,7 @@
 #include "headers/point.hpp"
 #include "headers/plane.hpp"
 #include "headers/box.hpp"
+#include "headers/cone.hpp"
 #include <string>
 #include <ostream>
 #include <iostream>
@@ -25,7 +26,7 @@ int main(int argc, char **argv)
 
     string primitive = argv[1];
 
-    if (primitive == "plane")
+    if (primitive == "plane")           //adicionar && argc == 5
     {
         float length = stof(argv[2]);
         int divisions = stoi(argv[3]);
@@ -42,6 +43,15 @@ int main(int argc, char **argv)
     else if (primitive == "sphere")
         printf("ola");
 
-    else if (primitive == "cone")
-        printf("ola");
+    else if (primitive == "cone" && argc==7) {
+        float radius = stof(argv[2]);
+        float height = stof(argv[3]);
+        int slices = stoi(argv[4]);
+        int stacks = stoi(argv[5]);
+        write3D(Cone(radius, height, slices, stacks), argv[6]);
+    }
+
+    else {
+        printf("Not a valid input. Number of arguments might not be valid or this solid does not exist...");
+    }
 }
