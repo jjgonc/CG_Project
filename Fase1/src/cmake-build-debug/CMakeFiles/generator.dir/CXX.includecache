@@ -1,0 +1,60 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/generator.cpp
+headers/point.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/headers/point.hpp
+headers/plane.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/headers/plane.hpp
+headers/box.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/headers/box.hpp
+string
+-
+ostream
+-
+iostream
+-
+fstream
+-
+
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/headers/box.hpp
+point.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/headers/point.hpp
+vector
+-
+
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/headers/plane.hpp
+point.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/headers/point.hpp
+vector
+-
+
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/headers/point.hpp
+string
+-
+iostream
+-
+vector.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/headers/vector.hpp
+sstream
+-
+
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/headers/vector.hpp
+string
+-
+iostream
+-
+sstream
+-
+
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/plane.cpp
+string
+-
+headers/plane.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/headers/plane.hpp
+
