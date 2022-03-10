@@ -1,6 +1,7 @@
 #ifndef CG_PROJECT_CONE_HPP
 #define CG_PROJECT_CONE_HPP
-
+#include <vector>
+#include "point.hpp"
 
 class Cone
 {
@@ -11,8 +12,8 @@ private:
     int stacks;
 
 public:
-    Cone(float radius, float height, int slices, int stacks);
-    std::vector<Point> drawCone(double radius, double height, int slices, int stacks);
+    Cone(float r, float h, int sl, int st);
+    std::vector<Point> pointsGenerator();
 };
 
 
