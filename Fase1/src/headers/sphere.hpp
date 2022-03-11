@@ -1,6 +1,12 @@
 #ifndef CG_PROJECT_SPHERE_HPP
 #define CG_PROJECT_SPHERE_HPP
 
+#include <vector>
+#include <math.h>
+#include "point.hpp"
+
+using namespace std;
+
 class Sphere
 {
 private:
@@ -9,10 +15,8 @@ private:
     int stacks;
 
 public:
-    Sphere(float radius, int slices, int stacks);
-    // std::vector<Point> Sphere::pointsGenerator();
+    Sphere(float r, int sli, int sta);
+    vector<Point> pointsGenerator();
 };
 
-
-
-#endif //CG_PROJECT_SPHERE_HPP
+#endif // CG_PROJECT_SPHERE_HPP

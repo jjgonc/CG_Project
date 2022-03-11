@@ -1,35 +1,78 @@
-#include <vector>
-#include <math.h>
-#define _USE_MATH_DEFINES
-#include "headers/point.hpp"
-#include "headers/sphere.hpp"
+#include <string>
+#include "./headers/sphere.hpp"
 
+using namespace std;
 
-Sphere::Sphere(float r, int sl, int st) {
+Sphere::Sphere(float r, int sli, int sta)
+{
     radius = r;
-    slices = sl;
-    stacks = st;
+    slices = sli;
+    stacks = sta;
 }
 
-/*
+vector<Point> Sphere::pointsGenerator()
+{
+    vector<Point> points;
+    float alpha = (2 * M_PI) / slices;
+    float beta = (M_PI) / stacks;
 
-std::vector<Point> Sphere::pointsGenerator(){
-    Point top = Point(0, 2*radius, 0);
-    Point bottom = Point(0,0,0);
+    for (int i = 0; i < slices; i++)
+    {
+        for (int j = 0; j < stacks / 2; j++)
+        {
 
-    float pi = M_PI;
+            // Parte superior da esfera
+            // Triângulo inferior
 
-    float sliceStep = 2*pi/slices;
-    float stackStep = pi/stacks;
-    float sectorAngle, stackAngle;
+            // ponto de cima
+            points.push_back(Point(radius * cos((j + 1) * beta) * sin((i + 1) * alpha), radius * sin((j + 1) * beta),
+                                   radius * cos((j + 1) * beta) * cos((i + 1) * alpha)));
 
+            // pontos de baixo
+            points.push_back(Point(radius * cos(j * beta) * sin(i * alpha), radius * sin(j * beta),
+                                   radius * cos(j * beta) * cos(i * alpha)));
 
-    std::vector<Point> points;
+            points.push_back(Point(radius * cos(j * beta) * sin((i + 1) * alpha), radius * sin(j * beta),
+                                   radius * cos(j * beta) * cos((i + 1) * alpha)));
 
+            // Triângulo superior
 
-    for(int i = 0; i < stacks; i++) {
-        stackAngle = pi/2 - i*stackStep;
-        stackAngle = pi/2 - (i+1) * stackStep;
+            // Ponto de baixo
+
+            points.push_back(Point(radius * cos(j * beta) * sin(i * alpha), radius * sin(j * beta),
+                                   radius * cos(j * beta) * cos(i * alpha)));
+
+            // Pontos de cima
+
+            points.push_back(Point(radius * cos((j + 1) * beta) * sin((i + 1) * alpha), radius * sin((j + 1) * beta),
+                                   radius * cos((j + 1) * beta) * cos((i + 1) * alpha)));
+
+            points.push_back(Point(radius * cos((j + 1) * beta) * sin(i * alpha), radius * sin((j + 1) * beta),
+                                   radius * cos((j + 1) * beta) * cos(i * alpha)));
+
+            // Parte inferior da esfera
+
+            // Triângulo inferior
+
+            points.push_back(Point(radius * cos(-(j + 1) * beta) * sin(i * alpha), radius * sin(-(j + 1) * beta),
+                                   radius * cos(-(j + 1) * beta) * cos(i * alpha)));
+
+            points.push_back(Point(radius * cos(-(j + 1) * beta) * sin((i + 1) * alpha), radius * sin(-(j + 1) * beta),
+                                   radius * cos(-(j + 1) * beta) * cos((i + 1) * alpha)));
+
+            points.push_back(Point(radius * cos(-j * beta) * sin((i + 1) * alpha), radius * sin(-j * beta),
+                                   radius * cos(-j * beta) * cos((i + 1) * alpha)));
+
+            // Triângulo superior
+
+            points.push_back(Point(radius * cos(-j * beta) * sin((i + 1) * alpha), radius * sin(-j * beta),
+                                   radius * cos(-j * beta) * cos((i + 1) * alpha)));
+            points.push_back(Point(radius * cos(-j * beta) * sin(i * alpha), radius * sin(-j * beta),
+                                   radius * cos(-j * beta) * cos(i * alpha)));
+            points.push_back(Point(radius * cos(-(j + 1) * beta) * sin(i * alpha), radius * sin(-(j + 1) * beta),
+                                   radius * cos(-(j + 1) * beta) * cos(i * alpha)));
+        }
     }
+
+    return points;
 }
-*/

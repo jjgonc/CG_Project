@@ -1,4 +1,4 @@
-#include "headers/point.hpp"
+#include "./headers/point.hpp"
 #include "math.h"
 #include <cmath>
 #include <sstream>
