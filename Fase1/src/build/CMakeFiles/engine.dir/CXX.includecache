@@ -40,17 +40,3 @@ iostream
 sstream
 -
 
-/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/point.cpp
-./headers/point.hpp
-/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/headers/point.hpp
-math.h
-/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/math.h
-cmath
--
-sstream
--
-
-/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/vector.cpp
-headers/vector.hpp
-/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/headers/vector.hpp
-

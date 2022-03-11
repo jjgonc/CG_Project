@@ -13,7 +13,7 @@ using namespace std;
 
 string modelFileName;
 
-int angle=0;
+int angle = 0;
 float tx = 0.1;
 float ty = 0.1;
 float tz = 0.1;
@@ -21,7 +21,6 @@ float scalex = 1.0;
 float scaley = 1.0;
 float scalez = 1.0;
 GLenum mode = GL_FILL;
-
 
 // FIXME nao esquecer tirar os print
 vector<Point> readPoints(string fileName)
@@ -118,10 +117,10 @@ void renderScene(void)
     // draw xyz
     draw_axis();
 
-    //put the geometric transformations here
+    // put the geometric transformations here
     glTranslated(tx, 0.0, tz);
-	glRotated(angle, 0.0, 1.0, 0.0);
-	glScalef(scalex, scaley, scalez);
+    glRotated(angle, 0.0, 1.0, 0.0);
+    glScalef(scalex, scaley, scalez);
 
     // draw model
     draw_model(modelFileName);
@@ -131,59 +130,60 @@ void renderScene(void)
 }
 
 // write function to process keyboard events
-void reactKey(unsigned char key, int x, int y) {
-	switch (key) {
-        case '1':
-            mode = GL_FILL;
-			break;
-		case '2':
-			mode = GL_LINE;
-			break;
-		case '3':
-			mode = GL_POINT;
-			break;
-		case 'h':
-			angle += 2;
-			break;
+void reactKey(unsigned char key, int x, int y)
+{
+    switch (key)
+    {
+    case '1':
+        mode = GL_FILL;
+        break;
+    case '2':
+        mode = GL_LINE;
+        break;
+    case '3':
+        mode = GL_POINT;
+        break;
+    case 'h':
+        angle += 2;
+        break;
 
-		case 'l':
-			angle -= 2;
-			break;
+    case 'l':
+        angle -= 2;
+        break;
 
-		case 'w':
-			tz += 0.1;
-			break;
+    case 'w':
+        tz += 0.1;
+        break;
 
-		case 's':
-			tz -= 0.1;
-			break;
+    case 's':
+        tz -= 0.1;
+        break;
 
-		case 'a':
-			tx += 0.1;
-			break;
+    case 'a':
+        tx += 0.1;
+        break;
 
-		case 'd':
-			tx -= 0.1;
-			break;
+    case 'd':
+        tx -= 0.1;
+        break;
 
-		case 'k':
-			scaley += 0.1;
-			break;
+    case 'k':
+        scaley += 0.1;
+        break;
 
-		case 'j':
-			scaley -= 0.1;
-			break;
+    case 'j':
+        scaley -= 0.1;
+        break;
 
-		case 'q':		//voltar ao ponto inicial
-			angle = 0;
-			tz = 0.1;
-			tx = 0.1;
-			scaley = 1.0;
-            mode = GL_FILL;
-	}
-	glutPostRedisplay();
+    case 'q': // voltar ao ponto inicial
+        angle = 0;
+        tz = 0.1;
+        tx = 0.1;
+        scaley = 1.0;
+        mode = GL_FILL;
+    }
+    glutPostRedisplay();
 }
-
 
 int main(int argc, char **argv)
 {
