@@ -4,14 +4,17 @@
 #include <GL/glut.h>
 #endif
 #include <math.h>
+#include <cstdio>
 #include <vector>
+#include <string>
 #include "headers/point.hpp"
+#include "headers/tinyxml2.hpp"
 #include <fstream>
 #include <iostream>
 
 using namespace std;
+char * modelFileName;
 
-string modelFileName;
 
 int angle = 0;
 float tx = 0.1;
@@ -20,11 +23,39 @@ float tz = 0.1;
 float scalex = 1.0;
 float scaley = 1.0;
 float scalez = 1.0;
-GLenum mode = GL_FILL;
-
 float alpha = M_PI / 4;
 float beta = M_PI / 4;
 float radius = 7;
+
+GLenum mode = GL_FILL;
+
+vector<string> readFile(char * filename) {
+
+    std::vector<string> modelsName; // vector com o nome das figuras
+
+    std::vector<string> figurasToLoad; //vector com os nomes das figuras presentes no ficheiro XML
+    string generated_path = "../../vertices/";
+
+    tinyxml2::XMLDocument doc;
+    doc.LoadFile(filename);
+    if (doc.ErrorID()){
+        printf("%s\n", doc.ErrorStr());
+        exit(0);
+    } //abre ficheiro XML
+    printf("%s\n", filename);
+
+    tinyxml2::XMLNode *pRoot = doc.FirstChildElement("world");
+    if (pRoot == nullptr) exit(0);
+    tinyxml2::XMLElement *scenefiguras = pRoot->FirstChildElement("group")->FirstChildElement("models")->FirstChildElement("model");
+    for (; scenefiguras != nullptr; scenefiguras = scenefiguras->NextSiblingElement("model")) {
+        string newfigura = generated_path + scenefiguras->Attribute("file");
+        figurasToLoad.push_back(newfigura);
+    }
+
+
+    return figurasToLoad;
+}
+
 
 // FIXME nao esquecer tirar os print
 vector<Point>
@@ -33,12 +64,12 @@ readPoints(string fileName)
     float x, y, z;
     vector<Point> points;
     ifstream file(fileName);
-    printf("fileName: %s", fileName.c_str());
+    //printf("fileName: %s", fileName.c_str());
     while (file >> x >> y >> z)
     {
         points.push_back(Point(x, y, z));
 
-        printf("floats: %4.2f %4.2f %4.2f \n", x, y, z);
+        //printf("floats: %4.2f %4.2f %4.2f \n", x, y, z);
     }
 
     return points;
@@ -54,13 +85,16 @@ void drawTriangle(Point p1, Point p2, Point p3)
     glEnd();
 }
 
-void draw_model(string fileName)
+
+void draw_model(vector<string> filesRead)
 {
+    for (int i = 0; i < filesRead.size(); ++i) {
+        //printf("readFile: %s", filesRead[0].c_str());
+        vector<Point> points = readPoints(filesRead[i]);
 
-    vector<Point> points = readPoints("../../vertices/" + fileName);
-
-    for (int i = 0; i < points.size(); i += 3)
-        drawTriangle(points[i], points[i + 1], points[i + 2]);
+        for (int i = 0; i < points.size(); i += 3)
+            drawTriangle(points[i], points[i + 1], points[i + 2]);
+    }
 }
 
 void draw_axis()
@@ -128,7 +162,15 @@ void renderScene(void)
     glScalef(scalex, scaley, scalez);
 
     // draw model
-    draw_model(modelFileName);
+    //printf("%s\n",modelFileName);
+
+
+    vector<string> readModels = readFile(modelFileName);
+    //printf("size file:%d\n",readModels.size());
+    //for (int i = 0; i < readModels.size(); ++i) {
+       // printf("read models %s\n",readModels[i].c_str());
+    //}
+    draw_model(readModels);
 
     // End of frame
     glutSwapBuffers();
@@ -232,7 +274,9 @@ void onKeyboard(int key_code, int x, int y)
 int main(int argc, char **argv)
 {
 
+
     modelFileName = argv[1];
+    //readFile(modelFileName);
 
     // init GLUT and the window
     glutInit(&argc, argv);

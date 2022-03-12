@@ -1,16 +1,19 @@
-
-# Consider dependencies only in project.
-set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
-
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
+  "CXX"
   )
+# The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/ruimoreira/Desktop/CG_Project/Fase1/src/engine.cpp" "/Users/ruimoreira/Desktop/CG_Project/Fase1/src/cmake-build-debug/CMakeFiles/engine.dir/engine.cpp.o"
+  "/Users/ruimoreira/Desktop/CG_Project/Fase1/src/point.cpp" "/Users/ruimoreira/Desktop/CG_Project/Fase1/src/cmake-build-debug/CMakeFiles/engine.dir/point.cpp.o"
+  "/Users/ruimoreira/Desktop/CG_Project/Fase1/src/tinyxml2.cpp" "/Users/ruimoreira/Desktop/CG_Project/Fase1/src/cmake-build-debug/CMakeFiles/engine.dir/tinyxml2.cpp.o"
+  "/Users/ruimoreira/Desktop/CG_Project/Fase1/src/vector.cpp" "/Users/ruimoreira/Desktop/CG_Project/Fase1/src/cmake-build-debug/CMakeFiles/engine.dir/vector.cpp.o"
+  )
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
-# The set of dependency files which are needed:
-set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase1/src/engine.cpp" "CMakeFiles/engine.dir/engine.cpp.o" "gcc" "CMakeFiles/engine.dir/engine.cpp.o.d"
-  "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase1/src/point.cpp" "CMakeFiles/engine.dir/point.cpp.o" "gcc" "CMakeFiles/engine.dir/point.cpp.o.d"
-  "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase1/src/vector.cpp" "CMakeFiles/engine.dir/vector.cpp.o" "gcc" "CMakeFiles/engine.dir/vector.cpp.o.d"
+# The include file search paths:
+set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/GLUT.framework/Headers"
   )
 
 # Targets to which this target links.
