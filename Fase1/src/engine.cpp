@@ -22,8 +22,13 @@ float scaley = 1.0;
 float scalez = 1.0;
 GLenum mode = GL_FILL;
 
+float alpha = M_PI / 4;
+float beta = M_PI / 4;
+float radius = 7;
+
 // FIXME nao esquecer tirar os print
-vector<Point> readPoints(string fileName)
+vector<Point>
+readPoints(string fileName)
 {
     float x, y, z;
     vector<Point> points;
@@ -109,7 +114,7 @@ void renderScene(void)
 
     // set the camera
     glLoadIdentity();
-    gluLookAt(5.0, 5.0, 5.0,
+    gluLookAt(radius * cos(beta) * sin(alpha), radius * sin(beta), radius * cos(beta) * cos(alpha),
               0.0, 0.0, 0.0,
               0.0f, 1.0f, 0.0f);
     glPolygonMode(GL_FRONT_AND_BACK, mode);
@@ -159,11 +164,11 @@ void reactKey(unsigned char key, int x, int y)
         tz -= 0.1;
         break;
 
-    case 'a':
+    case 'd':
         tx += 0.1;
         break;
 
-    case 'd':
+    case 'a':
         tx -= 0.1;
         break;
 
@@ -181,8 +186,47 @@ void reactKey(unsigned char key, int x, int y)
         tx = 0.1;
         scaley = 1.0;
         mode = GL_FILL;
+        break;
     }
+
     glutPostRedisplay();
+}
+
+void onKeyboard(int key_code, int x, int y)
+{
+    if (key_code == GLUT_KEY_RIGHT)
+    {
+        alpha += M_PI / 16;
+        glutPostRedisplay();
+    }
+    else if (key_code == GLUT_KEY_LEFT)
+    {
+        alpha -= M_PI / 16;
+        glutPostRedisplay();
+    }
+    else if (key_code == GLUT_KEY_UP)
+    {
+
+        beta += M_PI / 16;
+        glutPostRedisplay();
+    }
+    else if (key_code == GLUT_KEY_DOWN)
+    {
+        beta -= M_PI / 16;
+        glutPostRedisplay();
+    }
+
+    if (alpha < 0)
+        alpha += M_PI * 2;
+
+    else if (alpha > M_PI * 2)
+        alpha -= M_PI * 2;
+
+    if (beta < -M_PI)
+        beta += M_PI * 2;
+
+    else if (beta > M_PI)
+        beta -= M_PI * 2;
 }
 
 int main(int argc, char **argv)
@@ -203,6 +247,7 @@ int main(int argc, char **argv)
 
     // put here the registration of the keyboard callbacks
     glutKeyboardFunc(reactKey);
+    glutSpecialFunc(onKeyboard);
 
     //  OpenGL settings
     glEnable(GL_DEPTH_TEST);
