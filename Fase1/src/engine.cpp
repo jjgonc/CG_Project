@@ -15,66 +15,23 @@
 using namespace std;
 char * modelFileName;
 
-class Coordinate {
-public:
-    float x, y, z;
-};
 
-class Figura {
-public:
-    std::vector<Coordinate> figura;
-};
-
-std::vector<Figura> figuras;
-
-int angle=0;
+int angle = 0;
 float tx = 0.1;
 float ty = 0.1;
 float tz = 0.1;
 float scalex = 1.0;
 float scaley = 1.0;
 float scalez = 1.0;
+float alpha = M_PI / 4;
+float beta = M_PI / 4;
+float radius = 7;
+
 GLenum mode = GL_FILL;
 
 vector<string> readFile(char * filename) {
 
     std::vector<string> modelsName; // vector com o nome das figuras
-
-    /*tinyxml2::XMLDocument xmlDoc;
-    xmlDoc.LoadFile(filename);
-    if (xmlDoc.ErrorID()){
-        printf("%s\n", xmlDoc.ErrorStr());
-        exit(0);
-    }
-
-    tinyxml2::XMLNode* world = xmlDoc.FirstChildElement("world");
-    if (world == NULL){
-        printf("world not found.\n");
-        exit(0);
-    }
-
-    /*
-    tinyxml2::XMLNode* group = world->FirstChildElement("group");
-    if (group == NULL){
-        printf("world not found.\n");
-        exit(0);
-    }
-
-    tinyxml2::XMLNode* models = group->FirstChildElement("models");
-    if (models == NULL){
-        printf("world not found.\n");
-        exit(0);
-    }
-
-    tinyxml2::XMLElement* model = world->FirstChildElement();
-    while(model){
-        if(!strcmp(model->Value(), "model")) {
-            string newfigura = model->Attribute("file");
-            modelsName.push_back(newfigura);
-            model = model->NextSiblingElement("model");
-        }
-    }
-*/
 
     std::vector<string> figurasToLoad; //vector com os nomes das figuras presentes no ficheiro XML
     string generated_path = "../../vertices/";
@@ -95,17 +52,14 @@ vector<string> readFile(char * filename) {
         figurasToLoad.push_back(newfigura);
     }
 
-/*
-    for (int i = 0; i < figurasToLoad.size(); ++i) {
-        printf("%s\n",figurasToLoad[i].c_str());
-    }
-    */
 
     return figurasToLoad;
 }
 
+
 // FIXME nao esquecer tirar os print
-vector<Point> readPoints(string fileName)
+vector<Point>
+readPoints(string fileName)
 {
     float x, y, z;
     vector<Point> points;
@@ -194,7 +148,7 @@ void renderScene(void)
 
     // set the camera
     glLoadIdentity();
-    gluLookAt(5.0, 5.0, 5.0,
+    gluLookAt(radius * cos(beta) * sin(alpha), radius * sin(beta), radius * cos(beta) * cos(alpha),
               0.0, 0.0, 0.0,
               0.0f, 1.0f, 0.0f);
     glPolygonMode(GL_FRONT_AND_BACK, mode);
@@ -202,10 +156,10 @@ void renderScene(void)
     // draw xyz
     draw_axis();
 
-    //put the geometric transformations here
+    // put the geometric transformations here
     glTranslated(tx, 0.0, tz);
-	glRotated(angle, 0.0, 1.0, 0.0);
-	glScalef(scalex, scaley, scalez);
+    glRotated(angle, 0.0, 1.0, 0.0);
+    glScalef(scalex, scaley, scalez);
 
     // draw model
     //printf("%s\n",modelFileName);
@@ -223,59 +177,99 @@ void renderScene(void)
 }
 
 // write function to process keyboard events
-void reactKey(unsigned char key, int x, int y) {
-	switch (key) {
-        case '1':
-            mode = GL_FILL;
-			break;
-		case '2':
-			mode = GL_LINE;
-			break;
-		case '3':
-			mode = GL_POINT;
-			break;
-		case 'h':
-			angle += 2;
-			break;
+void reactKey(unsigned char key, int x, int y)
+{
+    switch (key)
+    {
+    case '1':
+        mode = GL_FILL;
+        break;
+    case '2':
+        mode = GL_LINE;
+        break;
+    case '3':
+        mode = GL_POINT;
+        break;
+    case 'h':
+        angle += 2;
+        break;
 
-		case 'l':
-			angle -= 2;
-			break;
+    case 'l':
+        angle -= 2;
+        break;
 
-		case 'w':
-			tz += 0.1;
-			break;
+    case 'w':
+        tz += 0.1;
+        break;
 
-		case 's':
-			tz -= 0.1;
-			break;
+    case 's':
+        tz -= 0.1;
+        break;
 
-		case 'a':
-			tx += 0.1;
-			break;
+    case 'd':
+        tx += 0.1;
+        break;
 
-		case 'd':
-			tx -= 0.1;
-			break;
+    case 'a':
+        tx -= 0.1;
+        break;
 
-		case 'k':
-			scaley += 0.1;
-			break;
+    case 'k':
+        scaley += 0.1;
+        break;
 
-		case 'j':
-			scaley -= 0.1;
-			break;
+    case 'j':
+        scaley -= 0.1;
+        break;
 
-		case 'q':		//voltar ao ponto inicial
-			angle = 0;
-			tz = 0.1;
-			tx = 0.1;
-			scaley = 1.0;
-            mode = GL_FILL;
-	}
-	glutPostRedisplay();
+    case 'q': // voltar ao ponto inicial
+        angle = 0;
+        tz = 0.1;
+        tx = 0.1;
+        scaley = 1.0;
+        mode = GL_FILL;
+        break;
+    }
+
+    glutPostRedisplay();
 }
 
+void onKeyboard(int key_code, int x, int y)
+{
+    if (key_code == GLUT_KEY_RIGHT)
+    {
+        alpha += M_PI / 16;
+        glutPostRedisplay();
+    }
+    else if (key_code == GLUT_KEY_LEFT)
+    {
+        alpha -= M_PI / 16;
+        glutPostRedisplay();
+    }
+    else if (key_code == GLUT_KEY_UP)
+    {
+
+        beta += M_PI / 16;
+        glutPostRedisplay();
+    }
+    else if (key_code == GLUT_KEY_DOWN)
+    {
+        beta -= M_PI / 16;
+        glutPostRedisplay();
+    }
+
+    if (alpha < 0)
+        alpha += M_PI * 2;
+
+    else if (alpha > M_PI * 2)
+        alpha -= M_PI * 2;
+
+    if (beta < -M_PI)
+        beta += M_PI * 2;
+
+    else if (beta > M_PI)
+        beta -= M_PI * 2;
+}
 
 int main(int argc, char **argv)
 {
@@ -297,6 +291,7 @@ int main(int argc, char **argv)
 
     // put here the registration of the keyboard callbacks
     glutKeyboardFunc(reactKey);
+    glutSpecialFunc(onKeyboard);
 
     //  OpenGL settings
     glEnable(GL_DEPTH_TEST);
