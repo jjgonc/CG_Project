@@ -46,7 +46,7 @@ vector<string> readFile(char * filename) {
 
     tinyxml2::XMLNode *pRoot = doc.FirstChildElement("world");
     if (pRoot == nullptr) exit(0);
-    tinyxml2::XMLElement *scenefiguras = pRoot->FirstChildElement("model");
+    tinyxml2::XMLElement *scenefiguras = pRoot->FirstChildElement("group")->FirstChildElement("models")->FirstChildElement("model");
     for (; scenefiguras != nullptr; scenefiguras = scenefiguras->NextSiblingElement("model")) {
         string newfigura = generated_path + scenefiguras->Attribute("file");
         figurasToLoad.push_back(newfigura);
