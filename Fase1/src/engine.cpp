@@ -27,6 +27,22 @@ float alpha = M_PI / 4;
 float beta = M_PI / 4;
 float radius = 7;
 
+
+float positionX;
+float positionY;
+float positionZ;
+float upX;
+float upY;
+float upZ;
+float lookAtX;
+float lookAtY;
+float lookAtZ;
+float fov;
+float near;
+float far;
+
+
+
 GLenum mode = GL_FILL;
 
 vector<string> readFile(char * filename) {
@@ -46,6 +62,28 @@ vector<string> readFile(char * filename) {
 
     tinyxml2::XMLNode *pRoot = doc.FirstChildElement("world");
     if (pRoot == nullptr) exit(0);
+
+
+    tinyxml2::XMLElement *position = pRoot->FirstChildElement("camera")->FirstChildElement("position");
+    tinyxml2::XMLElement *lookAt = pRoot->FirstChildElement("camera")->FirstChildElement("lookAt");
+    tinyxml2::XMLElement *up = pRoot->FirstChildElement("camera")->FirstChildElement("up");
+    tinyxml2::XMLElement *projection = pRoot->FirstChildElement("camera")->FirstChildElement("projection");
+
+    positionX = stof(position->Attribute("x"));
+    positionY = stof(position->Attribute("y"));
+    positionZ = stof(position->Attribute("z"));
+    lookAtX = stof(lookAt->Attribute("x"));
+    lookAtY = stof(lookAt->Attribute("y"));
+    lookAtZ = stof(lookAt->Attribute("z"));
+    upX = stof(up->Attribute("x"));
+    upY = stof(up->Attribute("y"));
+    upZ = stof(up->Attribute("z"));
+    fov = stof(projection->Attribute("fov"));
+    near = stof(projection->Attribute("near"));
+    far = stof(projection ->Attribute("far"));
+
+
+
     tinyxml2::XMLElement *scenefiguras = pRoot->FirstChildElement("group")->FirstChildElement("models")->FirstChildElement("model");
     for (; scenefiguras != nullptr; scenefiguras = scenefiguras->NextSiblingElement("model")) {
         string newfigura = generated_path + scenefiguras->Attribute("file");
@@ -135,7 +173,7 @@ void changeSize(int w, int h)
     glViewport(0, 0, w, h);
 
     // Set perspective
-    gluPerspective(45.0f, ratio, 1.0f, 1000.0f);
+    gluPerspective(fov, ratio, near, far);
 
     // return to the model view matrix mode
     glMatrixMode(GL_MODELVIEW);
@@ -148,9 +186,14 @@ void renderScene(void)
 
     // set the camera
     glLoadIdentity();
-    gluLookAt(radius * cos(beta) * sin(alpha), radius * sin(beta), radius * cos(beta) * cos(alpha),
-              0.0, 0.0, 0.0,
-              0.0f, 1.0f, 0.0f);
+     //gluLookAt(radius * cos(beta) * sin(alpha), radius * sin(beta), radius * cos(beta) * cos(alpha),
+     //         0.0, 0.0, 0.0,
+     //        0.0f, 1.0f, 0.0f);
+
+
+    gluLookAt(positionX,positionY,positionZ,
+              lookAtX,lookAtY,lookAtZ,
+              upX,upY,upZ);
     glPolygonMode(GL_FRONT_AND_BACK, mode);
 
     // draw xyz
@@ -276,7 +319,12 @@ int main(int argc, char **argv)
 
 
     modelFileName = argv[1];
-    //readFile(modelFileName);
+
+    readFile(modelFileName);
+  //  printf("x = %f  y = %f   z = %f\n", stof(lookAtX.c_str()),stof(lookAtY.c_str()),stof(lookAtZ.c_str()));
+   // printf("x = %f   y = %f   z = %f\n", stof(upX.c_str()),stof(upY.c_str()),stof(upZ.c_str()));
+  //  printf("x = %f  y = %f   z = %f\n",lookAtX,lookAtY,lookAtZ);
+  //  printf("x = %f   y = %f   z = %f\n", upX,upY,upZ);
 
     // init GLUT and the window
     glutInit(&argc, argv);
@@ -299,6 +347,7 @@ int main(int argc, char **argv)
 
     // enter GLUT's main cycle
     glutMainLoop();
+
 
     return 1;
 }
