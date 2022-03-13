@@ -27,21 +27,21 @@ int main(int argc, char **argv)
 
     string primitive = argv[1];
 
-    if (primitive == "plane") // adicionar && argc == 5
+    if (primitive == "plane" && argc == 5) // adicionar && argc == 5
     {
         float length = stof(argv[2]);
         int divisions = stoi(argv[3]);
         write3D(Plane(length, divisions), argv[4]);
     }
 
-    else if (primitive == "box")
+    else if (primitive == "box" && argc == 5)
     {
         float edge = stof(argv[2]);
         int grid = stoi(argv[3]);
         write3D(Box(edge, grid), argv[4]);
     }
 
-    else if (primitive == "sphere")
+    else if (primitive == "sphere" && argc == 6)
     {
         float radius = stof(argv[2]);
         int slices = stoi(argv[3]);

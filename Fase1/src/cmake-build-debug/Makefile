@@ -68,10 +68,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ruimoreira/Desktop/CG_Project/Fase1/src
+CMAKE_SOURCE_DIR = "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ruimoreira/Desktop/CG_Project/Fase1/src/cmake-build-debug
+CMAKE_BINARY_DIR = "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ruimoreira/Desktop/CG_Project/Fase1/src/cmake-build-debug/CMakeFiles /Users/ruimoreira/Desktop/CG_Project/Fase1/src/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/cmake-build-debug/CMakeFiles" "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/cmake-build-debug/CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ruimoreira/Desktop/CG_Project/Fase1/src/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/cmake-build-debug/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
