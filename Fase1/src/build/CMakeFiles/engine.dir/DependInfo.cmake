@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/engine.cpp" "/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/build/CMakeFiles/engine.dir/engine.cpp.o"
   "/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/point.cpp" "/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/build/CMakeFiles/engine.dir/point.cpp.o"
+  "/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/tinyxml2.cpp" "/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/build/CMakeFiles/engine.dir/tinyxml2.cpp.o"
   "/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/vector.cpp" "/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/build/CMakeFiles/engine.dir/vector.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
