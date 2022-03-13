@@ -16,6 +16,7 @@ CMakeFiles/generator.dir/generator.cpp.o: ../headers/box.hpp
 CMakeFiles/generator.dir/generator.cpp.o: ../headers/cone.hpp
 CMakeFiles/generator.dir/generator.cpp.o: ../headers/plane.hpp
 CMakeFiles/generator.dir/generator.cpp.o: ../headers/point.hpp
+CMakeFiles/generator.dir/generator.cpp.o: ../headers/sphere.hpp
 CMakeFiles/generator.dir/generator.cpp.o: ../headers/vector.hpp
 
 CMakeFiles/generator.dir/plane.cpp.o: ../headers/plane.hpp

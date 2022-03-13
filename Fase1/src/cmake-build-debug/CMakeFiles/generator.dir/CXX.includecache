@@ -25,6 +25,8 @@ headers/box.hpp
 /Users/ruimoreira/Desktop/CG_Project/Fase1/src/headers/box.hpp
 headers/cone.hpp
 /Users/ruimoreira/Desktop/CG_Project/Fase1/src/headers/cone.hpp
+headers/sphere.hpp
+/Users/ruimoreira/Desktop/CG_Project/Fase1/src/headers/sphere.hpp
 string
 -
 ostream
@@ -63,6 +65,12 @@ sstream
 -
 
 /Users/ruimoreira/Desktop/CG_Project/Fase1/src/headers/sphere.hpp
+vector
+-
+math.h
+-
+point.hpp
+/Users/ruimoreira/Desktop/CG_Project/Fase1/src/headers/point.hpp
 
 /Users/ruimoreira/Desktop/CG_Project/Fase1/src/headers/vector.hpp
 string
@@ -79,7 +87,7 @@ headers/plane.hpp
 /Users/ruimoreira/Desktop/CG_Project/Fase1/src/headers/plane.hpp
 
 /Users/ruimoreira/Desktop/CG_Project/Fase1/src/point.cpp
-headers/point.hpp
+./headers/point.hpp
 /Users/ruimoreira/Desktop/CG_Project/Fase1/src/headers/point.hpp
 math.h
 /Users/ruimoreira/Desktop/CG_Project/Fase1/src/math.h
@@ -89,16 +97,8 @@ sstream
 -
 
 /Users/ruimoreira/Desktop/CG_Project/Fase1/src/sphere.cpp
-vector
+string
 -
-math.h
--
-headers/point.hpp
-/Users/ruimoreira/Desktop/CG_Project/Fase1/src/headers/point.hpp
-headers/sphere.hpp
+./headers/sphere.hpp
 /Users/ruimoreira/Desktop/CG_Project/Fase1/src/headers/sphere.hpp
-
-/Users/ruimoreira/Desktop/CG_Project/Fase1/src/vector.cpp
-headers/vector.hpp
-/Users/ruimoreira/Desktop/CG_Project/Fase1/src/headers/vector.hpp
 

@@ -40,12 +40,13 @@ float lookAtZ;
 float fov;
 float near;
 float far;
+vector<string> readModels;
 
 
 
 GLenum mode = GL_FILL;
 
-vector<string> readFile(char * filename) {
+void readFile(char * filename) {
 
     std::vector<string> modelsName; // vector com o nome das figuras
 
@@ -87,11 +88,11 @@ vector<string> readFile(char * filename) {
     tinyxml2::XMLElement *scenefiguras = pRoot->FirstChildElement("group")->FirstChildElement("models")->FirstChildElement("model");
     for (; scenefiguras != nullptr; scenefiguras = scenefiguras->NextSiblingElement("model")) {
         string newfigura = generated_path + scenefiguras->Attribute("file");
-        figurasToLoad.push_back(newfigura);
+        readModels.push_back(newfigura);
     }
 
 
-    return figurasToLoad;
+
 }
 
 
@@ -205,14 +206,6 @@ void renderScene(void)
     glScalef(scalex, scaley, scalez);
 
     // draw model
-    //printf("%s\n",modelFileName);
-
-
-    vector<string> readModels = readFile(modelFileName);
-    //printf("size file:%d\n",readModels.size());
-    //for (int i = 0; i < readModels.size(); ++i) {
-       // printf("read models %s\n",readModels[i].c_str());
-    //}
     draw_model(readModels);
 
     // End of frame
@@ -321,10 +314,13 @@ int main(int argc, char **argv)
     modelFileName = argv[1];
 
     readFile(modelFileName);
-  //  printf("x = %f  y = %f   z = %f\n", stof(lookAtX.c_str()),stof(lookAtY.c_str()),stof(lookAtZ.c_str()));
-   // printf("x = %f   y = %f   z = %f\n", stof(upX.c_str()),stof(upY.c_str()),stof(upZ.c_str()));
-  //  printf("x = %f  y = %f   z = %f\n",lookAtX,lookAtY,lookAtZ);
-  //  printf("x = %f   y = %f   z = %f\n", upX,upY,upZ);
+   //printf("x = %f  y = %f   z = %f\n", stof(lookAtX.c_str()),stof(lookAtY.c_str()),stof(lookAtZ.c_str()));
+    //printf("x = %f   y = %f   z = %f\n", stof(upX.c_str()),stof(upY.c_str()),stof(upZ.c_str()));
+    //printf("position x = %f  y = %f   z = %f\n",positionX,positionY,positionZ);
+    //printf("look x = %f  y = %f   z = %f\n",lookAtX,lookAtY,lookAtZ);
+    //printf("up x = %f   y = %f   z = %f\n", upX,upY,upZ);
+    //printf("fov = %f near = %f far = %f \n",fov,near,far);
+
 
     // init GLUT and the window
     glutInit(&argc, argv);
