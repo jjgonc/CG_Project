@@ -11,10 +11,10 @@
 #include "headers/tinyxml2.hpp"
 #include <fstream>
 #include <iostream>
+#include <cmath>
 
 using namespace std;
-char * modelFileName;
-
+char *modelFileName;
 
 int angle = 0;
 float tx = 0.1;
@@ -23,10 +23,6 @@ float tz = 0.1;
 float scalex = 1.0;
 float scaley = 1.0;
 float scalez = 1.0;
-float alpha = M_PI / 4;
-float beta = M_PI / 4;
-float radius = 7;
-
 
 float positionX;
 float positionY;
@@ -42,28 +38,32 @@ float near;
 float far;
 vector<string> readModels;
 
-
+float alpha;
+float beta;
+float radius;
 
 GLenum mode = GL_FILL;
 
-void readFile(char * filename) {
+void readFile(char *filename)
+{
 
     std::vector<string> modelsName; // vector com o nome das figuras
 
-    std::vector<string> figurasToLoad; //vector com os nomes das figuras presentes no ficheiro XML
+    std::vector<string> figurasToLoad; // vector com os nomes das figuras presentes no ficheiro XML
     string generated_path = "../../vertices/";
 
     tinyxml2::XMLDocument doc;
     doc.LoadFile(filename);
-    if (doc.ErrorID()){
+    if (doc.ErrorID())
+    {
         printf("%s\n", doc.ErrorStr());
         exit(0);
-    } //abre ficheiro XML
+    } // abre ficheiro XML
     printf("%s\n", filename);
 
     tinyxml2::XMLNode *pRoot = doc.FirstChildElement("world");
-    if (pRoot == nullptr) exit(0);
-
+    if (pRoot == nullptr)
+        exit(0);
 
     tinyxml2::XMLElement *position = pRoot->FirstChildElement("camera")->FirstChildElement("position");
     tinyxml2::XMLElement *lookAt = pRoot->FirstChildElement("camera")->FirstChildElement("lookAt");
@@ -81,20 +81,19 @@ void readFile(char * filename) {
     upZ = stof(up->Attribute("z"));
     fov = stof(projection->Attribute("fov"));
     near = stof(projection->Attribute("near"));
-    far = stof(projection ->Attribute("far"));
+    far = stof(projection->Attribute("far"));
 
+    radius = sqrt(positionX * positionX + positionY * positionY + positionZ * positionZ);
+    beta = atan2(positionY, positionX);
+    alpha = acos(positionZ / radius);
 
-
-    tinyxml2::XMLElement *scenefiguras = pRoot->FirstChildElement("group")->FirstChildElement("models")->FirstChildElement("model");
-    for (; scenefiguras != nullptr; scenefiguras = scenefiguras->NextSiblingElement("model")) {
+        tinyxml2::XMLElement *scenefiguras = pRoot->FirstChildElement("group")->FirstChildElement("models")->FirstChildElement("model");
+    for (; scenefiguras != nullptr; scenefiguras = scenefiguras->NextSiblingElement("model"))
+    {
         string newfigura = generated_path + scenefiguras->Attribute("file");
         readModels.push_back(newfigura);
     }
-
-
-
 }
-
 
 // FIXME nao esquecer tirar os print
 vector<Point>
@@ -103,12 +102,12 @@ readPoints(string fileName)
     float x, y, z;
     vector<Point> points;
     ifstream file(fileName);
-    //printf("fileName: %s", fileName.c_str());
+    // printf("fileName: %s", fileName.c_str());
     while (file >> x >> y >> z)
     {
         points.push_back(Point(x, y, z));
 
-        //printf("floats: %4.2f %4.2f %4.2f \n", x, y, z);
+        // printf("floats: %4.2f %4.2f %4.2f \n", x, y, z);
     }
 
     return points;
@@ -124,11 +123,11 @@ void drawTriangle(Point p1, Point p2, Point p3)
     glEnd();
 }
 
-
 void draw_model(vector<string> filesRead)
 {
-    for (int i = 0; i < filesRead.size(); ++i) {
-        //printf("readFile: %s", filesRead[0].c_str());
+    for (int i = 0; i < filesRead.size(); ++i)
+    {
+        // printf("readFile: %s", filesRead[0].c_str());
         vector<Point> points = readPoints(filesRead[i]);
 
         for (int i = 0; i < points.size(); i += 3)
@@ -187,14 +186,13 @@ void renderScene(void)
 
     // set the camera
     glLoadIdentity();
-     //gluLookAt(radius * cos(beta) * sin(alpha), radius * sin(beta), radius * cos(beta) * cos(alpha),
-     //         0.0, 0.0, 0.0,
-     //        0.0f, 1.0f, 0.0f);
 
+    // radius * cos(beta) * sin(alpha), radius * sin(beta), radius * cos(beta) * cos(alpha)
+    // positionX, positionY, positionZ,
 
-    gluLookAt(positionX,positionY,positionZ,
-              lookAtX,lookAtY,lookAtZ,
-              upX,upY,upZ);
+    gluLookAt(radius * cos(beta) * sin(alpha), radius * sin(beta), radius * cos(beta) * cos(alpha),
+              lookAtX, lookAtY, lookAtZ,
+              upX, upY, upZ);
     glPolygonMode(GL_FRONT_AND_BACK, mode);
 
     // draw xyz
@@ -310,17 +308,15 @@ void onKeyboard(int key_code, int x, int y)
 int main(int argc, char **argv)
 {
 
-
     modelFileName = argv[1];
 
     readFile(modelFileName);
-   //printf("x = %f  y = %f   z = %f\n", stof(lookAtX.c_str()),stof(lookAtY.c_str()),stof(lookAtZ.c_str()));
-    //printf("x = %f   y = %f   z = %f\n", stof(upX.c_str()),stof(upY.c_str()),stof(upZ.c_str()));
-    //printf("position x = %f  y = %f   z = %f\n",positionX,positionY,positionZ);
-    //printf("look x = %f  y = %f   z = %f\n",lookAtX,lookAtY,lookAtZ);
-    //printf("up x = %f   y = %f   z = %f\n", upX,upY,upZ);
-    //printf("fov = %f near = %f far = %f \n",fov,near,far);
-
+    // printf("x = %f  y = %f   z = %f\n", stof(lookAtX.c_str()),stof(lookAtY.c_str()),stof(lookAtZ.c_str()));
+    // printf("x = %f   y = %f   z = %f\n", stof(upX.c_str()),stof(upY.c_str()),stof(upZ.c_str()));
+    // printf("position x = %f  y = %f   z = %f\n",positionX,positionY,positionZ);
+    // printf("look x = %f  y = %f   z = %f\n",lookAtX,lookAtY,lookAtZ);
+    // printf("up x = %f   y = %f   z = %f\n", upX,upY,upZ);
+    // printf("fov = %f near = %f far = %f \n",fov,near,far);
 
     // init GLUT and the window
     glutInit(&argc, argv);
@@ -343,7 +339,6 @@ int main(int argc, char **argv)
 
     // enter GLUT's main cycle
     glutMainLoop();
-
 
     return 1;
 }
