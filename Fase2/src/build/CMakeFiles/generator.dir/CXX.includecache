@@ -1,0 +1,52 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/cone.cpp
+math.h
+-
+./headers/cone.hpp
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/headers/cone.hpp
+
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/headers/cone.hpp
+vector
+-
+point.hpp
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/headers/point.hpp
+
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/headers/point.hpp
+string
+-
+iostream
+-
+vector.hpp
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/headers/vector.hpp
+sstream
+-
+
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/headers/sphere.hpp
+vector
+-
+math.h
+-
+point.hpp
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/headers/point.hpp
+
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/headers/vector.hpp
+string
+-
+iostream
+-
+sstream
+-
+
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/sphere.cpp
+string
+-
+./headers/sphere.hpp
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/headers/sphere.hpp
+

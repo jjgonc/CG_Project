@@ -1,0 +1,80 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/engine.cpp
+GLUT/glut.h
+-
+GL/glut.h
+-
+math.h
+-
+cstdio
+-
+vector
+-
+string
+-
+headers/point.hpp
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/headers/point.hpp
+headers/tinyxml2.hpp
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/headers/tinyxml2.hpp
+fstream
+-
+iostream
+-
+cmath
+-
+
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/headers/point.hpp
+string
+-
+iostream
+-
+vector.hpp
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/headers/vector.hpp
+sstream
+-
+
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/headers/tinyxml2.hpp
+ctype.h
+-
+limits.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+stddef.h
+-
+cctype
+-
+climits
+-
+cstdio
+-
+cstdlib
+-
+cstring
+-
+stdint.h
+-
+android/log.h
+-
+assert.h
+-
+
+/home/saraiva/Desktop/University/2 semestre/CG/CG_Project/Fase1/src/headers/vector.hpp
+string
+-
+iostream
+-
+sstream
+-
+
