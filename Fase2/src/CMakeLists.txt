@@ -5,7 +5,7 @@ PROJECT(engine)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-add_executable(${PROJECT_NAME} engine.cpp point.cpp vector.cpp tinyxml2.cpp)
+add_executable(${PROJECT_NAME} engine.cpp point.cpp vector.cpp models.cpp tinyxml2.cpp)
 add_executable(generator generator.cpp point.cpp vector.cpp plane.cpp box.cpp  sphere.cpp cone.cpp)
 
 
