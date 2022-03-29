@@ -9,9 +9,10 @@
 #include <string>
 #include "headers/point.hpp"
 #include "headers/tinyxml2.hpp"
+#include "headers/models.hpp"
 #include <fstream>
 #include <iostream>
-#include <cmath>
+
 
 using namespace std;
 char *modelFileName;
@@ -20,80 +21,17 @@ int angle = 0;
 float tx = 0.1;
 float ty = 0.1;
 float tz = 0.1;
-float scalex = 1.0;
-float scaley = 1.0;
-float scalez = 1.0;
+
 
 float positionX;
 float positionY;
 float positionZ;
-float upX;
-float upY;
-float upZ;
-float lookAtX;
-float lookAtY;
-float lookAtZ;
-float fov;
-float near;
-float far;
-vector<string> readModels;
 
-float alpha;
-float beta;
-float radius;
+vector<string> readModels;
 
 GLenum mode = GL_FILL;
 
-void readFile(char *filename)
-{
-
-    std::vector<string> modelsName; // vector com o nome das figuras
-
-    std::vector<string> figurasToLoad; // vector com os nomes das figuras presentes no ficheiro XML
-    string generated_path = "../../vertices/";
-
-    tinyxml2::XMLDocument doc;
-    doc.LoadFile(filename);
-    if (doc.ErrorID())
-    {
-        printf("%s\n", doc.ErrorStr());
-        exit(0);
-    } // abre ficheiro XML
-    printf("%s\n", filename);
-
-    tinyxml2::XMLNode *pRoot = doc.FirstChildElement("world");
-    if (pRoot == nullptr)
-        exit(0);
-
-    tinyxml2::XMLElement *position = pRoot->FirstChildElement("camera")->FirstChildElement("position");
-    tinyxml2::XMLElement *lookAt = pRoot->FirstChildElement("camera")->FirstChildElement("lookAt");
-    tinyxml2::XMLElement *up = pRoot->FirstChildElement("camera")->FirstChildElement("up");
-    tinyxml2::XMLElement *projection = pRoot->FirstChildElement("camera")->FirstChildElement("projection");
-
-    positionX = stof(position->Attribute("x"));
-    positionY = stof(position->Attribute("y"));
-    positionZ = stof(position->Attribute("z"));
-    lookAtX = stof(lookAt->Attribute("x"));
-    lookAtY = stof(lookAt->Attribute("y"));
-    lookAtZ = stof(lookAt->Attribute("z"));
-    upX = stof(up->Attribute("x"));
-    upY = stof(up->Attribute("y"));
-    upZ = stof(up->Attribute("z"));
-    fov = stof(projection->Attribute("fov"));
-    near = stof(projection->Attribute("near"));
-    far = stof(projection->Attribute("far"));
-
-    radius = sqrt(positionX * positionX + positionY * positionY + positionZ * positionZ);
-    beta = atan2(positionY, positionX);
-    alpha = acos(positionZ / radius);
-
-        tinyxml2::XMLElement *scenefiguras = pRoot->FirstChildElement("group")->FirstChildElement("models")->FirstChildElement("model");
-    for (; scenefiguras != nullptr; scenefiguras = scenefiguras->NextSiblingElement("model"))
-    {
-        string newfigura = generated_path + scenefiguras->Attribute("file");
-        readModels.push_back(newfigura);
-    }
-}
+Models models;
 
 // FIXME nao esquecer tirar os print
 vector<Point>

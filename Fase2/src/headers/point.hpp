@@ -16,6 +16,7 @@ private:
 
     // colocar aqui os métodos publicos
 public:
+    Point();
     Point(float, float, float);
     void addVector(Vector);
     float getX() const;
