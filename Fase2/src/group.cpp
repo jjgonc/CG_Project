@@ -17,6 +17,14 @@ Coordinate::Coordinate(float x1, float y2, float z2)
     angle = 0;
 }
 
+Coordinate::Coordinate()
+{
+    x = 0.0;
+    y = 0.0;
+    z = 0.0;
+    angle = 0;
+}
+
 Camera::Camera(float myAlpha, float myBeta, float myRadius, Point myUp, Point myLookAt, float myFov, float myNear, float myFar)
 {
     float alpha = myAlpha;
@@ -30,7 +38,7 @@ Camera::Camera(float myAlpha, float myBeta, float myRadius, Point myUp, Point my
     Point scale = Point(1.0, 1.0, 1.0);
 }
 
-Group::Group(vector<Group> myGroups, vector<Model> myModels)
+Group::Group(vector<Group> myGroups, Models myModels)
 {
     groups = myGroups;
     models = myModels;
@@ -70,6 +78,30 @@ Transform::Transform(Coordinate myTranslate, Coordinate myRotate, Coordinate myS
     rotate = myRotate;
     scale = myScale;
 }
+
+
+Transform::Transform()
+{
+    translate = Coordinate();
+    rotate = Coordinate();
+    scale = Coordinate();
+}
+
+
+Models::Models(){
+    figures = vector<Figure>();     //intialize de vector without anything
+}
+
+
+Models::Models(vector<Figure> myFigures){
+    figures = myFigures;
+}
+
+
+Figure::Figure(string myName){
+    name = myName;
+}
+
 
 Transform parseTransform(tinyxml2::XMLNode *pRoot)
 {
@@ -141,25 +173,27 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
     return Transform(translate, rotate, scale);
 }
 
-std::vector<Model> modelsParser(tinyxml2::XMLNode *models)
+
+
+Models modelsParser(tinyxml2::XMLNode *models)
 {
-    std::vector<Model> Models = std::vector<Model>();
+    std::vector<Figure> figures = std::vector<Figure>();
     tinyxml2::XMLNode *type = models->FirstChild();
 
     while (type)
     {
         if (!strcmp(type->Value(), "model"))
-            Models.push_back(Model(type->ToElement()->Attribute("file")));
+            figures.push_back(Figure(type->ToElement()->Attribute("file")));
         type = type->NextSibling();
     }
-    return Models;
+    return Models(figures);    //criar construtor
 }
 
 Group groupParser(tinyxml2::XMLNode *pRoot)
 {
 
     vector<Group> groups;
-    vector<Model> models;
+    Models models;
 
     tinyxml2::XMLNode *type = pRoot->FirstChild();
     while (type)
@@ -206,4 +240,12 @@ void readFile(char *filename)
 
     Camera camera = readCamera(pRoot);
     Group group = groupParser(pRoot);
+}
+
+
+
+int main(int argc, char **argv)
+{
+    readFile("/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Ficheiros_Stor/teste.xml");
+
 }

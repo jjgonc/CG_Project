@@ -22,6 +22,11 @@ class Figure
 {
 private:
     vector<Point> pontos;
+    string name;
+
+public:
+    Figure(string name);    //construtor vazio
+
 };
 
 class Transform
@@ -34,13 +39,14 @@ public:
     Transform(Coordinate myTranslate, Coordinate myRotate, Coordinate myScale);
 };
 
-class Model
+class Models
 {
 private:
     vector<Figure> figures;
 
 public:
-    Model(string modelName);
+    Models();
+    Models(vector<Figure> figures);
 };
 
 class Camera
@@ -66,11 +72,11 @@ class Group
 {
 private:
     vector<Group> groups;
-    vector<Model> models;
+    Models models;
 
 public:
     Group();
-    Group(vector<Group> myGroups, vector<Model> myModels);
+    Group(vector<Group> myGroups, Models models);
 };
 
 #endif // CG_PROJECT_GROUP_HPP

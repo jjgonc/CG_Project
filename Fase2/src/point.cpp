@@ -14,6 +14,14 @@ Point::Point(float a, float b, float c)
     z = c;
 }
 
+
+Point::Point()
+{
+    x = 0.0;
+    y = 0.0;
+    z = 0.0;
+}
+
 void Point::addVector(Vector v)
 {
     x += v.getX();
