@@ -1,18 +1,19 @@
-#ifndef CG_PROJECT_GROUP_HPP
-#define CG_PROJECT_GROUP_HPP
+#ifndef CG_PROJECT_TREE_HPP
+#define CG_PROJECT_TREE_HPP
 
 #include <vector>
 #include "point.hpp"
 #include <cmath>
+#include <fstream>
+#include <iostream>
 
 using namespace std;
 
 class Coordinate
 {
-private:
+    public:
     float x, y, z, angle;
 
-public:
     Coordinate();
     Coordinate(float x1, float y2, float z2, float myAngle);
     Coordinate(float x1, float y2, float z2);
@@ -20,38 +21,39 @@ public:
 
 class Figure
 {
-private:
-    vector<Point> pontos;
-    string name;
+    public:
+    vector<Point>* points;
 
-public:
-    Figure(string name);    //construtor vazio
+    Figure(const char * name); //construtor vazio
+    Figure(vector<Point>* points); 
+    void printPoints();
 
 };
 
 class Transform
 {
-private:
+    public:
     Coordinate rotate, translate, scale;
 
-public:
     Transform();
     Transform(Coordinate myTranslate, Coordinate myRotate, Coordinate myScale);
 };
 
 class Models
 {
-private:
-    vector<Figure> figures;
+    public:
+    vector<Figure>* figures;
+    int numero;
 
-public:
+
     Models();
-    Models(vector<Figure> figures);
+    Models(vector<Figure> *figures);
+    void printFigures();
 };
 
 class Camera
 {
-private:
+    public:
     Transform transform;
     float alpha;
     float beta;
@@ -63,20 +65,30 @@ private:
     float far;
     Point scale;
 
-public:
     Camera();
     Camera(float alpha, float beta, float radius, Point up, Point lookAt, float fov, float near, float far);
 };
 
 class Group
 {
-private:
+    public:
     vector<Group> groups;
     Models models;
-
-public:
     Group();
     Group(vector<Group> myGroups, Models models);
+    void printModels();
+    Models getModels();
 };
 
-#endif // CG_PROJECT_GROUP_HPP
+
+class Tree{
+    public:
+        Group group;
+        Camera camera;
+        Tree();
+        Tree(Group g, Camera cam);
+        void printGroup();
+};
+
+
+#endif // CG_PROJECT_TREE_HPP

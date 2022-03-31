@@ -9,7 +9,7 @@
 #include <string>
 #include "headers/point.hpp"
 #include "headers/tinyxml2.hpp"
-#include "headers/group.hpp"
+#include "headers/tree.hpp"
 #include <fstream>
 #include <iostream>
 
