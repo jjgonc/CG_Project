@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "engine"
+			"path" : "generator"
 		}
 	],
 	"backtrace" : 1,
@@ -25,7 +25,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 8,
+				"line" : 9,
 				"parent" : 0
 			},
 			{
@@ -58,11 +58,15 @@
 				0,
 				1,
 				2,
-				3
+				3,
+				4,
+				5,
+				6,
+				7
 			]
 		}
 	],
-	"id" : "engine::@6890427a1f51a3e7e1df",
+	"id" : "generator::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -74,44 +78,12 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
-			},
-			{
-				"fragment" : "-framework",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "OpenGL",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "-framework",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "OpenGL",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "-framework",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "GLUT",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "-framework",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "Cocoa",
-				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
-	"name" : "engine",
-	"nameOnDisk" : "engine",
+	"name" : "generator",
+	"nameOnDisk" : "generator",
 	"paths" : 
 	{
 		"build" : ".",
@@ -126,7 +98,11 @@
 				0,
 				1,
 				2,
-				3
+				3,
+				4,
+				5,
+				6,
+				7
 			]
 		}
 	],
@@ -135,7 +111,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "engine.cpp",
+			"path" : "generator.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -153,7 +129,31 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "tinyxml2.cpp",
+			"path" : "plane.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "box.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "sphere.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "cone.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "torus.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

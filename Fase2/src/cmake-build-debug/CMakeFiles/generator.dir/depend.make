@@ -17,6 +17,7 @@ CMakeFiles/generator.dir/generator.cpp.o: ../headers/cone.hpp
 CMakeFiles/generator.dir/generator.cpp.o: ../headers/plane.hpp
 CMakeFiles/generator.dir/generator.cpp.o: ../headers/point.hpp
 CMakeFiles/generator.dir/generator.cpp.o: ../headers/sphere.hpp
+CMakeFiles/generator.dir/generator.cpp.o: ../headers/torus.hpp
 CMakeFiles/generator.dir/generator.cpp.o: ../headers/vector.hpp
 
 CMakeFiles/generator.dir/plane.cpp.o: ../headers/plane.hpp
@@ -32,6 +33,11 @@ CMakeFiles/generator.dir/sphere.cpp.o: ../headers/point.hpp
 CMakeFiles/generator.dir/sphere.cpp.o: ../headers/sphere.hpp
 CMakeFiles/generator.dir/sphere.cpp.o: ../headers/vector.hpp
 CMakeFiles/generator.dir/sphere.cpp.o: ../sphere.cpp
+
+CMakeFiles/generator.dir/torus.cpp.o: ../headers/point.hpp
+CMakeFiles/generator.dir/torus.cpp.o: ../headers/torus.hpp
+CMakeFiles/generator.dir/torus.cpp.o: ../headers/vector.hpp
+CMakeFiles/generator.dir/torus.cpp.o: ../torus.cpp
 
 CMakeFiles/generator.dir/vector.cpp.o: ../headers/vector.hpp
 CMakeFiles/generator.dir/vector.cpp.o: ../vector.cpp

@@ -4,6 +4,7 @@
 #include "headers/box.hpp"
 #include "headers/cone.hpp"
 #include "headers/sphere.hpp"
+#include "headers/torus.hpp"
 #include <string>
 #include <ostream>
 #include <iostream>
@@ -58,6 +59,18 @@ int main(int argc, char **argv)
         write3D(Cone(radius, height, slices, stacks), argv[6]);
     }
 
+    else if (primitive == "torus" && argc == 7)
+    {
+
+        float innerRadius = std::stof(argv[2]);
+        float outerRadius = std::stof(argv[3]);
+        float radius = (innerRadius+outerRadius)/2.0f;
+        float ringRadius = (outerRadius-innerRadius)/2.0f;
+        int slices = std::stoi(argv[4]);
+        int stacks = std::stoi(argv[5]);
+
+        write3D(Torus(radius,ringRadius,slices,stacks), argv[6]);
+    }
     else
     {
         printf("Not a valid input. Number of arguments might not be valid or this solid does not exist...");

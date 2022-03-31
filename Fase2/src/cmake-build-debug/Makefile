@@ -68,10 +68,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src"
+CMAKE_SOURCE_DIR = "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/cmake-build-debug"
+CMAKE_BINARY_DIR = "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/cmake-build-debug/CMakeFiles" "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/cmake-build-debug/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/cmake-build-debug/CMakeFiles" "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/cmake-build-debug/CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase1/src/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/cmake-build-debug/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -264,6 +264,33 @@ generator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/generator.cpp.s
 .PHONY : generator.cpp.s
 
+models.o: models.cpp.o
+
+.PHONY : models.o
+
+# target to build an object file
+models.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/models.cpp.o
+.PHONY : models.cpp.o
+
+models.i: models.cpp.i
+
+.PHONY : models.i
+
+# target to preprocess a source file
+models.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/models.cpp.i
+.PHONY : models.cpp.i
+
+models.s: models.cpp.s
+
+.PHONY : models.s
+
+# target to generate assembly for a file
+models.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/models.cpp.s
+.PHONY : models.cpp.s
+
 plane.o: plane.cpp.o
 
 .PHONY : plane.o
@@ -375,6 +402,33 @@ tinyxml2.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/tinyxml2.cpp.s
 .PHONY : tinyxml2.cpp.s
 
+torus.o: torus.cpp.o
+
+.PHONY : torus.o
+
+# target to build an object file
+torus.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/torus.cpp.o
+.PHONY : torus.cpp.o
+
+torus.i: torus.cpp.i
+
+.PHONY : torus.i
+
+# target to preprocess a source file
+torus.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/torus.cpp.i
+.PHONY : torus.cpp.i
+
+torus.s: torus.cpp.s
+
+.PHONY : torus.s
+
+# target to generate assembly for a file
+torus.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/torus.cpp.s
+.PHONY : torus.cpp.s
+
 vector.o: vector.cpp.o
 
 .PHONY : vector.o
@@ -427,6 +481,9 @@ help:
 	@echo "... generator.o"
 	@echo "... generator.i"
 	@echo "... generator.s"
+	@echo "... models.o"
+	@echo "... models.i"
+	@echo "... models.s"
 	@echo "... plane.o"
 	@echo "... plane.i"
 	@echo "... plane.s"
@@ -439,6 +496,9 @@ help:
 	@echo "... tinyxml2.o"
 	@echo "... tinyxml2.i"
 	@echo "... tinyxml2.s"
+	@echo "... torus.o"
+	@echo "... torus.i"
+	@echo "... torus.s"
 	@echo "... vector.o"
 	@echo "... vector.i"
 	@echo "... vector.s"
