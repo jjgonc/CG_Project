@@ -43,8 +43,6 @@ class Models
 {
     public:
     vector<Figure>* figures;
-    int numero;
-
 
     Models();
     Models(vector<Figure> *figures);
@@ -74,8 +72,10 @@ class Group
     public:
     vector<Group> groups;
     Models models;
+    Transform transform;
+
     Group();
-    Group(vector<Group> myGroups, Models models);
+    Group(vector<Group> myGroups, Models models, Transform transform);
     void printModels();
     Models getModels();
 };

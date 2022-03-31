@@ -44,7 +44,7 @@ void Models::printFigures(){
     
     
     
-    printf("figures size:%d\nNumero:%d\n",figures->size(),numero);
+    printf("figures size:%d\n",figures->size());
     
     for(int i = 0; i < figures->size(); i++){
         
@@ -113,15 +113,18 @@ Group::Group(){
     
     groups = vector<Group>();
     models = Models();
+    transform = Transform();
 
 }
 
 
-Group::Group(vector<Group> myGroups, Models myModels)
+Group::Group(vector<Group> myGroups, Models myModels,Transform myTransform)
 {
     groups = myGroups;
 
     models = myModels;
+
+    transform = myTransform;
 
 
 }
@@ -176,7 +179,6 @@ Transform::Transform()
 
 Models::Models(){
     //intialize de vector without anything
-    numero= 1;
     figures = new vector<Figure>();
 }
 
@@ -308,11 +310,10 @@ Models modelsParser(tinyxml2::XMLNode *models)
 Group groupParser(tinyxml2::XMLNode *pRoot)
 {
 
-    printf("groupParserDentro\n");
-
 
     vector<Group> groups;
     Models models;
+    Transform transform;
 
     tinyxml2::XMLNode *type = pRoot->FirstChild();
     while (type)
@@ -323,7 +324,7 @@ Group groupParser(tinyxml2::XMLNode *pRoot)
         if (!strcmp(type->Value(), "transform"))
         {
             printf("transform\n");
-            Transform transform = parseTransform(type);
+            transform = parseTransform(type);
         }
         else if (!strcmp(type->Value(), "models"))
         {
@@ -340,9 +341,7 @@ Group groupParser(tinyxml2::XMLNode *pRoot)
     }
 
 
-    models.printFigures();
-
-    Group g = Group(groups, models);
+    Group g = Group(groups, models,transform);
 
     return g;
 }
@@ -370,22 +369,11 @@ Tree readFile(char *filename)
 
     Camera camera = readCamera(pRoot);
 
-
+    pRoot = pRoot->FirstChildElement("group");
 
     Group group = groupParser(pRoot);
-
     
     return Tree(group,camera);
 }
 
 
-
-int main(int argc, char **argv)
-{
-    char * file = "teste.xml";
-    Tree result = readFile(file);
-
-
-
-
-}
