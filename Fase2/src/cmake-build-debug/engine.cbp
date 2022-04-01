@@ -138,9 +138,6 @@
 		<Unit filename="/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/generator.cpp">
 			<Option target="generator"/>
 		</Unit>
-		<Unit filename="/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/models.cpp">
-			<Option target="engine"/>
-		</Unit>
 		<Unit filename="/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/plane.cpp">
 			<Option target="generator"/>
 		</Unit>
@@ -156,6 +153,9 @@
 		</Unit>
 		<Unit filename="/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/torus.cpp">
 			<Option target="generator"/>
+		</Unit>
+		<Unit filename="/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/tree.cpp">
+			<Option target="engine"/>
 		</Unit>
 		<Unit filename="/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/vector.cpp">
 			<Option target="generator"/>

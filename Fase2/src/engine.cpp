@@ -55,13 +55,50 @@ void drawTriangle(Point p1, Point p2, Point p3)
 
 void draw_model(vector<Point>* points)
 {
-
-
+    printf("size points %d\n",points->size());
     for (int i = 0; i < points->size(); i += 3){
         drawTriangle(points->at(i), points->at(i + 1), points->at(i + 2));
     
     }
         
+}
+
+
+void drawModels(Group group){
+    printf("ola draw");
+    float tx = group.transform.translate.x;
+    float ty = group.transform.translate.y;
+    float tz = group.transform.translate.z;
+
+    printf("transform %f , %f , %f\n",tx,ty,tz);
+
+    float rangle = group.transform.rotate.angle;
+    float rx = group.transform.rotate.x;
+    float ry = group.transform.rotate.y;
+    float rz = group.transform.rotate.z;
+    printf("rotate %f , %f , %f\n",rx,ry,rz);
+
+    float sx = group.transform.scale.x;
+    float sy = group.transform.scale.y;
+    float sz = group.transform.scale.z;
+    printf("scale %f , %f , %f\n",sx,sy,sz);
+
+    if(group.transform.hasTranslate) glTranslatef(tx,ty,tz);
+    if(group.transform.hasRotate) glRotatef(rangle,rx,ry,rz);
+    if(group.transform.hasScale) glScalef(sx,sy,sz);
+
+
+    for(int i = 0; i < group.models.figures->size();i++) {
+        printf("ola1\n");
+        draw_model(group.models.figures->at(i).points);
+    }
+
+    printf("size %ld",group.groups.size());
+    for(Group gs: group.groups){
+        glPushMatrix();
+        drawModels(gs);
+        glPopMatrix();
+    }
 }
 
 void draw_axis()
@@ -133,11 +170,8 @@ void renderScene(void)
     glScalef(scalex, scaley, scalez);
 
     // draw model
-    for(int i = 0; i < tree.group.models.figures->size();i++){
-        
-        draw_model(tree.group.models.figures->at(i).points);
+    drawModels(tree.group);
 
-    }
     // End of frame
     glutSwapBuffers();
 }
@@ -255,7 +289,7 @@ int main(int argc, char **argv)
     upZ = tree.camera.up.getZ();
     
 
-
+    printf("figures : %ld",tree.group.models.figures->size());
     // init GLUT and the window
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);

@@ -23,18 +23,12 @@ headers/point.hpp
 /Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/headers/point.hpp
 headers/tinyxml2.hpp
 /Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/headers/tinyxml2.hpp
+headers/tree.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/headers/tree.hpp
 fstream
 -
 iostream
 -
-cmath
--
-
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/headers/models.hpp
-vector
--
-point.hpp
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/headers/point.hpp
 
 /Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/headers/point.hpp
 string
@@ -76,6 +70,18 @@ android/log.h
 assert.h
 -
 
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/headers/tree.hpp
+vector
+-
+point.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/headers/point.hpp
+cmath
+-
+fstream
+-
+iostream
+-
+
 /Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/headers/vector.hpp
 string
 -
@@ -83,36 +89,4 @@ iostream
 -
 sstream
 -
-
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/models.cpp
-headers/models.hpp
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/headers/models.hpp
-
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/point.cpp
-./headers/point.hpp
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/headers/point.hpp
-math.h
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/math.h
-cmath
--
-sstream
--
-
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/tinyxml2.cpp
-headers/tinyxml2.hpp
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/headers/tinyxml2.hpp
-new
--
-stddef.h
--
-stdarg.h
--
-cstddef
--
-cstdarg
--
-
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/vector.cpp
-headers/vector.hpp
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase2/src/headers/vector.hpp
 

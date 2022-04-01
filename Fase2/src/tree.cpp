@@ -1,6 +1,5 @@
 #include "headers/tinyxml2.hpp"
 #include "headers/tree.hpp"
-#include <string>
 
 
 vector<Point>* readPoints(const char * fileName)
@@ -18,13 +17,16 @@ vector<Point>* readPoints(const char * fileName)
     return points;
 }
 
+
+
+
 Tree::Tree(){
     group = Group();
     camera = Camera();
 }
 
 Tree::Tree(Group g, Camera cam){
-    group = g;    
+    group = g;
     camera = cam;
 
 }
@@ -35,19 +37,19 @@ void Tree::printGroup(){
 
 void Group::printModels(){
     models.printFigures();
-   
+
 }
 
 void Models::printFigures(){
-    
-    
-    
+
+
+
     printf("figures size:%d\n",figures->size());
-    
+
     for(int i = 0; i < figures->size(); i++){
-        
+
         figures->at(i).printPoints();
-        
+
     }
 
     printf("---------------------------------\n");
@@ -108,7 +110,7 @@ Camera::Camera(float myAlpha, float myBeta, float myRadius, Point myUp, Point my
 
 
 Group::Group(){
-    
+
     groups = vector<Group>();
     models = Models();
     transform = Transform();
@@ -154,6 +156,9 @@ Camera readCamera(tinyxml2::XMLNode *pRoot)
     float beta = atan2(positionY, positionX);
     float alpha = acos(positionZ / radius);
 
+    printf("radius %f,betha %f, alpha %f, lookx %f, looky %f, lookz %f, upX %f, upY %f, upZ %f, sfov %f, near %f, far %f",positionX,positionY,positionZ,lookAtPoint.getX(),lookAtPoint.getY(),lookAtPoint.getZ(),upPoint.getX(),upPoint.getY(),upPoint.getZ(),fov,near,far);
+
+
     Camera camera = Camera(alpha, beta, radius, upPoint, lookAtPoint, fov, near, far);
 
     return camera;
@@ -169,6 +174,9 @@ Transform::Transform(Coordinate myTranslate, Coordinate myRotate, Coordinate myS
 
 Transform::Transform()
 {
+    hasRotate = false;
+    hasTranslate = false;
+    hasScale = false;
     translate = Coordinate();
     rotate = Coordinate();
     scale = Coordinate();
@@ -184,38 +192,34 @@ Models::Models(){
 
 
 Models::Models(vector<Figure>* myFigures){
-    
+
     for (int i=0; myFigures->size(); i++){
-          figures->push_back(myFigures->at(i));
+        figures->push_back(myFigures->at(i));
     }
-      
+
 }
 
 
 Figure::Figure(const char * myName){
-   
-    char generated_path[16]  = "../../vertices/";
-    
-    strcat(generated_path, myName);
 
-    points = readPoints(generated_path);
+    points = readPoints(myName);
 
 
 }
 
 Figure::Figure(vector<Point>* myPoints){
-   
+
     points = myPoints;
 
 }
 
 
 void Figure::printPoints(){
-    
+
 
     for (int i=0; i<points->size(); i++){
-          
-          printf("Ponto x: %f\n",points->at(i).getX());
+
+        printf("Ponto x: %f\n",points->at(i).getX());
     }
 }
 
@@ -226,25 +230,27 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
     Coordinate translate, rotate, scale;
 
     tinyxml2::XMLNode *type = pRoot->FirstChild();
-
+    Transform t = Transform();
     while (type)
     {
         if (!strcmp(type->Value(), "translate"))
         {
+            printf("entrei no translate");
             float x, y, z;
-            if (type->ToElement()->Attribute("X"))
-                x = std::stof(type->ToElement()->Attribute("X"));
+            if (type->ToElement()->Attribute("x"))
+                x = std::stof(type->ToElement()->Attribute("x"));
             else
                 x = 0;
-            if (type->ToElement()->Attribute("Y"))
-                y = std::stof(type->ToElement()->Attribute("Y"));
+            if (type->ToElement()->Attribute("y"))
+                y = std::stof(type->ToElement()->Attribute("y"));
             else
                 y = 0;
-            if (type->ToElement()->Attribute("Z"))
-                z = std::stof(type->ToElement()->Attribute("Z"));
+            if (type->ToElement()->Attribute("z"))
+                z = std::stof(type->ToElement()->Attribute("z"));
             else
                 z = 0;
-            translate = Coordinate(x, y, z, 0);
+            t.translate = Coordinate(x, y, z, 0);
+            t.hasTranslate = true;
         }
         else if (!strcmp(type->Value(), "rotate"))
         {
@@ -253,42 +259,44 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
                 angle = std::stof(type->ToElement()->Attribute("angle"));
             else
                 angle = 0;
-            if (type->ToElement()->Attribute("X"))
-                x = std::stof(type->ToElement()->Attribute("X"));
+            if (type->ToElement()->Attribute("x"))
+                x = std::stof(type->ToElement()->Attribute("x"));
             else
                 x = 0;
-            if (type->ToElement()->Attribute("Y"))
-                y = std::stof(type->ToElement()->Attribute("Y"));
+            if (type->ToElement()->Attribute("y"))
+                y = std::stof(type->ToElement()->Attribute("y"));
             else
                 y = 0;
-            if (type->ToElement()->Attribute("Z"))
-                z = std::stof(type->ToElement()->Attribute("Z"));
+            if (type->ToElement()->Attribute("z"))
+                z = std::stof(type->ToElement()->Attribute("z"));
             else
                 z = 0;
-            rotate = Coordinate(x, y, z, angle);
+            t.rotate = Coordinate(x, y, z, angle);
+            t.hasRotate = true;
         }
         else if (!strcmp(type->Value(), "scale"))
         {
             float x, y, z;
-            if (type->ToElement()->Attribute("X"))
-                x = std::stof(type->ToElement()->Attribute("X"));
+            if (type->ToElement()->Attribute("x"))
+                x = std::stof(type->ToElement()->Attribute("x"));
             else
                 x = 0;
-            if (type->ToElement()->Attribute("Y"))
-                y = std::stof(type->ToElement()->Attribute("Y"));
+            if (type->ToElement()->Attribute("y"))
+                y = std::stof(type->ToElement()->Attribute("y"));
             else
                 y = 0;
-            if (type->ToElement()->Attribute("Z"))
-                z = std::stof(type->ToElement()->Attribute("Z"));
+            if (type->ToElement()->Attribute("z"))
+                z = std::stof(type->ToElement()->Attribute("z"));
             else
                 z = 0;
-            scale = Coordinate(x, y, z);
+            t.scale = Coordinate(x, y, z);
+            t.hasScale = true;
         }
 
         type = type->NextSibling();
     }
 
-    return Transform(translate, rotate, scale);
+    return t;
 }
 
 
@@ -301,12 +309,12 @@ Models modelsParser(tinyxml2::XMLNode *models)
     while (type)
     {
         if (!strcmp(type->Value(), "model"))
-            
+
             m.figures->push_back(Figure(type->ToElement()->Attribute("file")));
-            type = type->NextSibling();
+        type = type->NextSibling();
     }
 
-    return m;    
+    return m;
 }
 
 Group groupParser(tinyxml2::XMLNode *pRoot)
@@ -321,7 +329,7 @@ Group groupParser(tinyxml2::XMLNode *pRoot)
     while (type)
     {
 
-         printf("type:%s\n",type->Value());
+        printf("type:%s\n",type->Value());
 
         if (!strcmp(type->Value(), "transform"))
         {
@@ -351,13 +359,13 @@ Group groupParser(tinyxml2::XMLNode *pRoot)
 Tree readFile(char *filename)
 {
 
+    std::vector<string> modelsName; // vector com o nome das figuras
+
+    std::vector<string> figurasToLoad; // vector com os nomes das figuras presentes no ficheiro XML
+    string generated_path = "../../vertices/";
+
     tinyxml2::XMLDocument doc;
-    
-    char xmlPath[16]  = "../../xmlFiles/";
-    
-    strcat(xmlPath, filename);
-    
-    doc.LoadFile(xmlPath);
+    doc.LoadFile(filename);
     if (doc.ErrorID())
     {
         printf("%s\n", doc.ErrorStr());
@@ -374,8 +382,7 @@ Tree readFile(char *filename)
     pRoot = pRoot->FirstChildElement("group");
 
     Group group = groupParser(pRoot);
-    
+
     return Tree(group,camera);
 }
-
 

@@ -264,33 +264,6 @@ generator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/generator.cpp.s
 .PHONY : generator.cpp.s
 
-models.o: models.cpp.o
-
-.PHONY : models.o
-
-# target to build an object file
-models.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/models.cpp.o
-.PHONY : models.cpp.o
-
-models.i: models.cpp.i
-
-.PHONY : models.i
-
-# target to preprocess a source file
-models.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/models.cpp.i
-.PHONY : models.cpp.i
-
-models.s: models.cpp.s
-
-.PHONY : models.s
-
-# target to generate assembly for a file
-models.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/models.cpp.s
-.PHONY : models.cpp.s
-
 plane.o: plane.cpp.o
 
 .PHONY : plane.o
@@ -429,6 +402,33 @@ torus.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/torus.cpp.s
 .PHONY : torus.cpp.s
 
+tree.o: tree.cpp.o
+
+.PHONY : tree.o
+
+# target to build an object file
+tree.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/tree.cpp.o
+.PHONY : tree.cpp.o
+
+tree.i: tree.cpp.i
+
+.PHONY : tree.i
+
+# target to preprocess a source file
+tree.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/tree.cpp.i
+.PHONY : tree.cpp.i
+
+tree.s: tree.cpp.s
+
+.PHONY : tree.s
+
+# target to generate assembly for a file
+tree.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/tree.cpp.s
+.PHONY : tree.cpp.s
+
 vector.o: vector.cpp.o
 
 .PHONY : vector.o
@@ -481,9 +481,6 @@ help:
 	@echo "... generator.o"
 	@echo "... generator.i"
 	@echo "... generator.s"
-	@echo "... models.o"
-	@echo "... models.i"
-	@echo "... models.s"
 	@echo "... plane.o"
 	@echo "... plane.i"
 	@echo "... plane.s"
@@ -499,6 +496,9 @@ help:
 	@echo "... torus.o"
 	@echo "... torus.i"
 	@echo "... torus.s"
+	@echo "... tree.o"
+	@echo "... tree.i"
+	@echo "... tree.s"
 	@echo "... vector.o"
 	@echo "... vector.i"
 	@echo "... vector.s"

@@ -33,6 +33,7 @@ class Figure
 class Transform
 {
     public:
+    bool hasRotate, hasTranslate, hasScale;
     Coordinate rotate, translate, scale;
 
     Transform();
