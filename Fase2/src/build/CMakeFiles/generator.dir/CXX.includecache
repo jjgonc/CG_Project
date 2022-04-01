@@ -6,29 +6,29 @@
 
 #IncludeRegexTransform: 
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/box.cpp
+/home/saraiva/Desktop/Fase2/src/box.cpp
 headers/box.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/box.hpp
+/home/saraiva/Desktop/Fase2/src/headers/box.hpp
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/cone.cpp
+/home/saraiva/Desktop/Fase2/src/cone.cpp
 math.h
 -
 ./headers/cone.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/cone.hpp
+/home/saraiva/Desktop/Fase2/src/headers/cone.hpp
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/generator.cpp
+/home/saraiva/Desktop/Fase2/src/generator.cpp
 headers/point.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/point.hpp
+/home/saraiva/Desktop/Fase2/src/headers/point.hpp
 headers/plane.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/plane.hpp
+/home/saraiva/Desktop/Fase2/src/headers/plane.hpp
 headers/box.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/box.hpp
+/home/saraiva/Desktop/Fase2/src/headers/box.hpp
 headers/cone.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/cone.hpp
+/home/saraiva/Desktop/Fase2/src/headers/cone.hpp
 headers/sphere.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/sphere.hpp
+/home/saraiva/Desktop/Fase2/src/headers/sphere.hpp
 headers/torus.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/torus.hpp
+/home/saraiva/Desktop/Fase2/src/headers/torus.hpp
 string
 -
 ostream
@@ -38,49 +38,49 @@ iostream
 fstream
 -
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/box.hpp
+/home/saraiva/Desktop/Fase2/src/headers/box.hpp
 point.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/point.hpp
+/home/saraiva/Desktop/Fase2/src/headers/point.hpp
 vector
 -
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/cone.hpp
+/home/saraiva/Desktop/Fase2/src/headers/cone.hpp
 vector
 -
 point.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/point.hpp
+/home/saraiva/Desktop/Fase2/src/headers/point.hpp
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/plane.hpp
+/home/saraiva/Desktop/Fase2/src/headers/plane.hpp
 point.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/point.hpp
+/home/saraiva/Desktop/Fase2/src/headers/point.hpp
 vector
 -
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/point.hpp
+/home/saraiva/Desktop/Fase2/src/headers/point.hpp
 string
 -
 iostream
 -
 vector.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/vector.hpp
+/home/saraiva/Desktop/Fase2/src/headers/vector.hpp
 sstream
 -
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/sphere.hpp
+/home/saraiva/Desktop/Fase2/src/headers/sphere.hpp
 vector
 -
 math.h
 -
 point.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/point.hpp
+/home/saraiva/Desktop/Fase2/src/headers/point.hpp
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/torus.hpp
+/home/saraiva/Desktop/Fase2/src/headers/torus.hpp
 vector
 -
 point.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/point.hpp
+/home/saraiva/Desktop/Fase2/src/headers/point.hpp
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/vector.hpp
+/home/saraiva/Desktop/Fase2/src/headers/vector.hpp
 string
 -
 iostream
@@ -88,35 +88,35 @@ iostream
 sstream
 -
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/plane.cpp
+/home/saraiva/Desktop/Fase2/src/plane.cpp
 string
 -
 headers/plane.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/plane.hpp
+/home/saraiva/Desktop/Fase2/src/headers/plane.hpp
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/point.cpp
+/home/saraiva/Desktop/Fase2/src/point.cpp
 ./headers/point.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/point.hpp
+/home/saraiva/Desktop/Fase2/src/headers/point.hpp
 math.h
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/math.h
+/home/saraiva/Desktop/Fase2/src/math.h
 cmath
 -
 sstream
 -
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/sphere.cpp
+/home/saraiva/Desktop/Fase2/src/sphere.cpp
 string
 -
 ./headers/sphere.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/sphere.hpp
+/home/saraiva/Desktop/Fase2/src/headers/sphere.hpp
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/torus.cpp
+/home/saraiva/Desktop/Fase2/src/torus.cpp
 headers/torus.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/torus.hpp
+/home/saraiva/Desktop/Fase2/src/headers/torus.hpp
 math.h
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/math.h
+/home/saraiva/Desktop/Fase2/src/math.h
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/vector.cpp
+/home/saraiva/Desktop/Fase2/src/vector.cpp
 headers/vector.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/vector.hpp
+/home/saraiva/Desktop/Fase2/src/headers/vector.hpp
 

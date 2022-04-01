@@ -201,16 +201,11 @@ Models::Models(vector<Figure>* myFigures){
 
 
 Figure::Figure(const char * myName){
-   
-    char generated_path[16]  = "../../vertices/";
-    
-    strcat(generated_path, myName);
 
-    points = readPoints(generated_path);
+    points = readPoints(myName);
 
 
 }
-
 
 Figure::Figure(vector<Point>* myPoints){
 
@@ -365,14 +360,13 @@ Group groupParser(tinyxml2::XMLNode *pRoot)
 Tree readFile(char *filename)
 {
 
+    std::vector<string> modelsName; // vector com o nome das figuras
+
+    std::vector<string> figurasToLoad; // vector com os nomes das figuras presentes no ficheiro XML
+    string generated_path = "../../vertices/";
+
     tinyxml2::XMLDocument doc;
-    
-    char xmlPath[16]  = "../../xmlFiles/";
-    
-    strcat(xmlPath, filename);
-    
-    doc.LoadFile(xmlPath);
-    
+    doc.LoadFile(filename);
     if (doc.ErrorID())
     {
         printf("%s\n", doc.ErrorStr());

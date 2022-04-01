@@ -70,21 +70,21 @@ void drawModels(Group group){
     float ty = group.transform.translate.y;
     float tz = group.transform.translate.z;
 
-    printf("transform %f , %f , %f\n",tx,ty,tz);
+    printf("\ntransform %f , %f , %f\n",tx,ty,tz);
 
-    float rangle = group.transform.rotate.angle;
+    float angle = group.transform.rotate.angle;
     float rx = group.transform.rotate.x;
     float ry = group.transform.rotate.y;
     float rz = group.transform.rotate.z;
-    printf("rotate %f , %f , %f\n",rx,ry,rz);
+    printf("rotate %f, %f , %f , %f\n",angle,rx,ry,rz);
 
     float sx = group.transform.scale.x;
     float sy = group.transform.scale.y;
     float sz = group.transform.scale.z;
     printf("scale %f , %f , %f\n",sx,sy,sz);
 
+    if(group.transform.hasRotate) glRotatef(angle,rx,ry,rz);
     if(group.transform.hasTranslate) glTranslatef(tx,ty,tz);
-    if(group.transform.hasRotate) glRotatef(rangle,rx,ry,rz);
     if(group.transform.hasScale) glScalef(sx,sy,sz);
 
 
