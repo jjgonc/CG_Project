@@ -1,5 +1,6 @@
 #include "headers/tinyxml2.hpp"
 #include "headers/tree.hpp"
+#include <string>
 
 
 vector<Point>* readPoints(const char * fileName)
@@ -16,9 +17,6 @@ vector<Point>* readPoints(const char * fileName)
 
     return points;
 }
-
-
-
 
 Tree::Tree(){
     group = Group();
@@ -156,9 +154,6 @@ Camera readCamera(tinyxml2::XMLNode *pRoot)
     float beta = atan2(positionY, positionX);
     float alpha = acos(positionZ / radius);
 
-    printf("radius %f,betha %f, alpha %f, lookx %f, looky %f, lookz %f, upX %f, upY %f, upZ %f, sfov %f, near %f, far %f",positionX,positionY,positionZ,lookAtPoint.getX(),lookAtPoint.getY(),lookAtPoint.getZ(),upPoint.getX(),upPoint.getY(),upPoint.getZ(),fov,near,far);
-
-
     Camera camera = Camera(alpha, beta, radius, upPoint, lookAtPoint, fov, near, far);
 
     return camera;
@@ -199,7 +194,11 @@ Models::Models(vector<Figure>* myFigures){
 
 Figure::Figure(const char * myName){
    
-    points = readPoints(myName);
+    char generated_path[16]  = "../../vertices/";
+    
+    strcat(generated_path, myName);
+
+    points = readPoints(generated_path);
 
 
 }
@@ -352,10 +351,7 @@ Group groupParser(tinyxml2::XMLNode *pRoot)
 Tree readFile(char *filename)
 {
 
-    std::vector<string> modelsName; // vector com o nome das figuras
-
-    std::vector<string> figurasToLoad; // vector com os nomes das figuras presentes no ficheiro XML
-    string generated_path = "../../vertices/";
+    
 
     tinyxml2::XMLDocument doc;
     doc.LoadFile(filename);
