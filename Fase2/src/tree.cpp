@@ -351,10 +351,13 @@ Group groupParser(tinyxml2::XMLNode *pRoot)
 Tree readFile(char *filename)
 {
 
-    
-
     tinyxml2::XMLDocument doc;
-    doc.LoadFile(filename);
+    
+    char xmlPath[16]  = "../../xmlFiles/";
+    
+    strcat(xmlPath, filename);
+    
+    doc.LoadFile(xmlPath);
     if (doc.ErrorID())
     {
         printf("%s\n", doc.ErrorStr());
