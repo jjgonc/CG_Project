@@ -4,14 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/saraiva/Desktop/Fase2/src/box.cpp" "/home/saraiva/Desktop/Fase2/src/build/CMakeFiles/generator.dir/box.cpp.o"
-  "/home/saraiva/Desktop/Fase2/src/cone.cpp" "/home/saraiva/Desktop/Fase2/src/build/CMakeFiles/generator.dir/cone.cpp.o"
-  "/home/saraiva/Desktop/Fase2/src/generator.cpp" "/home/saraiva/Desktop/Fase2/src/build/CMakeFiles/generator.dir/generator.cpp.o"
-  "/home/saraiva/Desktop/Fase2/src/plane.cpp" "/home/saraiva/Desktop/Fase2/src/build/CMakeFiles/generator.dir/plane.cpp.o"
-  "/home/saraiva/Desktop/Fase2/src/point.cpp" "/home/saraiva/Desktop/Fase2/src/build/CMakeFiles/generator.dir/point.cpp.o"
-  "/home/saraiva/Desktop/Fase2/src/sphere.cpp" "/home/saraiva/Desktop/Fase2/src/build/CMakeFiles/generator.dir/sphere.cpp.o"
-  "/home/saraiva/Desktop/Fase2/src/torus.cpp" "/home/saraiva/Desktop/Fase2/src/build/CMakeFiles/generator.dir/torus.cpp.o"
-  "/home/saraiva/Desktop/Fase2/src/vector.cpp" "/home/saraiva/Desktop/Fase2/src/build/CMakeFiles/generator.dir/vector.cpp.o"
+  "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase2/src/box.cpp" "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase2/src/build/CMakeFiles/generator.dir/box.cpp.o"
+  "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase2/src/cone.cpp" "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase2/src/build/CMakeFiles/generator.dir/cone.cpp.o"
+  "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase2/src/generator.cpp" "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase2/src/build/CMakeFiles/generator.dir/generator.cpp.o"
+  "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase2/src/plane.cpp" "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase2/src/build/CMakeFiles/generator.dir/plane.cpp.o"
+  "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase2/src/point.cpp" "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase2/src/build/CMakeFiles/generator.dir/point.cpp.o"
+  "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase2/src/sphere.cpp" "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase2/src/build/CMakeFiles/generator.dir/sphere.cpp.o"
+  "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase2/src/torus.cpp" "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase2/src/build/CMakeFiles/generator.dir/torus.cpp.o"
+  "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase2/src/vector.cpp" "/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase2/src/build/CMakeFiles/generator.dir/vector.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
