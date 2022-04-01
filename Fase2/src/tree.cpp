@@ -293,6 +293,7 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
             t.hasScale = true;
         }
 
+
         type = type->NextSibling();
     }
 
