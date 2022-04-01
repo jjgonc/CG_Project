@@ -232,16 +232,16 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
         if (!strcmp(type->Value(), "translate"))
         {
             float x, y, z;
-            if (type->ToElement()->Attribute("X"))
-                x = std::stof(type->ToElement()->Attribute("X"));
+            if (type->ToElement()->Attribute("x"))
+                x = std::stof(type->ToElement()->Attribute("x"));
             else
                 x = 0;
-            if (type->ToElement()->Attribute("Y"))
-                y = std::stof(type->ToElement()->Attribute("Y"));
+            if (type->ToElement()->Attribute("y"))
+                y = std::stof(type->ToElement()->Attribute("y"));
             else
                 y = 0;
-            if (type->ToElement()->Attribute("Z"))
-                z = std::stof(type->ToElement()->Attribute("Z"));
+            if (type->ToElement()->Attribute("z"))
+                z = std::stof(type->ToElement()->Attribute("z"));
             else
                 z = 0;
             translate = Coordinate(x, y, z, 0);
@@ -253,16 +253,16 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
                 angle = std::stof(type->ToElement()->Attribute("angle"));
             else
                 angle = 0;
-            if (type->ToElement()->Attribute("X"))
-                x = std::stof(type->ToElement()->Attribute("X"));
+            if (type->ToElement()->Attribute("x"))
+                x = std::stof(type->ToElement()->Attribute("x"));
             else
                 x = 0;
-            if (type->ToElement()->Attribute("Y"))
-                y = std::stof(type->ToElement()->Attribute("Y"));
+            if (type->ToElement()->Attribute("y"))
+                y = std::stof(type->ToElement()->Attribute("y"));
             else
                 y = 0;
-            if (type->ToElement()->Attribute("Z"))
-                z = std::stof(type->ToElement()->Attribute("Z"));
+            if (type->ToElement()->Attribute("z"))
+                z = std::stof(type->ToElement()->Attribute("z"));
             else
                 z = 0;
             rotate = Coordinate(x, y, z, angle);
@@ -270,20 +270,21 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
         else if (!strcmp(type->Value(), "scale"))
         {
             float x, y, z;
-            if (type->ToElement()->Attribute("X"))
-                x = std::stof(type->ToElement()->Attribute("X"));
+            if (type->ToElement()->Attribute("x"))
+                x = std::stof(type->ToElement()->Attribute("x"));
             else
                 x = 0;
-            if (type->ToElement()->Attribute("Y"))
-                y = std::stof(type->ToElement()->Attribute("Y"));
+            if (type->ToElement()->Attribute("y"))
+                y = std::stof(type->ToElement()->Attribute("y"));
             else
                 y = 0;
-            if (type->ToElement()->Attribute("Z"))
-                z = std::stof(type->ToElement()->Attribute("Z"));
+            if (type->ToElement()->Attribute("z"))
+                z = std::stof(type->ToElement()->Attribute("z"));
             else
                 z = 0;
             scale = Coordinate(x, y, z);
         }
+
 
         type = type->NextSibling();
     }
