@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/generator.dir/plane.cpp.o"
   "CMakeFiles/generator.dir/point.cpp.o"
   "CMakeFiles/generator.dir/sphere.cpp.o"
+  "CMakeFiles/generator.dir/torus.cpp.o"
   "CMakeFiles/generator.dir/vector.cpp.o"
   "generator"
   "generator.pdb"

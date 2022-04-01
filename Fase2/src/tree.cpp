@@ -156,6 +156,9 @@ Camera readCamera(tinyxml2::XMLNode *pRoot)
     float beta = atan2(positionY, positionX);
     float alpha = acos(positionZ / radius);
 
+    printf("radius %f,betha %f, alpha %f, lookx %f, looky %f, lookz %f, upX %f, upY %f, upZ %f, sfov %f, near %f, far %f",positionX,positionY,positionZ,lookAtPoint.getX(),lookAtPoint.getY(),lookAtPoint.getZ(),upPoint.getX(),upPoint.getY(),upPoint.getZ(),fov,near,far);
+
+
     Camera camera = Camera(alpha, beta, radius, upPoint, lookAtPoint, fov, near, far);
 
     return camera;

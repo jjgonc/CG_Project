@@ -52,7 +52,6 @@ class Models
 class Camera
 {
     public:
-    Transform transform;
     float alpha;
     float beta;
     float radius;
@@ -89,6 +88,8 @@ class Tree{
         Tree(Group g, Camera cam);
         void printGroup();
 };
+
+Tree readFile(char *filename);
 
 
 #endif // CG_PROJECT_TREE_HPP

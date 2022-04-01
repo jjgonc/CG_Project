@@ -23,33 +23,27 @@ float ty = 0.1;
 float tz = 0.1;
 
 
-float positionX;
-float positionY;
-float positionZ;
-
 vector<string> readModels;
 
 GLenum mode = GL_FILL;
 
-Models models;
 
-// FIXME nao esquecer tirar os print
-vector<Point>
-readPoints(string fileName)
-{
-    float x, y, z;
-    vector<Point> points;
-    ifstream file(fileName);
-    // printf("fileName: %s", fileName.c_str());
-    while (file >> x >> y >> z)
-    {
-        points.push_back(Point(x, y, z));
+Tree tree;
 
-        // printf("floats: %4.2f %4.2f %4.2f \n", x, y, z);
-    }
+float radius;
+float betha;  
+float alpha; 
+float lookAtX;
+float lookAtY;
+float lookAtZ; 
+float upX;
+float upY; 
+float upZ;
+ 
+float scalex = 1.0;
+float scaley = 1.0;
+float scalez = 1.0;
 
-    return points;
-}
 
 void drawTriangle(Point p1, Point p2, Point p3)
 {
@@ -61,16 +55,14 @@ void drawTriangle(Point p1, Point p2, Point p3)
     glEnd();
 }
 
-void draw_model(vector<string> filesRead)
+void draw_model(vector<Point>* points)
 {
-    for (int i = 0; i < filesRead.size(); ++i)
-    {
-        // printf("readFile: %s", filesRead[0].c_str());
-        vector<Point> points = readPoints(filesRead[i]);
 
-        for (int i = 0; i < points.size(); i += 3)
-            drawTriangle(points[i], points[i + 1], points[i + 2]);
+    for (int i = 0; i < points->size(); i += 3){
+        drawTriangle(points->at(i), points->at(i + 1), points->at(i + 2));
+    
     }
+        
 }
 
 void draw_axis()
@@ -111,7 +103,7 @@ void changeSize(int w, int h)
     glViewport(0, 0, w, h);
 
     // Set perspective
-    gluPerspective(fov, ratio, near, far);
+    gluPerspective(tree.camera.fov, ratio, tree.camera.near, tree.camera.far);
 
     // return to the model view matrix mode
     glMatrixMode(GL_MODELVIEW);
@@ -125,10 +117,8 @@ void renderScene(void)
     // set the camera
     glLoadIdentity();
 
-    // radius * cos(beta) * sin(alpha), radius * sin(beta), radius * cos(beta) * cos(alpha)
-    // positionX, positionY, positionZ,
-
-    gluLookAt(radius * cos(beta) * sin(alpha), radius * sin(beta), radius * cos(beta) * cos(alpha),
+   
+    gluLookAt(radius * cos(betha) * sin(alpha), radius * sin(betha), radius * cos(betha) * cos(alpha),
               lookAtX, lookAtY, lookAtZ,
               upX, upY, upZ);
     glPolygonMode(GL_FRONT_AND_BACK, mode);
@@ -142,8 +132,13 @@ void renderScene(void)
     glScalef(scalex, scaley, scalez);
 
     // draw model
-    draw_model(readModels);
+    for(int i = 0; i < tree.group.models.figures->size();i++){
 
+        printf("chamar draw");
+        
+        draw_model(tree.group.models.figures->at(i).points);
+
+    }
     // End of frame
     glutSwapBuffers();
 }
@@ -221,12 +216,12 @@ void onKeyboard(int key_code, int x, int y)
     else if (key_code == GLUT_KEY_UP)
     {
 
-        beta += M_PI / 16;
+        betha += M_PI / 16;
         glutPostRedisplay();
     }
     else if (key_code == GLUT_KEY_DOWN)
     {
-        beta -= M_PI / 16;
+        betha -= M_PI / 16;
         glutPostRedisplay();
     }
 
@@ -236,11 +231,11 @@ void onKeyboard(int key_code, int x, int y)
     else if (alpha > M_PI * 2)
         alpha -= M_PI * 2;
 
-    if (beta < -M_PI)
-        beta += M_PI * 2;
+    if (betha < -M_PI)
+        betha += M_PI * 2;
 
-    else if (beta > M_PI)
-        beta -= M_PI * 2;
+    else if (betha > M_PI)
+        betha -= M_PI * 2;
 }
 
 int main(int argc, char **argv)
@@ -248,13 +243,19 @@ int main(int argc, char **argv)
 
     modelFileName = argv[1];
 
-    readFile(modelFileName);
-    // printf("x = %f  y = %f   z = %f\n", stof(lookAtX.c_str()),stof(lookAtY.c_str()),stof(lookAtZ.c_str()));
-    // printf("x = %f   y = %f   z = %f\n", stof(upX.c_str()),stof(upY.c_str()),stof(upZ.c_str()));
-    // printf("position x = %f  y = %f   z = %f\n",positionX,positionY,positionZ);
-    // printf("look x = %f  y = %f   z = %f\n",lookAtX,lookAtY,lookAtZ);
-    // printf("up x = %f   y = %f   z = %f\n", upX,upY,upZ);
-    // printf("fov = %f near = %f far = %f \n",fov,near,far);
+    tree = readFile(modelFileName);
+
+    float radius = tree.camera.radius;
+    float betha = tree.camera.beta;
+    float alpha = tree.camera.alpha;
+    float lookAtX = tree.camera.lookAt.getX();
+    float lookAtY = tree.camera.lookAt.getY();
+    float lookAtZ = tree.camera.lookAt.getZ();
+    float upX = tree.camera.up.getX();
+    float upY = tree.camera.up.getY();
+    float upZ = tree.camera.up.getZ();
+    
+
 
     // init GLUT and the window
     glutInit(&argc, argv);
