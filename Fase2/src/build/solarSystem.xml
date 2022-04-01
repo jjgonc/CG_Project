@@ -17,8 +17,8 @@
 
         <group>     <!--mercurio-->
             <transform>
-                <scale x="0.95" y="0.95" z="0.95"/>
                 <translate x="25" y="0" z="0"/>
+                <scale x="0.95" y="0.95" z="0.95"/>
             </transform>
             <models>
                 <model file="sphere.3d"/>       
@@ -27,8 +27,8 @@
 
         <group>     <!--venus-->
             <transform>
-                <scale x="0.9" y="0.9" z="0.9"/>
                 <translate x="20" y="0" z="0"/>
+                <scale x="0.9" y="0.9" z="0.9"/>
             </transform>
             <models>
                 <model file="sphere.3d"/>       
@@ -38,8 +38,8 @@
 
         <group>     <!--terra-->
             <transform>
-                <scale x="0" y="0.95" z="0"/>
                 <translate x="25" y="0" z="0"/>
+                <scale x="0" y="0.95" z="0"/>
             </transform>
             <models>
                 <model file="sphere.3d"/>       
@@ -48,8 +48,8 @@
 
         <group>     <!--marte-->
             <transform>
-                <scale x="0.5" y="0.5" z="0.5"/>
                 <translate x="30" y="0" z="0"/>
+                <scale x="0.5" y="0.5" z="0.5"/>
             </transform>
             <models>
                 <model file="sphere.3d"/>       
@@ -58,8 +58,8 @@
 
         <group>     <!--jupiter-->
             <transform>
-                <scale x="4.5" y="4.5" z="4.5"/>
                 <translate x="45" y="0" z="0"/>
+                <scale x="4.5" y="4.5" z="4.5"/>
             </transform>
             <models>
                 <model file="sphere.3d"/>       
@@ -70,8 +70,8 @@
         <group>     <!--saturno-->
             <group>
                 <transform>
-                    <scale x="3.5" y="3.5" z="3.5"/>
                     <translate x="60" y="0" z="0"/>
+                    <scale x="3.5" y="3.5" z="3.5"/>
                     </transform>
                 <models>
                     <model file="sphere.3d"/>       
@@ -79,9 +79,9 @@
             </group>
             <group>
                 <transform>
-                    <scale x="7" y="0" z="7"/>
-                    <rotate angle="10" x="0" y="0" z="1" />
+                    <rotate angle="10" x="1" y="0" z="0" />
                     <translate x="60" y="0" z="0" />
+                    <scale x="7" y="0" z="7"/>
                 </transform>
                 <models>
                     <model file="torus.3d" />
@@ -91,8 +91,8 @@
 
         <group>     <!--urano-->
             <transform>
-                <scale x="2.5" y="2.5" z="2.5"/>
                 <translate x="75" y="0" z="0"/>
+                <scale x="2.5" y="2.5" z="2.5"/>
             </transform>
             <models>
                 <model file="sphere.3d"/>       
@@ -101,8 +101,8 @@
 
         <group>     <!--neptuno-->
             <transform>
-                <scale x="2.4" y="2.4" z="2.4"/>
                 <translate x="85" y="0" z="0"/>
+                <scale x="2.4" y="2.4" z="2.4"/>
             </transform>
             <models>
                 <model file="sphere.3d"/>       
