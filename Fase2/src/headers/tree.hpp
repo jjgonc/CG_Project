@@ -24,7 +24,7 @@ class Figure
     public:
     vector<Point>* points;
 
-    Figure(const char * name); //construtor vazio
+    Figure(const char * name); 
     Figure(vector<Point>* points); 
     void printPoints();
 

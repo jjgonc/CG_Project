@@ -25,9 +25,6 @@ float tz = 0.1;
 
 vector<string> readModels;
 
-GLenum mode = GL_FILL;
-
-
 Tree tree;
 
 float radius;
@@ -44,6 +41,7 @@ float scalex = 1.0;
 float scaley = 1.0;
 float scalez = 1.0;
 
+GLenum mode = GL_FILL;
 
 void drawTriangle(Point p1, Point p2, Point p3)
 {
@@ -57,6 +55,7 @@ void drawTriangle(Point p1, Point p2, Point p3)
 
 void draw_model(vector<Point>* points)
 {
+
 
     for (int i = 0; i < points->size(); i += 3){
         drawTriangle(points->at(i), points->at(i + 1), points->at(i + 2));
@@ -103,6 +102,8 @@ void changeSize(int w, int h)
     glViewport(0, 0, w, h);
 
     // Set perspective
+    
+
     gluPerspective(tree.camera.fov, ratio, tree.camera.near, tree.camera.far);
 
     // return to the model view matrix mode
@@ -133,8 +134,6 @@ void renderScene(void)
 
     // draw model
     for(int i = 0; i < tree.group.models.figures->size();i++){
-
-        printf("chamar draw");
         
         draw_model(tree.group.models.figures->at(i).points);
 
@@ -245,15 +244,15 @@ int main(int argc, char **argv)
 
     tree = readFile(modelFileName);
 
-    float radius = tree.camera.radius;
-    float betha = tree.camera.beta;
-    float alpha = tree.camera.alpha;
-    float lookAtX = tree.camera.lookAt.getX();
-    float lookAtY = tree.camera.lookAt.getY();
-    float lookAtZ = tree.camera.lookAt.getZ();
-    float upX = tree.camera.up.getX();
-    float upY = tree.camera.up.getY();
-    float upZ = tree.camera.up.getZ();
+    radius = tree.camera.radius;
+    betha = tree.camera.beta;
+    alpha = tree.camera.alpha;
+    lookAtX = tree.camera.lookAt.getX();
+    lookAtY = tree.camera.lookAt.getY();
+    lookAtZ = tree.camera.lookAt.getZ();
+    upX = tree.camera.up.getX();
+    upY = tree.camera.up.getY();
+    upZ = tree.camera.up.getZ();
     
 
 
