@@ -17,7 +17,7 @@
 
         <group>     <!--mercurio-->
             <transform>
-                <translate x="25" y="0" z="0"/>
+                <translate x="15" y="0" z="0"/>
                 <scale x="0.95" y="0.95" z="0.95"/>
             </transform>
             <models>
@@ -39,7 +39,7 @@
         <group>     <!--terra-->
             <transform>
                 <translate x="25" y="0" z="0"/>
-                <scale x="0" y="0.95" z="0"/>
+                <scale x="0.95" y="0.95" z="0.95"/>
             </transform>
             <models>
                 <model file="sphere.3d"/>       
