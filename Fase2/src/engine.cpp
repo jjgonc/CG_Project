@@ -43,6 +43,36 @@ float scalez = 1.0;
 
 GLenum mode = GL_FILL;
 
+
+
+bool navigationPosition = false;
+
+
+
+void moveCamera(Point p){
+    
+   
+    float positionX = radius * cos(betha) * sin(alpha);
+    float positionY = radius * sin(betha);
+    float positionZ = radius * cos(betha) * cos(alpha);
+    
+    positionX = positionX + p.getX();
+    positionY = positionY + p.getY();
+    positionZ = positionZ + p.getZ();     
+
+    radius = sqrt(positionX * positionX + positionY * positionY + positionZ * positionZ);
+    betha = atan2(positionY, positionX);
+    alpha = acos(positionZ / radius);
+}
+
+
+
+
+
+
+
+
+
 void drawTriangle(Point p1, Point p2, Point p3)
 {
     glColor3f((float)rand() / RAND_MAX, (float)rand() / RAND_MAX, (float)rand() / RAND_MAX);
@@ -155,7 +185,7 @@ void renderScene(void)
     // set the camera
     glLoadIdentity();
 
-   
+
     gluLookAt(radius * cos(betha) * sin(alpha), radius * sin(betha), radius * cos(betha) * cos(alpha),
               lookAtX, lookAtY, lookAtZ,
               upX, upY, upZ);
@@ -199,19 +229,29 @@ void reactKey(unsigned char key, int x, int y)
         break;
 
     case 'w':
-        tz += 0.1;
+        tz += 10;
         break;
 
     case 's':
-        tz -= 0.1;
+        tz -= 10;
         break;
 
     case 'd':
-        tx += 0.1;
+        tx += 10;
         break;
 
     case 'a':
-        tx -= 0.1;
+        tx -= 10;
+        break;
+
+    case 'r':
+        radius += 10;
+        break;
+
+     case 'f':
+     if(radius - 10 > 0){
+         radius -= 10;
+     }
         break;
 
     case 'k':

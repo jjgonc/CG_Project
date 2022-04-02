@@ -1,6 +1,6 @@
 <world>
     <camera>
-        <position x="150" y="50" z="50" />
+        <position x="90" y="20" z="10" />
         <lookAt x="0" y="0" z="0" />
         <up x="0" y="1" z="0" />
         <projection fov="60" near="1" far="1000" />
@@ -17,8 +17,8 @@
 
         <group>     <!--mercurio-->
             <transform>
-                <translate x="18" y="0" z="0"/>
-                <scale x="0.95" y="0.95" z="0.95"/>
+                <translate x="20" y="0" z="0"/>
+                <scale x="1.1" y="1.1" z="1.1"/>
             </transform>
             <models>
                 <model file="sphere.3d"/>       
@@ -27,8 +27,8 @@
 
         <group>     <!--venus-->
             <transform>
-                <translate x="23" y="0" z="0"/>
-                <scale x="0.9" y="0.9" z="0.9"/>
+                <translate x="29" y="0" z="10"/>
+                <scale x="1.05" y="1.05" z="1.05"/>
             </transform>
             <models>
                 <model file="sphere.3d"/>       
@@ -38,8 +38,8 @@
 
         <group>     <!--terra-->
             <transform>
-                <translate x="28" y="0" z="0"/>
-                <scale x="0.95" y="0.95" z="0.95"/>
+                <translate x="39" y="0" z="-9"/>
+                <scale x="1.15" y="1.15" z="1.15"/>
             </transform>
             <models>
                 <model file="sphere.3d"/>       
@@ -48,8 +48,8 @@
 
         <group>     <!--marte-->
             <transform>
-                <translate x="32" y="0" z="0"/>
-                <scale x="0.5" y="0.5" z="0.5"/>
+                <translate x="55" y="0" z="-5"/>
+                <scale x="0.8" y="0.8" z="0.8"/>
             </transform>
             <models>
                 <model file="sphere.3d"/>       
@@ -58,8 +58,8 @@
 
         <group>     <!--jupiter-->
             <transform>
-                <translate x="43" y="0" z="0"/>
-                <scale x="4.5" y="4.5" z="4.5"/>
+                <translate x="68" y="0" z="5"/>
+                <scale x="4.8" y="4.8" z="4.8"/>
             </transform>
             <models>
                 <model file="sphere.3d"/>       
@@ -70,8 +70,8 @@
         <group>     <!--saturno-->
             <group>
                 <transform>
-                    <translate x="63" y="0" z="0"/>
-                    <scale x="3.5" y="3.5" z="3.5"/>
+                    <translate x="90" y="0" z="-24"/>
+                    <scale x="3.8" y="3.8" z="3.8"/>
                     </transform>
                 <models>
                     <model file="sphere.3d"/>       
@@ -79,9 +79,9 @@
             </group>
             <group>
                 <transform>
-                    <rotate angle="10" x="1" y="0" z="0" />
-                    <translate x="63" y="0" z="0" />
-                    <scale x="7" y="0" z="7"/>
+                    <rotate angle="0" x="15" y="0" z="0" />
+                    <translate x="90" y="0" z="-24" />
+                    <scale x="7.2" y="0" z="7.2"/>
                 </transform>
                 <models>
                     <model file="torus.3d" />
@@ -91,8 +91,8 @@
 
         <group>     <!--urano-->
             <transform>
-                <translate x="78" y="0" z="0"/>
-                <scale x="2.5" y="2.5" z="2.5"/>
+                <translate x="95" y="0" z="25"/>
+                <scale x="2.8" y="2.8" z="2.8"/>
             </transform>
             <models>
                 <model file="sphere.3d"/>       
@@ -101,8 +101,8 @@
 
         <group>     <!--neptuno-->
             <transform>
-                <translate x="90" y="0" z="0"/>
-                <scale x="2.4" y="2.4" z="2.4"/>
+                <translate x="125" y="0" z="-5"/>
+                <scale x="2.6" y="2.6" z="2.6"/>
             </transform>
             <models>
                 <model file="sphere.3d"/>       
