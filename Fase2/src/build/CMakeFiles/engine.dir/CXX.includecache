@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/saraiva/Desktop/Fase2/src/engine.cpp
+/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/engine.cpp
 GLUT/glut.h
 -
 GL/glut.h
@@ -20,27 +20,27 @@ vector
 string
 -
 headers/point.hpp
-/home/saraiva/Desktop/Fase2/src/headers/point.hpp
+/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/point.hpp
 headers/tinyxml2.hpp
-/home/saraiva/Desktop/Fase2/src/headers/tinyxml2.hpp
+/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/tinyxml2.hpp
 headers/tree.hpp
-/home/saraiva/Desktop/Fase2/src/headers/tree.hpp
+/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/tree.hpp
 fstream
 -
 iostream
 -
 
-/home/saraiva/Desktop/Fase2/src/headers/point.hpp
+/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/point.hpp
 string
 -
 iostream
 -
 vector.hpp
-/home/saraiva/Desktop/Fase2/src/headers/vector.hpp
+/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/vector.hpp
 sstream
 -
 
-/home/saraiva/Desktop/Fase2/src/headers/tinyxml2.hpp
+/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/tinyxml2.hpp
 ctype.h
 -
 limits.h
@@ -70,11 +70,11 @@ android/log.h
 assert.h
 -
 
-/home/saraiva/Desktop/Fase2/src/headers/tree.hpp
+/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/tree.hpp
 vector
 -
 point.hpp
-/home/saraiva/Desktop/Fase2/src/headers/point.hpp
+/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/point.hpp
 cmath
 -
 fstream
@@ -82,45 +82,11 @@ fstream
 iostream
 -
 
-/home/saraiva/Desktop/Fase2/src/headers/vector.hpp
+/home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/headers/vector.hpp
 string
 -
 iostream
 -
 sstream
 -
-
-/home/saraiva/Desktop/Fase2/src/point.cpp
-./headers/point.hpp
-/home/saraiva/Desktop/Fase2/src/headers/point.hpp
-math.h
-/home/saraiva/Desktop/Fase2/src/math.h
-cmath
--
-sstream
--
-
-/home/saraiva/Desktop/Fase2/src/tinyxml2.cpp
-headers/tinyxml2.hpp
-/home/saraiva/Desktop/Fase2/src/headers/tinyxml2.hpp
-new
--
-stddef.h
--
-stdarg.h
--
-cstddef
--
-cstdarg
--
-
-/home/saraiva/Desktop/Fase2/src/tree.cpp
-headers/tinyxml2.hpp
-/home/saraiva/Desktop/Fase2/src/headers/tinyxml2.hpp
-headers/tree.hpp
-/home/saraiva/Desktop/Fase2/src/headers/tree.hpp
-
-/home/saraiva/Desktop/Fase2/src/vector.cpp
-headers/vector.hpp
-/home/saraiva/Desktop/Fase2/src/headers/vector.hpp
 
