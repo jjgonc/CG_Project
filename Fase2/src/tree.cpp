@@ -40,7 +40,6 @@ void Group::printModels(){
 }
 
 void Models::printFigures(){
-    printf("figures size:%d\n",figures->size());
 
     for(int i = 0; i < figures->size(); i++){
 
@@ -48,7 +47,6 @@ void Models::printFigures(){
 
     }
 
-    printf("---------------------------------\n");
 }
 
 
