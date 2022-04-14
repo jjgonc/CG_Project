@@ -1,16 +1,22 @@
+
 #include "headers/tinyxml2.hpp"
 #include "headers/tree.hpp"
 
 
-vector<Point>* readPoints(const char * fileName)
+vector<Point> readPoints(const char * fileName)
 {
     float x, y, z;
-    vector<Point>* points = new vector<Point>();
+    vector<Point> points = vector<Point>();
     ifstream file(fileName);
 
     while (file >> x >> y >> z)
     {
+<<<<<<< HEAD:Fase3/src/tree.cpp
         points->push_back(Point(x, y, z));
+=======
+        points.push_back(Point(x, y, z));
+
+>>>>>>> 41e384946f3cf51bdbf59b0f4c4c8f8b3ed55237:Fase 3/src/tree.cpp
     }
 
     return points;
@@ -30,6 +36,7 @@ Tree::Tree(Group g, Camera cam){
 
 }
 
+<<<<<<< HEAD:Fase3/src/tree.cpp
 void Tree::printGroup(){
     group.printModels();
 }
@@ -48,6 +55,9 @@ void Models::printFigures(){
     }
 
 }
+=======
+
+>>>>>>> 41e384946f3cf51bdbf59b0f4c4c8f8b3ed55237:Fase 3/src/tree.cpp
 
 
 Coordinate::Coordinate(float x1, float y2, float z2, float myAngle)
@@ -150,6 +160,11 @@ Camera readCamera(tinyxml2::XMLNode *pRoot)
     float beta = atan2(positionY, positionX);
     float alpha = acos(positionZ / radius);
 
+<<<<<<< HEAD:Fase3/src/tree.cpp
+=======
+
+
+>>>>>>> 41e384946f3cf51bdbf59b0f4c4c8f8b3ed55237:Fase 3/src/tree.cpp
     Camera camera = Camera(alpha, beta, radius, upPoint, lookAtPoint, fov, near, far);
 
     return camera;
@@ -176,16 +191,16 @@ Transform::Transform()
 
 Models::Models(){
     //intialize de vector without anything
-    figures = new vector<Figure>();
+    figures = vector<Figure>();
 }
 
 
 
 
-Models::Models(vector<Figure>* myFigures){
+Models::Models(vector<Figure> myFigures){
 
-    for (int i=0; myFigures->size(); i++){
-        figures->push_back(myFigures->at(i));
+    for (int i=0; myFigures.size(); i++){
+        figures.push_back(myFigures.at(i));
     }
 
 }
@@ -193,31 +208,23 @@ Models::Models(vector<Figure>* myFigures){
 
 Figure::Figure(const char * myName){
 
+<<<<<<< HEAD:Fase3/src/tree.cpp
 
     char generated_path[40] = "../../vertices/";
     strcat(generated_path, myName);
     points = readPoints(generated_path);
 
 
+=======
+    vector<Point> points = readPoints(myName);
+    verticesCount = points.size();
+    glGenBuffers(1,&vertices);
+    glBindBuffer(GL_ARRAY_BUFFER, vertices);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * points.size(), points.data(),GL_STATIC_DRAW); 
+>>>>>>> 41e384946f3cf51bdbf59b0f4c4c8f8b3ed55237:Fase 3/src/tree.cpp
+
 
 }
-
-Figure::Figure(vector<Point>* myPoints){
-
-    points = myPoints;
-
-}
-
-
-void Figure::printPoints(){
-
-
-    for (int i=0; i<points->size(); i++){
-
-        printf("Ponto x: %f\n",points->at(i).getX());
-    }
-}
-
 
 
 Transform parseTransform(tinyxml2::XMLNode *pRoot)
@@ -305,7 +312,7 @@ Models modelsParser(tinyxml2::XMLNode *models)
     {
         if (!strcmp(type->Value(), "model"))
 
-            m.figures->push_back(Figure(type->ToElement()->Attribute("file")));
+            m.figures.push_back(Figure(type->ToElement()->Attribute("file")));
         type = type->NextSibling();
     }
 
@@ -323,16 +330,32 @@ Group groupParser(tinyxml2::XMLNode *pRoot)
     tinyxml2::XMLNode *type = pRoot->FirstChild();
     while (type)
     {
+<<<<<<< HEAD:Fase3/src/tree.cpp
         if (!strcmp(type->Value(), "transform"))
         {
+=======
+
+
+        if (!strcmp(type->Value(), "transform"))
+        {
+
+>>>>>>> 41e384946f3cf51bdbf59b0f4c4c8f8b3ed55237:Fase 3/src/tree.cpp
             transform = parseTransform(type);
         }
         else if (!strcmp(type->Value(), "models"))
         {
+<<<<<<< HEAD:Fase3/src/tree.cpp
+=======
+
+>>>>>>> 41e384946f3cf51bdbf59b0f4c4c8f8b3ed55237:Fase 3/src/tree.cpp
             models = modelsParser(type);
         }
         else if (!strcmp(type->Value(), "group"))
         {
+<<<<<<< HEAD:Fase3/src/tree.cpp
+=======
+
+>>>>>>> 41e384946f3cf51bdbf59b0f4c4c8f8b3ed55237:Fase 3/src/tree.cpp
             groups.push_back(groupParser(type));
         }
 
@@ -357,9 +380,12 @@ Tree readFile(char *filename)
     doc.LoadFile(filename);
     if (doc.ErrorID())
     {
-        printf("%s\n", doc.ErrorStr());
         exit(0);
     } // abre ficheiro XML
+<<<<<<< HEAD:Fase3/src/tree.cpp
+=======
+
+>>>>>>> 41e384946f3cf51bdbf59b0f4c4c8f8b3ed55237:Fase 3/src/tree.cpp
 
     tinyxml2::XMLNode *pRoot = doc.FirstChildElement("world");
     if (pRoot == nullptr)

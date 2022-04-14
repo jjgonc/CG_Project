@@ -1,8 +1,3 @@
-#ifdef __APPLE__
-#include <GLUT/glut.h>
-#else
-#include <GL/glut.h>
-#endif
 #include <math.h>
 #include <cstdio>
 #include <vector>
@@ -10,6 +5,7 @@
 #include "headers/point.hpp"
 #include "headers/tinyxml2.hpp"
 #include "headers/tree.hpp"
+#include "headers/engine.hpp"
 #include <fstream>
 #include <iostream>
 
@@ -67,12 +63,6 @@ void moveCamera(Point p){
 
 
 
-
-
-
-
-
-
 void drawTriangle(Point p1, Point p2, Point p3)
 {
     glColor3f((float)rand() / RAND_MAX, (float)rand() / RAND_MAX, (float)rand() / RAND_MAX);
@@ -83,15 +73,26 @@ void drawTriangle(Point p1, Point p2, Point p3)
     glEnd();
 }
 
-void draw_model(vector<Point>* points)
+void draw_model(Figure fig)
 {
+<<<<<<< HEAD:Fase3/src/engine.cpp
     for (int i = 0; i < points->size(); i += 3) {
         drawTriangle(points->at(i), points->at(i + 1), points->at(i + 2));
     }
+=======
+    glBindBuffer(GL_ARRAY_BUFFER, fig.vertices);
+    glVertexPointer(3, GL_FLOAT, 0, 0);
+    glDrawArrays(GL_TRIANGLES, 0, fig.verticesCount);
+        
+>>>>>>> 41e384946f3cf51bdbf59b0f4c4c8f8b3ed55237:Fase 3/src/engine.cpp
 }
 
 
 void drawModels(Group group){
+<<<<<<< HEAD:Fase3/src/engine.cpp
+=======
+    
+>>>>>>> 41e384946f3cf51bdbf59b0f4c4c8f8b3ed55237:Fase 3/src/engine.cpp
     float tx = group.transform.translate.x;
     float ty = group.transform.translate.y;
     float tz = group.transform.translate.z;
@@ -101,18 +102,31 @@ void drawModels(Group group){
     float rx = group.transform.rotate.x;
     float ry = group.transform.rotate.y;
     float rz = group.transform.rotate.z;
+<<<<<<< HEAD:Fase3/src/engine.cpp
+=======
+ 
+>>>>>>> 41e384946f3cf51bdbf59b0f4c4c8f8b3ed55237:Fase 3/src/engine.cpp
 
     float sx = group.transform.scale.x;
     float sy = group.transform.scale.y;
     float sz = group.transform.scale.z;
+<<<<<<< HEAD:Fase3/src/engine.cpp
+=======
+
+>>>>>>> 41e384946f3cf51bdbf59b0f4c4c8f8b3ed55237:Fase 3/src/engine.cpp
 
     if(group.transform.hasRotate) glRotatef(angle,rx,ry,rz);
     if(group.transform.hasTranslate) glTranslatef(tx,ty,tz);
     if(group.transform.hasScale) glScalef(sx,sy,sz);
 
 
+<<<<<<< HEAD:Fase3/src/engine.cpp
     for(int i = 0; i < group.models.figures->size();i++) {
         draw_model(group.models.figures->at(i).points);
+=======
+    for(int i = 0; i < group.models.figures.size();i++) {
+        draw_model(group.models.figures[i]);
+>>>>>>> 41e384946f3cf51bdbf59b0f4c4c8f8b3ed55237:Fase 3/src/engine.cpp
     }
 
     for(Group gs: group.groups){

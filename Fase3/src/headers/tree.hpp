@@ -1,6 +1,15 @@
 #ifndef CG_PROJECT_TREE_HPP
 #define CG_PROJECT_TREE_HPP
 
+#include <stdlib.h>
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/glew.h>
+#include <GL/glut.h>
+#endif
+
+
 #include <vector>
 #include "point.hpp"
 #include <cmath>
@@ -22,11 +31,9 @@ class Coordinate
 class Figure
 {
     public:
-    vector<Point>* points;
+    GLuint vertices, verticesCount;
 
     Figure(const char * name); 
-    Figure(vector<Point>* points); 
-    void printPoints();
 
 };
 
@@ -43,11 +50,11 @@ class Transform
 class Models
 {
     public:
-    vector<Figure>* figures;
+    vector<Figure> figures;
 
     Models();
-    Models(vector<Figure> *figures);
-    void printFigures();
+    Models(vector<Figure> figures);
+ 
 };
 
 class Camera
@@ -76,7 +83,6 @@ class Group
 
     Group();
     Group(vector<Group> myGroups, Models models, Transform transform);
-    void printModels();
     Models getModels();
 };
 
