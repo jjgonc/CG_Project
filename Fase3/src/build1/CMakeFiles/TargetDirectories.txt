@@ -1,0 +1,4 @@
+/home/josejoao/Downloads/CG_Project/Fase2/src/build1/CMakeFiles/rebuild_cache.dir
+/home/josejoao/Downloads/CG_Project/Fase2/src/build1/CMakeFiles/edit_cache.dir
+/home/josejoao/Downloads/CG_Project/Fase2/src/build1/CMakeFiles/generator.dir
+/home/josejoao/Downloads/CG_Project/Fase2/src/build1/CMakeFiles/engine.dir
