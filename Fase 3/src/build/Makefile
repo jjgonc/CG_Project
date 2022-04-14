@@ -67,10 +67,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/saraiva/Desktop/University/CG/CG_Project/Fase2/src
+CMAKE_SOURCE_DIR = "/home/saraiva/Desktop/University/CG/CG_Project/Fase 3/src"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/build
+CMAKE_BINARY_DIR = "/home/saraiva/Desktop/University/CG/CG_Project/Fase 3/src/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/build/CMakeFiles /home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/saraiva/Desktop/University/CG/CG_Project/Fase 3/src/build/CMakeFiles" "/home/saraiva/Desktop/University/CG/CG_Project/Fase 3/src/build//CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/saraiva/Desktop/University/CG/CG_Project/Fase2/src/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/saraiva/Desktop/University/CG/CG_Project/Fase 3/src/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
