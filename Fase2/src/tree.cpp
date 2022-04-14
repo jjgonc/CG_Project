@@ -11,7 +11,6 @@ vector<Point>* readPoints(const char * fileName)
     while (file >> x >> y >> z)
     {
         points->push_back(Point(x, y, z));
-
     }
 
     return points;
@@ -42,17 +41,12 @@ void Group::printModels(){
 
 void Models::printFigures(){
 
-
-
-    printf("figures size:%d\n",figures->size());
-
     for(int i = 0; i < figures->size(); i++){
 
         figures->at(i).printPoints();
 
     }
 
-    printf("---------------------------------\n");
 }
 
 
@@ -156,9 +150,6 @@ Camera readCamera(tinyxml2::XMLNode *pRoot)
     float beta = atan2(positionY, positionX);
     float alpha = acos(positionZ / radius);
 
-    printf("radius %f,betha %f, alpha %f, lookx %f, looky %f, lookz %f, upX %f, upY %f, upZ %f, sfov %f, near %f, far %f",positionX,positionY,positionZ,lookAtPoint.getX(),lookAtPoint.getY(),lookAtPoint.getZ(),upPoint.getX(),upPoint.getY(),upPoint.getZ(),fov,near,far);
-
-
     Camera camera = Camera(alpha, beta, radius, upPoint, lookAtPoint, fov, near, far);
 
     return camera;
@@ -202,7 +193,11 @@ Models::Models(vector<Figure>* myFigures){
 
 Figure::Figure(const char * myName){
 
-    points = readPoints(myName);
+
+    char generated_path[40] = "../../vertices/";
+    strcat(generated_path, myName);
+    points = readPoints(generated_path);
+
 
 
 }
@@ -235,7 +230,6 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
     {
         if (!strcmp(type->Value(), "translate"))
         {
-            printf("entrei no translate");
             float x, y, z;
             if (type->ToElement()->Attribute("x"))
                 x = std::stof(type->ToElement()->Attribute("x"));
@@ -329,22 +323,16 @@ Group groupParser(tinyxml2::XMLNode *pRoot)
     tinyxml2::XMLNode *type = pRoot->FirstChild();
     while (type)
     {
-
-        printf("type:%s\n",type->Value());
-
         if (!strcmp(type->Value(), "transform"))
         {
-            printf("transform\n");
             transform = parseTransform(type);
         }
         else if (!strcmp(type->Value(), "models"))
         {
-            printf("models\n");
             models = modelsParser(type);
         }
         else if (!strcmp(type->Value(), "group"))
         {
-            printf("group parser\n");
             groups.push_back(groupParser(type));
         }
 
@@ -372,7 +360,6 @@ Tree readFile(char *filename)
         printf("%s\n", doc.ErrorStr());
         exit(0);
     } // abre ficheiro XML
-    printf("%s\n", filename);
 
     tinyxml2::XMLNode *pRoot = doc.FirstChildElement("world");
     if (pRoot == nullptr)
