@@ -39,14 +39,29 @@ class Figure
 
 };
 
+
+class CatmullRom
+{
+    public:
+    float time;
+    vector<Point> points;
+    bool isRotate;
+    Point point;
+
+    CatmullRom ();
+    CatmullRom(float nTime, std::vector<Point> nPoints, bool isRotate, Point myPoint);
+};
+
+
 class Transform
 {
     public:
-    bool hasRotate, hasTranslate, hasScale;
+    bool hasRotate, hasTranslate, hasScale, isCatmullRom;
     Coordinate rotate, translate, scale;
+    CatmullRom catmullRom;
 
     Transform();
-    Transform(Coordinate myTranslate, Coordinate myRotate, Coordinate myScale);
+    Transform(Coordinate myTranslate, Coordinate myRotate, Coordinate myScale, CatmullRom catmullRom);
 };
 
 class Models
@@ -58,6 +73,8 @@ class Models
     Models(vector<Figure> figures);
  
 };
+
+
 
 class Camera
 {

@@ -45,6 +45,30 @@ bool navigationPosition = false;
 
 
 
+
+/*
+
+
+void catmullRomTranslate(float globalTime, float transTime){
+    float pos[3];
+    float deriv[3];
+
+    transTime *= 1000; //conversão de ms para segundos
+
+    globalTime = fmod(glutGet(GLUT_ELAPSED_TIME), transTime) / transTime;
+}
+
+
+
+void catmullRomPointsCalculate(float globalTime, int nPontos){
+    float time = globalTime * nPontos;
+
+}
+
+*/
+
+
+
 void moveCamera(Point p){
     
    
