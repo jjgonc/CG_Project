@@ -101,7 +101,6 @@ void drawModels(Group group){
     float sy = group.transform.scale.y;
     float sz = group.transform.scale.z;
 
-
     if(group.transform.hasRotate) glRotatef(angle,rx,ry,rz);
     if(group.transform.hasTranslate) glTranslatef(tx,ty,tz);
     if(group.transform.hasScale) glScalef(sx,sy,sz);

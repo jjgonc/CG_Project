@@ -1,4 +1,3 @@
-
 #include "headers/tinyxml2.hpp"
 #include "headers/tree.hpp"
 
@@ -32,7 +31,6 @@ Tree::Tree(Group g, Camera cam){
     camera = cam;
 
 }
-
 
 
 
@@ -316,12 +314,10 @@ Group groupParser(tinyxml2::XMLNode *pRoot)
         }
         else if (!strcmp(type->Value(), "models"))
         {
-
             models = modelsParser(type);
         }
         else if (!strcmp(type->Value(), "group"))
         {
-
             groups.push_back(groupParser(type));
         }
 

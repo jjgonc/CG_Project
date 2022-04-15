@@ -5,6 +5,7 @@
 #include "headers/cone.hpp"
 #include "headers/sphere.hpp"
 #include "headers/torus.hpp"
+#include "headers/bezier.hpp"
 #include <string>
 #include <ostream>
 #include <iostream>
@@ -17,7 +18,6 @@ template <typename T>
 void write3D(T primitive, string fileName)
 {
     ofstream file3d("../../vertices/" + fileName);
-    printf("size points %ld",primitive.pointsGenerator().size());
     for (Point p : primitive.pointsGenerator())
     {
         file3d << p.toString() << "\n";
@@ -71,6 +71,11 @@ int main(int argc, char **argv)
         int stacks = std::stoi(argv[5]);
 
         write3D(Torus(radius,ringRadius,slices,stacks), argv[6]);
+    } else if (primitive == "bezier" && argc == 5){
+        // generator bezier teapot.patch 10 bezier.3d
+
+        int tessellation = std::atoi(argv[3]);
+        write3D(Bezier(argv[2],tessellation), std::string(argv[4]));
     }
     else
     {
