@@ -48,6 +48,7 @@ bool navigationPosition = false;
 float prev_y[3] = {0,1,0};
 int POINT_COUNT = 0;
 float t = 0.000f;
+float rot_angle = 0;
 
 void buildRotMatrix(float *x, float *y, float *z, float *m) {
 
@@ -190,9 +191,10 @@ void renderCatmullRomCurve(CatmullRom catR) {
 
 
 void renderRotate(Coordinate rotate){
-    printf("time: %f\n", rotate.value);
-    float angle = 360 * (fmod(t, (float) (rotate.value * 1000) ) / (rotate.value * 1000));
+    float time = glutGet(GLUT_ELAPSED_TIME);
+    float angle = (((time / 1000) * 360) / rotate.value) - rot_angle;
     glRotatef(angle, rotate.x, rotate.y, rotate.z);
+    rot_angle = angle;
 }
 
 //END OF CATMULL ROM STUFF
@@ -257,7 +259,7 @@ void drawModels(Group group){
     if(group.transform.hasTranslate) glTranslatef(tx,ty,tz);
     if(group.transform.hasScale) glScalef(sx,sy,sz);
 
-
+    if(group.transform.hasTime) renderRotate(group.transform.rotate);
     
     Point* pos = new Point();
     Point* deriv = new Point();
@@ -371,7 +373,10 @@ void renderScene(void)
 
     // End of frame
     glutSwapBuffers();
+
     t += 0.001;
+
+    
 }
 
 // write function to process keyboard events
