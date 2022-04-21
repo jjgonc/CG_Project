@@ -39,7 +39,7 @@ Coordinate::Coordinate(float x1, float y2, float z2, float myAngle)
     x = x1;
     y = y2;
     z = z2;
-    angle = myAngle;
+    value = myAngle;
 }
 
 Coordinate::Coordinate(float x1, float y2, float z2)
@@ -47,7 +47,7 @@ Coordinate::Coordinate(float x1, float y2, float z2)
     x = x1;
     y = y2;
     z = z2;
-    angle = 0;
+    value = 0;
 }
 
 Coordinate::Coordinate()
@@ -55,7 +55,7 @@ Coordinate::Coordinate()
     x = 0.0;
     y = 0.0;
     z = 0.0;
-    angle = 0;
+    value = 0;
 }
 
 
@@ -143,17 +143,13 @@ Camera readCamera(tinyxml2::XMLNode *pRoot)
 
 //Construtor vazio de CatmullRom
 CatmullRom::CatmullRom(){
-    time = 0;
     points = std::vector<Point>();
-    isRotate = false;
     point = Point();
 }
 
 //Construtor parametrizado de CatmullRom
-CatmullRom::CatmullRom(float nTime, std::vector<Point> nPoints, bool myIsRotate, Point myPoint){
-    time = nTime;
+CatmullRom::CatmullRom(std::vector<Point> nPoints, Point myPoint){
     points = nPoints;
-    isRotate = myIsRotate;
     point = myPoint;
 }
 
@@ -254,7 +250,7 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
                     nPoints.push_back(p);
                     printf("x: %f, y:%f, z:%f\n", p.getX(), p.getY(), p.getZ());
                 }
-                CatmullRom cat = CatmullRom(time,nPoints, false, Point());      // TODO REVER ISTO
+                CatmullRom cat = CatmullRom(nPoints, Point());      // TODO REVER ISTO
                 t.catmullRom = cat;
             }
 
@@ -296,22 +292,17 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
             else
                 z = 0;
 
-            bool hasTime;
+            bool hasTime = false;
             if(type->ToElement()->Attribute("time")){
                 time = std::stof(type->ToElement()->Attribute("time"));
+                t.hasTime = true;
                 hasTime = true;
             }
-            else
-                time = 0;
+            
+            t.rotate = Coordinate(x, y, z, time);
 
-            if(hasTime) {
-                //criar nova cena no catmullrom que passa o point e o time
-                printf("hasTime = true    x: %f, y:%f, z:%f\n", x,y,z);
-                Point newPoint = Point(x, y, z);
-                CatmullRom cat = CatmullRom(time, std::vector<Point>(), true, newPoint);      // TODO REVER ISTO
-                t.catmullRom = cat;
-            }
-            else{
+            if(!hasTime){
+                t.hasTime = false;
                 printf("hasTime = false  x: %f, y:%f, z:%f\n", x,y,z);
                 t.rotate = Coordinate(x, y, z, angle);
                 t.hasRotate = true;

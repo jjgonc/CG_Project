@@ -188,6 +188,13 @@ void renderCatmullRomCurve(CatmullRom catR) {
 
 }
 
+
+void renderRotate(Coordinate rotate){
+    printf("time: %f\n", rotate.value);
+    float angle = 360 * (fmod(t, (float) (rotate.value * 1000) ) / (rotate.value * 1000));
+    glRotatef(angle, rotate.x, rotate.y, rotate.z);
+}
+
 //END OF CATMULL ROM STUFF
 
 
@@ -236,7 +243,7 @@ void drawModels(Group group){
     float tz = group.transform.translate.z;
 
 
-    float angle = group.transform.rotate.angle;
+    float angle = group.transform.rotate.value;
     float rx = group.transform.rotate.x;
     float ry = group.transform.rotate.y;
     float rz = group.transform.rotate.z;
@@ -279,6 +286,8 @@ void drawModels(Group group){
     for(int i = 0; i < group.models.figures.size();i++) {
         draw_model(group.models.figures[i]);
     }
+
+    if(group.transform.hasTime) renderRotate(group.transform.rotate);
 
     for(Group gs: group.groups){
         glPushMatrix();
@@ -362,7 +371,7 @@ void renderScene(void)
 
     // End of frame
     glutSwapBuffers();
-    t += 0.01;
+    t += 0.001;
 }
 
 // write function to process keyboard events

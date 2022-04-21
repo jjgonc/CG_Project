@@ -21,7 +21,7 @@ using namespace std;
 class Coordinate
 {
     public:
-    float x, y, z, angle;
+    float x, y, z, value;
 
     Coordinate();
     Coordinate(float x1, float y2, float z2, float myAngle);
@@ -43,20 +43,18 @@ class Figure
 class CatmullRom
 {
     public:
-    float time;
     vector<Point> points;
-    bool isRotate;
     Point point;
 
     CatmullRom ();
-    CatmullRom(float nTime, std::vector<Point> nPoints, bool isRotate, Point myPoint);
+    CatmullRom(std::vector<Point> nPoints, Point myPoint);
 };
 
 
 class Transform
 {
     public:
-    bool hasRotate, hasTranslate, hasScale, isCatmullRom;
+    bool hasRotate, hasTranslate, hasScale, isCatmullRom, hasTime;
     Coordinate rotate, translate, scale;
     CatmullRom catmullRom;
 
