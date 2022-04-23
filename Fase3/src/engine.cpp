@@ -59,21 +59,6 @@ void buildRotMatrix(float *x, float *y, float *z, float *m) {
 }
 
 
-void cross(float *a, float *b, float *res) {
-
-	res[0] = a[1]*b[2] - a[2]*b[1];
-	res[1] = a[2]*b[0] - a[0]*b[2];
-	res[2] = a[0]*b[1] - a[1]*b[0];
-}
-
-
-void normalize(float *a) {
-
-	float l = sqrt(a[0]*a[0] + a[1] * a[1] + a[2] * a[2]);
-	a[0] = a[0]/l;
-	a[1] = a[1]/l;
-	a[2] = a[2]/l;
-}
 
 
 float length(float *v) {
@@ -266,18 +251,7 @@ void drawModels(Group group){
         getGlobalCatmullRomPoint(t, pos, deriv, group.transform.catmullRom);
 
 	    glTranslatef(pos->getX(), pos->getY(), pos->getZ());
-	    float x[3] = {deriv->getX(), deriv->getY(), deriv->getZ()};
-	    normalize(x);
-	    float z[3];
-	    cross(x, prev_y, z);
-	    normalize(z);
-	    float y[3];
-	    cross(z,x,y);
-	    normalize(y);
-	    memcpy(prev_y, y, 3 * sizeof(float));
-	    float m[16];
-	    buildRotMatrix(x,y,z,m);
-	    glMultMatrixf(m);    
+	    
     }
 
 

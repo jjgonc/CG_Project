@@ -18,7 +18,7 @@
 
         <group>     <!--mercurio-->
             <transform>
-                <translate time="1">
+                <translate time="1" align="True">
                     <point x="20.000000" y="0" z="0.000000"/>
                     <point x="16.180340" y="0" z="11.755705"/>
                     <point x="6.180340" y="0" z="19.021130"/>
@@ -43,7 +43,7 @@
 
         <group>     <!--venus-->
             <transform>
-                <translate time="1">
+                <translate time="1" align="True">
                     <point x="29.000000" y="0" z="0.000000"/>
                     <point x="23.461493" y="0" z="17.045772"/>
                     <point x="8.961493" y="0" z="27.580639"/>
@@ -65,7 +65,7 @@
 
         <group>     <!--terra-->
             <transform>
-                  <translate time="1">
+                  <translate time="1" align="True">
                     <point x="39.000000" y="0" z="0.000000"/>
                     <point x="31.551663" y="0" z="22.923625"/>
                     <point x="12.051663" y="0" z="37.091204"/>
@@ -86,7 +86,7 @@
 
         <group>     <!--marte-->
             <transform>
-                <translate time="1">
+                <translate time="1" align="True">
                    <point x="55.000000" y="0" z="0.000000"/>
                     <point x="44.495935" y="0" z="32.328189"/>
                     <point x="16.995935" y="0" z="52.308108"/>
@@ -107,7 +107,7 @@
 
         <group>     <!--jupiter-->
             <transform>
-                <translate time="1">
+                <translate time="1" align="True">
                     <point x="68.000000" y="0" z="0.000000"/>
                     <point x="55.013156" y="0" z="39.969397"/>
                     <point x="21.013156" y="0" z="64.671843"/>
@@ -130,7 +130,18 @@
         <group>     <!--saturno-->
             <group>
                 <transform>
-                    <translate x="90" y="0" z="-24"/>
+                    <translate time="1" align="True">
+                        <point x="68.000000" y="0" z="0.000000"/>
+                        <point x="55.013156" y="0" z="39.969397"/>
+                        <point x="21.013156" y="0" z="64.671843"/>
+                        <point x="-21.013156" y="0" z="64.671843"/>
+                        <point x="-55.013156" y="0" z="39.969397"/>
+                        <point x="-68.000000" y="0" z="0.000000"/>
+                        <point x="-55.013156" y="0" z="-39.969397"/>
+                        <point x="-21.013156" y="0" z="-64.671843"/>
+                        <point x="21.013156" y="0" z="-64.671843"/>
+                        <point x="55.013156" y="0" z="-39.969397"/>
+		        </translate>
                     <scale x="3.8" y="3.8" z="3.8"/>
                     </transform>
                 <models>
@@ -140,7 +151,18 @@
             <group>
                 <transform>
                     <rotate angle="0" x="15" y="0" z="0" />
-                    <translate x="90" y="0" z="-24" />
+                      <translate time="1" align="True">
+                        <point x="68.000000" y="0" z="0.000000"/>
+                        <point x="55.013156" y="0" z="39.969397"/>
+                        <point x="21.013156" y="0" z="64.671843"/>
+                        <point x="-21.013156" y="0" z="64.671843"/>
+                        <point x="-55.013156" y="0" z="39.969397"/>
+                        <point x="-68.000000" y="0" z="0.000000"/>
+                        <point x="-55.013156" y="0" z="-39.969397"/>
+                        <point x="-21.013156" y="0" z="-64.671843"/>
+                        <point x="21.013156" y="0" z="-64.671843"/>
+                        <point x="55.013156" y="0" z="-39.969397"/>
+		              </translate>
                     <scale x="7.2" y="0" z="7.2"/>
                 </transform>
                 <models>
@@ -151,7 +173,18 @@
 
         <group>     <!--urano-->
             <transform>
-                <translate x="95" y="0" z="25"/>
+                <translate time="1" align="True">
+                        <point x="95.000000" y="0" z="0.000000"/>
+                        <point x="76.856614" y="0" z="55.839599"/>
+                        <point x="29.356614" y="0" z="90.350369"/>
+                        <point x="-29.356614" y="0" z="90.350369"/>
+                        <point x="-76.856614" y="0" z="55.839599"/>
+                        <point x="-95.000000" y="0" z="0.000000"/>
+                        <point x="-76.856614" y="0" z="-55.839599"/>
+                        <point x="-29.356614" y="0" z="-90.350369"/>
+                        <point x="29.356614" y="0" z="-90.350369"/>
+                        <point x="76.856614" y="0" z="-55.839599"/>
+		        </translate>
                 <scale x="2.8" y="2.8" z="2.8"/>
             </transform>
             <models>
@@ -161,7 +194,16 @@
 
         <group>     <!--neptuno-->
             <transform>
-                <translate x="125" y="0" z="-5"/>
+                <point x="95.000000" y="0" z="0.000000"/>
+                <point x="76.856614" y="0" z="55.839599"/>
+                <point x="29.356614" y="0" z="90.350369"/>
+                <point x="-29.356614" y="0" z="90.350369"/>
+                <point x="-76.856614" y="0" z="55.839599"/>
+                <point x="-95.000000" y="0" z="0.000000"/>
+                <point x="-76.856614" y="0" z="-55.839599"/>
+                <point x="-29.356614" y="0" z="-90.350369"/>
+                <point x="29.356614" y="0" z="-90.350369"/>
+                <point x="76.856614" y="0" z="-55.839599"/>
                 <scale x="2.6" y="2.6" z="2.6"/>
             </transform>
             <models>
