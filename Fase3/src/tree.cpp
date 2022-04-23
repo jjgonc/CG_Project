@@ -39,7 +39,7 @@ Coordinate::Coordinate(float x1, float y2, float z2, float myAngle)
     x = x1;
     y = y2;
     z = z2;
-    angle = myAngle;
+    value = myAngle;
 }
 
 Coordinate::Coordinate(float x1, float y2, float z2)
@@ -47,7 +47,7 @@ Coordinate::Coordinate(float x1, float y2, float z2)
     x = x1;
     y = y2;
     z = z2;
-    angle = 0;
+    value = 0;
 }
 
 Coordinate::Coordinate()
@@ -55,7 +55,7 @@ Coordinate::Coordinate()
     x = 0.0;
     y = 0.0;
     z = 0.0;
-    angle = 0;
+    value = 0;
 }
 
 
@@ -141,11 +141,25 @@ Camera readCamera(tinyxml2::XMLNode *pRoot)
     return camera;
 }
 
-Transform::Transform(Coordinate myTranslate, Coordinate myRotate, Coordinate myScale)
+//Construtor vazio de CatmullRom
+CatmullRom::CatmullRom(){
+    points = std::vector<Point>();
+    point = Point();
+}
+
+//Construtor parametrizado de CatmullRom
+CatmullRom::CatmullRom(std::vector<Point> nPoints, Point myPoint){
+    points = nPoints;
+    point = myPoint;
+}
+
+
+Transform::Transform(Coordinate myTranslate, Coordinate myRotate, Coordinate myScale, CatmullRom myCatmullRom)
 {
     translate = myTranslate;
     rotate = myRotate;
     scale = myScale;
+    catmullRom = myCatmullRom;
 }
 
 
@@ -154,9 +168,11 @@ Transform::Transform()
     hasRotate = false;
     hasTranslate = false;
     hasScale = false;
+    isCatmullRom = false;
     translate = Coordinate();
     rotate = Coordinate();
     scale = Coordinate();
+    catmullRom = CatmullRom();
 }
 
 
@@ -212,7 +228,34 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
     {
         if (!strcmp(type->Value(), "translate"))
         {
-            float x, y, z;
+            if (type->ToElement()->Attribute("time")){
+                std::vector<Point> nPoints = std::vector<Point>();
+                float time = std::stof(type->ToElement()->Attribute("time"));
+
+                
+                //parse the points of the translation
+                tinyxml2::XMLNode *type2 = type->FirstChild();   //todos os point que tem
+                while(type2){
+
+	            	if(!strcmp(type2->Value(), "point")){
+	            		nPoints.push_back(Point(std::stof(type2->ToElement()->Attribute("x")),
+                                                std::stof(type2->ToElement()->Attribute("y")),
+                                                std::stof(type2->ToElement()->Attribute("z"))));
+                    }
+                    type2 = type2->NextSibling();
+                }
+
+
+                for(Point p : nPoints){
+                    nPoints.push_back(p);
+                    printf("x: %f, y:%f, z:%f\n", p.getX(), p.getY(), p.getZ());
+                }
+                CatmullRom cat = CatmullRom(nPoints, Point());      // TODO REVER ISTO
+                t.catmullRom = cat;
+            }
+
+            else {
+               float x, y, z;
             if (type->ToElement()->Attribute("x"))
                 x = std::stof(type->ToElement()->Attribute("x"));
             else
@@ -226,11 +269,12 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
             else
                 z = 0;
             t.translate = Coordinate(x, y, z, 0);
-            t.hasTranslate = true;
+            t.hasTranslate = true; 
+            }            
         }
         else if (!strcmp(type->Value(), "rotate"))
         {
-            float angle, x, y, z;
+            float angle, x, y, z, time;
             if (type->ToElement()->Attribute("angle"))
                 angle = std::stof(type->ToElement()->Attribute("angle"));
             else
@@ -247,8 +291,22 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
                 z = std::stof(type->ToElement()->Attribute("z"));
             else
                 z = 0;
-            t.rotate = Coordinate(x, y, z, angle);
-            t.hasRotate = true;
+
+            bool hasTime = false;
+            if(type->ToElement()->Attribute("time")){
+                time = std::stof(type->ToElement()->Attribute("time"));
+                t.hasTime = true;
+                hasTime = true;
+            }
+            
+            t.rotate = Coordinate(x, y, z, time);
+
+            if(!hasTime){
+                t.hasTime = false;
+                printf("hasTime = false  x: %f, y:%f, z:%f\n", x,y,z);
+                t.rotate = Coordinate(x, y, z, angle);
+                t.hasRotate = true;
+            }
         }
         else if (!strcmp(type->Value(), "scale"))
         {
