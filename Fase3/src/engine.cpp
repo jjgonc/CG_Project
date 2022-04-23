@@ -80,6 +80,22 @@ void multMatrixVector(float *m, float *v, float *res) {
 
 }
 
+void cross(Point *a, Point *b, Point * res) {
+
+    res->setX(a->getY() * b->getZ() - a->getZ()*b->getY());
+    res->setY(a->getZ() * b->getX() - a->getX()*b->getZ());
+    res->setZ(a->getX() * b->getY() - a->getY()*b->getX());
+}
+
+void normalize(Point *a) {
+
+	float l = sqrt(a->getX() * a -> getX() + a->getY() * a->getY() + a->getZ() * a->getZ());
+    a->setX(a->getX()/l);
+    a->setY(a->getY()/l);
+    a->setZ(a->getZ()/l);
+}
+
+
 
 
 void getCatmullRomPoint(float t, Point p0, Point p1, Point p2, Point p3, Point *pos, Point *deriv) {
@@ -246,11 +262,37 @@ void drawModels(Group group){
 
 
     if (group.transform.catmullRom.points.size() != 0){
+        
         renderCatmullRomCurve(group.transform.catmullRom);   
 
-        getGlobalCatmullRomPoint(t, pos, deriv, group.transform.catmullRom);
+        float gt = ((float) glutGet(GLUT_ELAPSED_TIME) / 1000) / (float)(group.transform.catmullRom.time);
+        
+        getGlobalCatmullRomPoint(gt, pos, deriv, group.transform.catmullRom);
+        
+        glTranslatef(pos->getX(), pos->getY(), pos->getZ());
+        
 
-	    glTranslatef(pos->getX(), pos->getY(), pos->getZ());
+        if(group.transform.catmullRom.align){
+            Point * up = new Point(0,1,0);
+            Point * derivCross = new Point(); 
+            normalize(deriv);
+            cross(deriv, up, derivCross);
+            normalize(derivCross);
+            cross(derivCross, deriv, up);
+            normalize(up);
+            float m[4][4] = {{deriv->getX(),      deriv->getY(),      deriv->getZ(),      0},
+                          {up->getX(),         up->getY(),         up->getZ(),         0},
+                          {derivCross->getX(), derivCross->getY(), derivCross->getZ(), 0},
+                          {0,        0,        0,        1}};
+            glMultMatrixf((float *) m);
+        }
+        
+       
+
+
+
+
+       
 	    
     }
 
