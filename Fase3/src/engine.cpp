@@ -244,7 +244,6 @@ void drawModels(Group group){
     float ty = group.transform.translate.y;
     float tz = group.transform.translate.z;
 
-
     float angle = group.transform.rotate.value;
     float rx = group.transform.rotate.x;
     float ry = group.transform.rotate.y;
@@ -255,14 +254,11 @@ void drawModels(Group group){
     float sy = group.transform.scale.y;
     float sz = group.transform.scale.z;
 
-    if(group.transform.hasRotate) glRotatef(angle,rx,ry,rz);
-    if(group.transform.hasTranslate) glTranslatef(tx,ty,tz);
-    if(group.transform.hasScale) glScalef(sx,sy,sz);
 
-    if(group.transform.hasTime) renderRotate(group.transform.rotate);
-    
+     
     Point* pos = new Point();
     Point* deriv = new Point();
+
 
     if (group.transform.catmullRom.points.size() != 0){
         renderCatmullRomCurve(group.transform.catmullRom);   
@@ -283,6 +279,16 @@ void drawModels(Group group){
 	    buildRotMatrix(x,y,z,m);
 	    glMultMatrixf(m);    
     }
+
+
+
+    if(group.transform.hasRotate) glRotatef(angle,rx,ry,rz);
+    if(group.transform.hasTranslate) glTranslatef(tx,ty,tz);
+    if(group.transform.hasScale) glScalef(sx,sy,sz);
+
+    if(group.transform.hasTime) renderRotate(group.transform.rotate);
+   
+  
 
 
     for(int i = 0; i < group.models.figures.size();i++) {

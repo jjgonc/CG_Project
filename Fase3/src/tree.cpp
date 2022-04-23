@@ -247,7 +247,6 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
 
 
                 for(Point p : nPoints){
-                    nPoints.push_back(p);
                     printf("x: %f, y:%f, z:%f\n", p.getX(), p.getY(), p.getZ());
                 }
                 CatmullRom cat = CatmullRom(nPoints, Point());      // TODO REVER ISTO
