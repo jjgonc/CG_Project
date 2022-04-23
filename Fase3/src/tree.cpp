@@ -145,12 +145,16 @@ Camera readCamera(tinyxml2::XMLNode *pRoot)
 CatmullRom::CatmullRom(){
     points = std::vector<Point>();
     point = Point();
+    time = 0.0f;
+    align = false;
 }
 
 //Construtor parametrizado de CatmullRom
-CatmullRom::CatmullRom(std::vector<Point> nPoints, Point myPoint){
+CatmullRom::CatmullRom(std::vector<Point> nPoints, Point myPoint, float myTime, bool myAlign){
     points = nPoints;
     point = myPoint;
+    time = myTime;
+    align = myAlign;
 }
 
 
@@ -232,6 +236,16 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
                 std::vector<Point> nPoints = std::vector<Point>();
                 float time = std::stof(type->ToElement()->Attribute("time"));
 
+                bool align = false;
+                if (type->ToElement()->Attribute("align")){
+                    char * align_str = (char *) type->ToElement()->Attribute("align");
+                    
+                    if (strcmp(align_str, "True") == 0) align = true;
+
+                    if(align) printf("align = true");
+                    else printf("align = false");
+                }
+
                 
                 //parse the points of the translation
                 tinyxml2::XMLNode *type2 = type->FirstChild();   //todos os point que tem
@@ -249,7 +263,7 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
                 for(Point p : nPoints){
                     printf("x: %f, y:%f, z:%f\n", p.getX(), p.getY(), p.getZ());
                 }
-                CatmullRom cat = CatmullRom(nPoints, Point());      // TODO REVER ISTO
+                CatmullRom cat = CatmullRom(nPoints, Point(), time, align);      // TODO REVER ISTO
                 t.catmullRom = cat;
             }
 
