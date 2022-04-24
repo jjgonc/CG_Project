@@ -14,13 +14,13 @@ private:
     int numPatches;
     unsigned int *patches;
     int numControlPoints;
-    float *controlPoints;
+    vector<Point> controlPoints;
 
 
 public:
     Bezier(string filename,int tess);
     void parsing (string filename);
-    Point pontoBezier(int p, float u, float v);
+    Point pointBezier(int p, float u, float v);
     vector<Point> pointsGenerator();
 };
 
