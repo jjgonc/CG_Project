@@ -59,21 +59,6 @@ void buildRotMatrix(float *x, float *y, float *z, float *m) {
 }
 
 
-void cross(float *a, float *b, float *res) {
-
-	res[0] = a[1]*b[2] - a[2]*b[1];
-	res[1] = a[2]*b[0] - a[0]*b[2];
-	res[2] = a[0]*b[1] - a[1]*b[0];
-}
-
-
-void normalize(float *a) {
-
-	float l = sqrt(a[0]*a[0] + a[1] * a[1] + a[2] * a[2]);
-	a[0] = a[0]/l;
-	a[1] = a[1]/l;
-	a[2] = a[2]/l;
-}
 
 
 float length(float *v) {
@@ -94,6 +79,22 @@ void multMatrixVector(float *m, float *v, float *res) {
 	}
 
 }
+
+void cross(Point *a, Point *b, Point * res) {
+
+    res->setX(a->getY() * b->getZ() - a->getZ()*b->getY());
+    res->setY(a->getZ() * b->getX() - a->getX()*b->getZ());
+    res->setZ(a->getX() * b->getY() - a->getY()*b->getX());
+}
+
+void normalize(Point *a) {
+
+	float l = sqrt(a->getX() * a -> getX() + a->getY() * a->getY() + a->getZ() * a->getZ());
+    a->setX(a->getX()/l);
+    a->setY(a->getY()/l);
+    a->setZ(a->getZ()/l);
+}
+
 
 
 
@@ -244,7 +245,6 @@ void drawModels(Group group){
     float ty = group.transform.translate.y;
     float tz = group.transform.translate.z;
 
-
     float angle = group.transform.rotate.value;
     float rx = group.transform.rotate.x;
     float ry = group.transform.rotate.y;
@@ -255,34 +255,56 @@ void drawModels(Group group){
     float sy = group.transform.scale.y;
     float sz = group.transform.scale.z;
 
+
+     
+    Point* pos = new Point();
+    Point* deriv = new Point();
+
+
+    if (group.transform.catmullRom.points.size() != 0){
+        
+        renderCatmullRomCurve(group.transform.catmullRom);   
+
+        float gt = ((float) glutGet(GLUT_ELAPSED_TIME) / 1000) / (float)(group.transform.catmullRom.time);
+        
+        getGlobalCatmullRomPoint(gt, pos, deriv, group.transform.catmullRom);
+        
+        glTranslatef(pos->getX(), pos->getY(), pos->getZ());
+        
+
+        if(group.transform.catmullRom.align){
+            Point * up = new Point(0,1,0);
+            Point * derivCross = new Point(); 
+            normalize(deriv);
+            cross(deriv, up, derivCross);
+            normalize(derivCross);
+            cross(derivCross, deriv, up);
+            normalize(up);
+            float m[4][4] = {{deriv->getX(),      deriv->getY(),      deriv->getZ(),      0},
+                          {up->getX(),         up->getY(),         up->getZ(),         0},
+                          {derivCross->getX(), derivCross->getY(), derivCross->getZ(), 0},
+                          {0,        0,        0,        1}};
+            glMultMatrixf((float *) m);
+        }
+        
+       
+
+
+
+
+       
+	    
+    }
+
+
+
     if(group.transform.hasRotate) glRotatef(angle,rx,ry,rz);
     if(group.transform.hasTranslate) glTranslatef(tx,ty,tz);
     if(group.transform.hasScale) glScalef(sx,sy,sz);
 
     if(group.transform.hasTime) renderRotate(group.transform.rotate);
-    
-    Point* pos = new Point();
-    Point* deriv = new Point();
-
-    if (group.transform.catmullRom.points.size() != 0){
-        renderCatmullRomCurve(group.transform.catmullRom);   
-
-        getGlobalCatmullRomPoint(t, pos, deriv, group.transform.catmullRom);
-
-	    glTranslatef(pos->getX(), pos->getY(), pos->getZ());
-	    float x[3] = {deriv->getX(), deriv->getY(), deriv->getZ()};
-	    normalize(x);
-	    float z[3];
-	    cross(x, prev_y, z);
-	    normalize(z);
-	    float y[3];
-	    cross(z,x,y);
-	    normalize(y);
-	    memcpy(prev_y, y, 3 * sizeof(float));
-	    float m[16];
-	    buildRotMatrix(x,y,z,m);
-	    glMultMatrixf(m);    
-    }
+   
+  
 
 
     for(int i = 0; i < group.models.figures.size();i++) {

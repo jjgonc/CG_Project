@@ -1,4 +1,0 @@
-/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase3/src/build1/CMakeFiles/rebuild_cache.dir
-/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase3/src/build1/CMakeFiles/edit_cache.dir
-/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase3/src/build1/CMakeFiles/generator.dir
-/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase3/src/build1/CMakeFiles/engine.dir
