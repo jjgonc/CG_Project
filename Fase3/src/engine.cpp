@@ -286,14 +286,6 @@ void drawModels(Group group){
                           {0,        0,        0,        1}};
             glMultMatrixf((float *) m);
         }
-        
-       
-
-
-
-
-       
-	    
     }
 
 
