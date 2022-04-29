@@ -515,6 +515,27 @@ int main(int argc, char **argv)
     glutInitWindowPosition(100, 100);
     glutInitWindowSize(800, 800);
     glutCreateWindow("CG@DI-UM");
+
+
+    #ifndef __APPLE__
+    glewInit();
+    #endif
+
+    
+    
+    tree = readFile(xml_generated_path);
+
+    radius = tree.camera.radius;
+    betha = tree.camera.beta;
+    alpha = tree.camera.alpha;
+    lookAtX = tree.camera.lookAt.getX();
+    lookAtY = tree.camera.lookAt.getY();
+    lookAtZ = tree.camera.lookAt.getZ();
+    upX = tree.camera.up.getX();
+    upY = tree.camera.up.getY();
+    upZ = tree.camera.up.getZ();
+
+
     
     // Required callback registry
     glutDisplayFunc(renderScene);
@@ -531,23 +552,7 @@ int main(int argc, char **argv)
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
 
-#ifndef __APPLE__
-    glewInit();
-#endif
 
-    
-    
-    tree = readFile(xml_generated_path);
-
-    radius = tree.camera.radius;
-    betha = tree.camera.beta;
-    alpha = tree.camera.alpha;
-    lookAtX = tree.camera.lookAt.getX();
-    lookAtY = tree.camera.lookAt.getY();
-    lookAtZ = tree.camera.lookAt.getZ();
-    upX = tree.camera.up.getX();
-    upY = tree.camera.up.getY();
-    upZ = tree.camera.up.getZ();
     
     // enter GLUT's main cycle
     glutMainLoop();
