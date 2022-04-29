@@ -44,12 +44,11 @@ class CatmullRom
 {
     public:
     vector<Point> points;
-    Point point;
     float time;
     bool align;
 
     CatmullRom ();
-    CatmullRom(std::vector<Point> nPoints, Point myPoint, float myTime, bool myAlign);
+    CatmullRom(std::vector<Point> nPoints, float myTime, bool myAlign);
 };
 
 
