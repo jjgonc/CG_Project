@@ -6,45 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/engine.cpp
-math.h
--
-cstdio
--
-vector
--
-string
--
-headers/point.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/point.hpp
-headers/tinyxml2.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/tinyxml2.hpp
-headers/tree.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/tree.hpp
-headers/engine.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/engine.hpp
-fstream
--
-iostream
--
-
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/engine.hpp
-point.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/point.hpp
-vector
--
-
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/point.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
 string
 -
 iostream
 -
 vector.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/vector.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/vector.hpp
 sstream
 -
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/tinyxml2.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/tinyxml2.hpp
 ctype.h
 -
 limits.h
@@ -74,7 +46,7 @@ android/log.h
 assert.h
 -
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/tree.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/tree.hpp
 stdlib.h
 -
 GLUT/glut.h
@@ -86,7 +58,7 @@ GL/glut.h
 vector
 -
 point.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/point.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
 cmath
 -
 fstream
@@ -94,11 +66,17 @@ fstream
 iostream
 -
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/vector.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/vector.hpp
 string
 -
 iostream
 -
 sstream
 -
+
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/tree.cpp
+headers/tinyxml2.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/tinyxml2.hpp
+headers/tree.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/tree.hpp
 

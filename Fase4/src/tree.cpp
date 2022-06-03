@@ -29,7 +29,6 @@ Tree::Tree(){
 Tree::Tree(Group g, Camera cam){
     group = g;
     camera = cam;
-
 }
 
 
@@ -57,6 +56,132 @@ Coordinate::Coordinate()
     z = 0.0;
     value = 0;
 }
+
+
+
+
+Light::Light(bool my_isPoint, bool my_isDirectional, bool my_isSpotlight, float my_posX, float my_posY, float my_posZ, bool my_hasPosX, bool my_hasPosY, bool my_hasPosZ, float my_dirX, float my_dirY, float my_dirZ, bool my_hasDirX, bool my_hasDirY, bool my_hasDirZ, float my_cutoff, bool my_hasCutoff){
+    isPoint = my_isPoint;
+    isDirectional = my_isDirectional;
+    isSpotlight = my_isSpotlight;
+    posX = my_posX;
+    posY = my_posY;
+    posZ = my_posZ;
+    hasPosX = my_hasPosX;
+    hasPosY = my_hasPosY;
+    hasPosZ = my_hasPosZ;
+    dirX = my_dirX;
+    dirY = my_dirY;
+    dirZ = my_dirZ;
+    hasDirX = my_hasDirX;
+    hasDirY = my_hasDirY;
+    hasDirZ = my_hasDirZ;
+    cutoff = my_cutoff;
+    hasCutoff = my_hasCutoff;
+}
+
+
+Lights::Lights(){
+    lights = vector<Light>();
+}
+
+Lights::Lights(vector<Light> lightsVector){
+    lights = lightsVector;
+}
+
+Lights readLights(tinyxml2::XMLNode *pRoot){
+    std::vector<Light> lights_Vector = std::vector<Light>();
+    
+    // tinyxml2::XMLElement *lightElem = pRoot->FirstChildElement("lights");
+
+    tinyxml2::XMLNode *lights = pRoot->FirstChild();
+
+    while(lights) {
+
+        if(!strcmp(lights->Value(), "light")){
+
+            bool isPoint, isSpotlight, isDirectional;
+            isPoint = isSpotlight = isDirectional = false;
+            if (lights->ToElement()->Attribute("type")){
+                char* type = (char*) lights->ToElement()->Attribute("type");
+
+
+                bool isPoint, isDirectional, isSpotlight;
+                if (!strcmp(type, "point")){
+                    isPoint = true;
+                    isDirectional = false;
+                    isSpotlight = false;
+                }
+                else if (strcmp(type, "directional") == 0){
+                    isPoint = false;
+                    isSpotlight = true;
+                    isDirectional = true;
+                }
+                else if(!strcmp(type, "spotlight")){
+                    isPoint = false;
+                    isDirectional = false;
+                    isSpotlight = true;
+                }
+                else{
+                    printf("Error! Light type is not supported");
+                    exit(1);
+                }
+            }
+
+            float posX, posY, posZ, dirX, dirY, dirZ, cutoff;
+            bool hasPosX, hasPosY, hasPosZ, hasDirX, hasDirY, hasDirZ, hasCutoff;
+            hasPosX = hasPosY = hasPosZ = hasDirX = hasDirY = hasDirZ = hasCutoff = false;
+
+            if (lights->ToElement()->Attribute("posx")){
+                posX = std::stof(lights->ToElement()->Attribute("posx"));
+                hasPosX = true;
+            }
+
+            if (lights->ToElement()->Attribute("posy")){
+                posY = std::stof(lights->ToElement()->Attribute("posy"));
+                hasPosY = true;
+            }
+
+            if (lights->ToElement()->Attribute("posz")){
+                posZ = std::stof(lights->ToElement()->Attribute("posz"));
+                hasPosZ = true;
+            }
+
+            if (lights->ToElement()->Attribute("dirx")){
+                dirX = std::stof(lights->ToElement()->Attribute("dirx"));
+                hasDirX = true;
+            }
+            if (lights->ToElement()->Attribute("diry")){
+                dirY = std::stof(lights->ToElement()->Attribute("diry"));
+                hasDirY = true;
+            }
+            if (lights->ToElement()->Attribute("dirz")){
+                dirZ = std::stof(lights->ToElement()->Attribute("dirz"));
+                hasDirZ = true;
+            }
+
+            if (lights->ToElement()->Attribute("cutoff")){
+                cutoff = std::stof(lights->ToElement()->Attribute("cutoff"));
+                hasCutoff = true;
+            }
+
+            Light light = Light(isPoint, isDirectional, isSpotlight, posX, posY, posZ, hasPosX, hasPosY, hasPosZ, dirX, dirY, dirZ, hasDirX, hasDirY, hasDirZ, cutoff, hasCutoff);
+
+            lights_Vector.push_back(light);
+        }
+
+        lights = lights->NextSibling();
+    }
+
+    printf("size of lights vector: %ld\n", lights_Vector.size());
+
+    printf("%d, %f, %d\n", lights_Vector.at(0).isDirectional, lights_Vector.at(0).dirX, lights_Vector.at(0).hasDirX);
+
+    return lights_Vector;
+}
+
+
+
 
 
 Camera::Camera(){
@@ -366,7 +491,6 @@ Models modelsParser(tinyxml2::XMLNode *models)
 Group groupParser(tinyxml2::XMLNode *pRoot)
 {
 
-
     vector<Group> groups;
     Models models;
     Transform transform;
@@ -421,10 +545,11 @@ Tree readFile(char *filename)
 
     Camera camera = readCamera(pRoot);
 
+    
+    Lights lights = readLights(pRoot->FirstChildElement("lights"));
+
+
     pRoot = pRoot->FirstChildElement("group");
-
-        
-
     Group group = groupParser(pRoot);
 
 

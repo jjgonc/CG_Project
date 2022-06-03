@@ -75,6 +75,26 @@ class Models
 
 
 
+class Light{
+    public:
+        bool isPoint, isDirectional, isSpotlight;
+        float posX, posY, posZ; bool hasPosX, hasPosY, hasPosZ;
+        float dirX, dirY, dirZ; bool hasDirX, hasDirY, hasDirZ;
+        float cutoff; bool hasCutoff;
+
+        Light(bool my_isPoint, bool my_isDirectional, bool my_isSpotlight, float my_posX, float my_posY, float my_posZ, bool my_hasPosX, bool my_hasPosY, bool my_hasPosZ, float my_dirX, float my_dirY, float my_dirZ, bool my_hasDirX, bool my_hasDirY, bool my_hasDirZ, float my_cutoff, bool my_hasCutoff);
+};
+
+
+class Lights{
+    public:
+        vector<Light> lights;
+
+        Lights();
+        Lights(vector<Light> lightsVector);
+};
+
+
 class Camera
 {
     public:
