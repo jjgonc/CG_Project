@@ -26,8 +26,9 @@ Tree::Tree(){
     camera = Camera();
 }
 
-Tree::Tree(Group g, Camera cam){
+Tree::Tree(Group g, Camera cam, Lights lgts){
     group = g;
+    lights = lgts;
     camera = cam;
 }
 
@@ -553,7 +554,7 @@ Tree readFile(char *filename)
     Group group = groupParser(pRoot);
 
 
-    return Tree(group,camera);
+    return Tree(group,camera, lights);
 
 }
 

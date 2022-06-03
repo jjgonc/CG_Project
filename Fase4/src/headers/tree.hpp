@@ -128,9 +128,10 @@ class Group
 class Tree{
     public:
         Group group;
+        Lights lights;
         Camera camera;
         Tree();
-        Tree(Group g, Camera cam);
+        Tree(Group g, Camera cam, Lights lights);
         void printGroup();
 };
 
