@@ -10,6 +10,7 @@
 #include <ostream>
 #include <iostream>
 #include <fstream>
+#include <array>
 
 using namespace std;
 
@@ -18,10 +19,21 @@ template <typename T>
 void write3D(T primitive, string fileName)
 {
     ofstream file3d("../../vertices/" + fileName);
-    for (Point p : primitive.pointsGenerator())
-    {
+    array<vector<Point>,3> result = primitive.pointsGenerator();
+    file3d << result[0].size() << "\n"; // escreve o numero de pontos do modelo que por consequente é igual ao nº de normals e textures
+
+    for (Point p : result[0]){
         file3d << p.toString() << "\n";
     }
+    
+    for (Point normal : result[1]){
+        file3d << normal.toString() << "\n";
+    }
+
+    for (Point texture : result[2]){
+        file3d << texture.getX() << ' ' << texture.getY()  << "\n";
+    }
+
 }
 
 int main(int argc, char **argv)
@@ -40,7 +52,7 @@ int main(int argc, char **argv)
     {
         float edge = stof(argv[2]);
         int grid = stoi(argv[3]);
-        write3D(Box(edge, grid), argv[4]);
+        // write3D(Box(edge, grid), argv[4]);
     }
 
     else if (primitive == "sphere" && argc == 6)
@@ -57,7 +69,7 @@ int main(int argc, char **argv)
         float height = stof(argv[3]);
         int slices = stoi(argv[4]);
         int stacks = stoi(argv[5]);
-        write3D(Cone(radius, height, slices, stacks), argv[6]);
+        // write3D(Cone(radius, height, slices, stacks), argv[6]);
     }
 
     else if (primitive == "torus" && argc == 7)
@@ -70,12 +82,12 @@ int main(int argc, char **argv)
         int slices = std::stoi(argv[4]);
         int stacks = std::stoi(argv[5]);
 
-        write3D(Torus(radius,ringRadius,slices,stacks), argv[6]);
+       // write3D(Torus(radius,ringRadius,slices,stacks), argv[6]);
     } else if (primitive == "bezier" && argc == 5){
         // generator bezier teapot.patch 10 bezier.3d
 
         int tessellation = std::atoi(argv[3]);
-        write3D(Bezier(argv[2],tessellation), std::string(argv[4]));
+        // write3D(Bezier(argv[2],tessellation), std::string(argv[4]));
     }
     else
     {

@@ -26,6 +26,7 @@ public:
     void setY(float);
     void setZ(float);
     string toString();
+    Point normalize();
 };
 
 #endif

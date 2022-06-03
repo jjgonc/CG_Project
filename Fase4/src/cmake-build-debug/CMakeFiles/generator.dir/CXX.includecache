@@ -6,47 +6,107 @@
 
 #IncludeRegexTransform: 
 
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase3/src/bezier.cpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/box.cpp
+array
+-
+headers/box.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/box.hpp
+
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/generator.cpp
+headers/point.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/point.hpp
+headers/plane.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/plane.hpp
+headers/box.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/box.hpp
+headers/cone.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/cone.hpp
+headers/sphere.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/sphere.hpp
+headers/torus.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/torus.hpp
 headers/bezier.hpp
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase3/src/headers/bezier.hpp
-math.h
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/bezier.hpp
+string
+-
+ostream
 -
 iostream
 -
-string
--
-vector
--
-stdio.h
--
-stdlib.h
--
 fstream
 -
-sstream
+array
 -
 
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase3/src/headers/bezier.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/bezier.hpp
 point.hpp
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase3/src/headers/point.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/point.hpp
 vector
 -
 
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase3/src/headers/point.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/box.hpp
+point.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/point.hpp
+vector
+-
+
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/cone.hpp
+vector
+-
+point.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/point.hpp
+
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/plane.hpp
+point.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/point.hpp
+vector
+-
+
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/point.hpp
 string
 -
 iostream
 -
 vector.hpp
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase3/src/headers/vector.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/vector.hpp
 sstream
 -
 
-/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase3/src/headers/vector.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/sphere.hpp
+vector
+-
+math.h
+-
+point.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/point.hpp
+
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/torus.hpp
+vector
+-
+point.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/point.hpp
+
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/vector.hpp
 string
 -
 iostream
 -
 sstream
 -
+
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/plane.cpp
+string
+-
+array
+-
+headers/plane.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/plane.hpp
+
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/sphere.cpp
+string
+-
+array
+-
+./headers/sphere.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/sphere.hpp
 
