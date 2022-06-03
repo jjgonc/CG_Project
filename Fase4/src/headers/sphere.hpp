@@ -16,7 +16,7 @@ private:
 
 public:
     Sphere(float r, int sli, int sta);
-    vector<Point> pointsGenerator();
+    array<vector<Point>,3> pointsGenerator();
 };
 
 #endif // CG_PROJECT_SPHERE_HPP

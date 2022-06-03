@@ -13,7 +13,7 @@ private:
 
 public:
     Box(float e, int g);
-    vector<Point> pointsGenerator();
+    array<vector<Point>,3> pointsGenerator();
 };
 
 #endif // CG_PROJECT_BOX_HPP

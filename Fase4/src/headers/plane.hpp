@@ -14,8 +14,7 @@ private:
 
 public:
     Plane(float s,int div);
-
-    vector<Point> pointsGenerator();
+    array<vector<Point>,3> pointsGenerator();
 };
 
 #endif // CG_PROJECT_PLANE_HPP

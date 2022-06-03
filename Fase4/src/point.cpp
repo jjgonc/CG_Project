@@ -45,3 +45,11 @@ void Point::setZ(float c) { z = c; }
 float Point::getX() const { return x; }
 float Point::getY() const { return y; }
 float Point::getZ() const { return z; }
+
+Point Point::normalize(){
+    double N = sqrt(pow(x,2) + pow(y,2) + pow(z,2));
+    if (N == 0)
+        return Point(x,y,z);
+    else
+        return Point(x/N,y/N,z/N);
+}

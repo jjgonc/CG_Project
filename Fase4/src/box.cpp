@@ -1,3 +1,4 @@
+#include <array>
 #include "headers/box.hpp"
 
 using namespace std;
@@ -8,9 +9,11 @@ Box::Box(float e, int g)
     grid = g;
 }
 
-vector<Point> Box::pointsGenerator()
+array<vector<Point>,3> Box::pointsGenerator()
 {
     vector<Point> points;
+    vector<Point> normals;
+    vector<Point> textures;
 
     float subEdge = edge / grid;
     float halfEdge = edge / 2.0;
@@ -106,5 +109,6 @@ vector<Point> Box::pointsGenerator()
         }
     }
 
-    return points;
+    array<vector<Point>,3> result = {points, normals, textures};
+    return result;
 }
