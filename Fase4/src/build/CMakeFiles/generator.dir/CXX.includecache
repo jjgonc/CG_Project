@@ -1,0 +1,100 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/generator.cpp
+headers/point.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
+headers/plane.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/plane.hpp
+headers/box.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/box.hpp
+headers/cone.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/cone.hpp
+headers/sphere.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/sphere.hpp
+headers/torus.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/torus.hpp
+headers/bezier.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/bezier.hpp
+string
+-
+ostream
+-
+iostream
+-
+fstream
+-
+array
+-
+
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/bezier.hpp
+point.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
+vector
+-
+
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/box.hpp
+point.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
+vector
+-
+
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/cone.hpp
+vector
+-
+point.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
+
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/plane.hpp
+point.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
+vector
+-
+array
+-
+
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
+string
+-
+iostream
+-
+vector.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/vector.hpp
+sstream
+-
+
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/sphere.hpp
+vector
+-
+math.h
+-
+point.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
+
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/torus.hpp
+vector
+-
+point.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
+
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/vector.hpp
+string
+-
+iostream
+-
+sstream
+-
+
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/plane.cpp
+string
+-
+array
+-
+headers/plane.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/plane.hpp
+

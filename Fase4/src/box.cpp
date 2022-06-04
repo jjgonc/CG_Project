@@ -1,4 +1,3 @@
-#include <array>
 #include "headers/box.hpp"
 
 using namespace std;
@@ -37,6 +36,20 @@ array<vector<Point>,3> Box::pointsGenerator()
             points.push_back(p3_frente);
             points.push_back(p4_frente);
 
+            normals.push_back(Point(0,0,1));
+            normals.push_back(Point(0,0,1));
+            normals.push_back(Point(0,0,1));
+            normals.push_back(Point(0,0,1));
+            normals.push_back(Point(0,0,1));
+            normals.push_back(Point(0,0,1));
+
+            textures.push_back(Point((i * subEdge)/edge    ,(j * subEdge)/edge ,0)); // ponto 1
+            textures.push_back(Point(((i+1) * subEdge)/edge,(j * subEdge)/edge ,0)); // ponto 2
+            textures.push_back(Point((i * subEdge)/edge    ,((j+1) * subEdge)/edge ,0)); // ponto 4
+            textures.push_back(Point(((i+1) * subEdge)/edge,(j * subEdge)/edge ,0)); // ponto 2
+            textures.push_back(Point(((i+1) * subEdge)/edge,((j+1) * subEdge)/edge ,0)); // ponto 3
+            textures.push_back(Point((i * subEdge)/edge    ,((j+1) * subEdge)/edge ,0)); // ponto 4
+
             // face 2 - virada para a esquerda
             Point p1_lado1 = Point(-halfEdge, -halfEdge + i * subEdge, -halfEdge + j * subEdge);
             Point p2_lado1 = Point(-halfEdge, -halfEdge + (i + 1) * subEdge, -halfEdge + j * subEdge);
@@ -50,6 +63,21 @@ array<vector<Point>,3> Box::pointsGenerator()
             points.push_back(p2_lado1);
             points.push_back(p4_lado1);
             points.push_back(p3_lado1);
+
+            normals.push_back(Point(-1,0,0));
+            normals.push_back(Point(-1,0,0));
+            normals.push_back(Point(-1,0,0));
+            normals.push_back(Point(-1,0,0));
+            normals.push_back(Point(-1,0,0));
+            normals.push_back(Point(-1,0,0));
+
+            textures.push_back(Point((i * subEdge)/edge    ,(j * subEdge)/edge ,0)); // ponto 1
+            textures.push_back(Point(((i+1) * subEdge)/edge,(j * subEdge)/edge ,0)); // ponto 2
+            textures.push_back(Point((i * subEdge)/edge    ,((j+1) * subEdge)/edge ,0)); // ponto 4
+            textures.push_back(Point(((i+1) * subEdge)/edge,(j * subEdge)/edge ,0)); // ponto 2
+            textures.push_back(Point(((i+1) * subEdge)/edge,((j+1) * subEdge)/edge ,0)); // ponto 3
+            textures.push_back(Point((i * subEdge)/edge    ,((j+1) * subEdge)/edge ,0)); // ponto 4
+
 
             // face 3 - virada para a direita
             Point p1_lado2 = Point(halfEdge, -halfEdge + i * subEdge, -halfEdge + j * subEdge);
@@ -65,6 +93,20 @@ array<vector<Point>,3> Box::pointsGenerator()
             points.push_back(p3_lado2);
             points.push_back(p4_lado2);
 
+            normals.push_back(Point(1,0,0));
+            normals.push_back(Point(1,0,0));
+            normals.push_back(Point(1,0,0));
+            normals.push_back(Point(1,0,0));
+            normals.push_back(Point(1,0,0));
+            normals.push_back(Point(1,0,0));
+
+            textures.push_back(Point((i * subEdge)/edge    ,(j * subEdge)/edge ,0)); // ponto 1
+            textures.push_back(Point(((i+1) * subEdge)/edge,(j * subEdge)/edge ,0)); // ponto 2
+            textures.push_back(Point((i * subEdge)/edge    ,((j+1) * subEdge)/edge ,0)); // ponto 4
+            textures.push_back(Point(((i+1) * subEdge)/edge,(j * subEdge)/edge ,0)); // ponto 2
+            textures.push_back(Point(((i+1) * subEdge)/edge,((j+1) * subEdge)/edge ,0)); // ponto 3
+            textures.push_back(Point((i * subEdge)/edge    ,((j+1) * subEdge)/edge ,0)); // ponto 4
+
             // face 4 - virada para trás
             Point p1_tras = Point(-halfEdge + i * subEdge, -halfEdge + j * subEdge, -halfEdge);
             Point p2_tras = Point(-halfEdge + (i + 1) * subEdge, -halfEdge + j * subEdge, -halfEdge);
@@ -78,6 +120,20 @@ array<vector<Point>,3> Box::pointsGenerator()
             points.push_back(p2_tras);
             points.push_back(p4_tras);
             points.push_back(p3_tras);
+
+            normals.push_back(Point(0,0,-1));
+            normals.push_back(Point(0,0,-1));
+            normals.push_back(Point(0,0,-1));
+            normals.push_back(Point(0,0,-1));
+            normals.push_back(Point(0,0,-1));
+            normals.push_back(Point(0,0,-1));
+
+            textures.push_back(Point((i * subEdge)/edge    ,(j * subEdge)/edge ,0)); // ponto 1
+            textures.push_back(Point(((i+1) * subEdge)/edge,(j * subEdge)/edge ,0)); // ponto 2
+            textures.push_back(Point((i * subEdge)/edge    ,((j+1) * subEdge)/edge ,0)); // ponto 4
+            textures.push_back(Point(((i+1) * subEdge)/edge,(j * subEdge)/edge ,0)); // ponto 2
+            textures.push_back(Point(((i+1) * subEdge)/edge,((j+1) * subEdge)/edge ,0)); // ponto 3
+            textures.push_back(Point((i * subEdge)/edge    ,((j+1) * subEdge)/edge ,0)); // ponto 4
 
             // face 5 - virada para cima
             Point p1_cima = Point(-halfEdge + i * subEdge, halfEdge, -halfEdge + j * subEdge);
@@ -93,6 +149,20 @@ array<vector<Point>,3> Box::pointsGenerator()
             points.push_back(p4_cima);
             points.push_back(p3_cima);
 
+            normals.push_back(Point(0,1,0));
+            normals.push_back(Point(0,1,0));
+            normals.push_back(Point(0,1,0));
+            normals.push_back(Point(0,1,0));
+            normals.push_back(Point(0,1,0));
+            normals.push_back(Point(0,1,0));
+
+            textures.push_back(Point((i * subEdge)/edge    ,(j * subEdge)/edge ,0)); // ponto 1
+            textures.push_back(Point(((i+1) * subEdge)/edge,(j * subEdge)/edge ,0)); // ponto 2
+            textures.push_back(Point((i * subEdge)/edge    ,((j+1) * subEdge)/edge ,0)); // ponto 4
+            textures.push_back(Point(((i+1) * subEdge)/edge,(j * subEdge)/edge ,0)); // ponto 2
+            textures.push_back(Point(((i+1) * subEdge)/edge,((j+1) * subEdge)/edge ,0)); // ponto 3
+            textures.push_back(Point((i * subEdge)/edge    ,((j+1) * subEdge)/edge ,0)); // ponto 4
+
             // face 6 - virada para baixo
             Point p1_baixo = Point(-halfEdge + i * subEdge, -halfEdge, -halfEdge + j * subEdge);
             Point p2_baixo = Point(-halfEdge + (i + 1) * subEdge, -halfEdge, -halfEdge + j * subEdge);
@@ -106,6 +176,21 @@ array<vector<Point>,3> Box::pointsGenerator()
             points.push_back(p2_baixo);
             points.push_back(p3_baixo);
             points.push_back(p4_baixo);
+
+            normals.push_back(Point(0,-1,0));
+            normals.push_back(Point(0,-1,0));
+            normals.push_back(Point(0,-1,0));
+            normals.push_back(Point(0,-1,0));
+            normals.push_back(Point(0,-1,0));
+            normals.push_back(Point(0,-1,0));
+
+            textures.push_back(Point((i * subEdge)/edge    ,(j * subEdge)/edge ,0)); // ponto 1
+            textures.push_back(Point(((i+1) * subEdge)/edge,(j * subEdge)/edge ,0)); // ponto 2
+            textures.push_back(Point((i * subEdge)/edge    ,((j+1) * subEdge)/edge ,0)); // ponto 4
+            textures.push_back(Point(((i+1) * subEdge)/edge,(j * subEdge)/edge ,0)); // ponto 2
+            textures.push_back(Point(((i+1) * subEdge)/edge,((j+1) * subEdge)/edge ,0)); // ponto 3
+            textures.push_back(Point((i * subEdge)/edge    ,((j+1) * subEdge)/edge ,0)); // ponto 4
+
         }
     }
 

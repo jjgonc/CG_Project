@@ -5,6 +5,7 @@ using namespace std;
 
 #include "point.hpp"
 #include <vector>
+#include <array>
 
 class Bezier
 {
@@ -20,8 +21,8 @@ private:
 public:
     Bezier(string filename,int tess);
     void parsing (string filename);
-    Point pointBezier(int p, float u, float v);
-    vector<Point> pointsGenerator();
+    Point pointBezier(int p, float u, float v,int option);
+    array<vector<Point>,3> pointsGenerator();
 };
 
 

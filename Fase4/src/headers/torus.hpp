@@ -3,6 +3,7 @@
 
 using namespace std;
 #include <vector>
+#include <array>
 #include "point.hpp"
 
 
@@ -15,7 +16,7 @@ private:
 
 public:
     Torus(float radius,float ringRadius,int slices,int stacks);
-    vector<Point> pointsGenerator();
+    array<vector<Point>,3> pointsGenerator();
 };
 
 #endif //ENGINE_TORUS_HPP

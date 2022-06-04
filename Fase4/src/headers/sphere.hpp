@@ -2,6 +2,7 @@
 #define CG_PROJECT_SPHERE_HPP
 
 #include <vector>
+#include <array>
 #include <math.h>
 #include "point.hpp"
 
