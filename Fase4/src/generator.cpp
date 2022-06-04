@@ -84,10 +84,10 @@ int main(int argc, char **argv)
 
        // write3D(Torus(radius,ringRadius,slices,stacks), argv[6]);
     } else if (primitive == "bezier" && argc == 5){
-        // generator bezier teapot.patch 10 bezier.3d
+       generator bezier teapot.patch 10 bezier.3d
 
         int tessellation = std::atoi(argv[3]);
-        // write3D(Bezier(argv[2],tessellation), std::string(argv[4]));
+        write3D(Bezier(argv[2],tessellation), std::string(argv[4]));
     }
     else
     {
