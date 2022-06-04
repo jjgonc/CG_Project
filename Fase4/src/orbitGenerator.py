@@ -16,7 +16,7 @@ def shpereEquation():
 
         print('<point x="%f" y="0" z="%f"/>' % (x,y))
 
-shpereEquation()
+#shpereEquation()
 
 
 def elipseEquation():
@@ -25,7 +25,7 @@ def elipseEquation():
     b = float(sys.argv[2])
 
 
-    increment = (2 * a)/50
+    increment = (2 * a)/100
     alinha = -a
 
     while(alinha >= -a and alinha < a):
@@ -50,5 +50,5 @@ def elipseEquation():
         
 
     
-#elipseEquation()
+elipseEquation()
 
