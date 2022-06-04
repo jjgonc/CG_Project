@@ -132,7 +132,7 @@ class Tree{
         Lights lights;
         Camera camera;
         Tree();
-        Tree(Group g, Camera cam, Lights lights);
+        Tree(Group g, Camera cam);
         void printGroup();
 };
 

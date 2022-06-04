@@ -74,6 +74,7 @@ int main(int argc, char **argv)
 
     else if (primitive == "torus" && argc == 7)
     {
+
         float innerRadius = std::stof(argv[2]);
         float outerRadius = std::stof(argv[3]);
         float radius = (innerRadius+outerRadius)/2.0f;
@@ -81,9 +82,9 @@ int main(int argc, char **argv)
         int slices = std::stoi(argv[4]);
         int stacks = std::stoi(argv[5]);
 
-        write3D(Torus(radius,ringRadius,slices,stacks), argv[6]);
+       write3D(Torus(radius,ringRadius,slices,stacks), argv[6]);
     } else if (primitive == "bezier" && argc == 5){
-       generator bezier teapot.patch 10 bezier.3d
+        // generator bezier teapot.patch 10 bezier.3d
 
         int tessellation = std::atoi(argv[3]);
         write3D(Bezier(argv[2],tessellation), std::string(argv[4]));

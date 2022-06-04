@@ -3,17 +3,13 @@
 
 #include <IL/il.h>
 
-
-
-
 Tree::Tree(){
     group = Group();
     camera = Camera();
 }
 
-Tree::Tree(Group g, Camera cam, Lights lgts){
+Tree::Tree(Group g, Camera cam){
     group = g;
-    lights = lgts;
     camera = cam;
 }
 
@@ -690,14 +686,14 @@ Tree readFile(char *filename)
     Camera camera = readCamera(pRoot);
 
     
-    Lights lights = readLights(pRoot->FirstChildElement("lights"));
+    //Lights lights = readLights(pRoot->FirstChildElement("lights"));
 
 
     pRoot = pRoot->FirstChildElement("group");
     Group group = groupParser(pRoot);
 
 
-    return Tree(group,camera, lights);
+    return Tree(group,camera);
 
 }
 

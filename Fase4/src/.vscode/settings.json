@@ -3,6 +3,7 @@
     "random": "cpp",
     "cmath": "cpp",
     "cstdio": "cpp",
-    "*.tcc": "cpp"
+    "*.tcc": "cpp",
+    "string": "cpp"
   }
 }
