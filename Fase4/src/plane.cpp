@@ -34,9 +34,9 @@ array<vector<Point>,3> Plane::pointsGenerator()
             // tirar o -side/2 de cima (linha 22-24) para por o plano/grelha a comecar do (0,0)
             // para por entre 0 e 1 / side por exemplo se side = 4 dividir por side o ultimo ponto fica 1
             // ver imagem 1 do plano do relatorio da fase 1 para ajudar a perceber se for necessário
-            textures.push_back(Point((px * i)/side      ,0, (pz * q)/side )); // ponto A
-            textures.push_back(Point((px * i)/side      ,0, (pz * q + pz)/side )); // ponto B
-            textures.push_back(Point((px * i + px)/side ,0, (pz * q)/side )); // ponto C
+            textures.push_back(Point((px * i)/side      , (pz * q)/side ,0)); // ponto A
+            textures.push_back(Point((px * i)/side      , (pz * q + pz)/side ,0)); // ponto B
+            textures.push_back(Point((px * i + px)/side , (pz * q)/side ,0)); // ponto C
 
 
 
@@ -51,9 +51,9 @@ array<vector<Point>,3> Plane::pointsGenerator()
             normals.push_back(Point(0,1,0));
             normals.push_back(Point(0,1,0));
 
-            textures.push_back(Point((px * i)     /side ,0, (pz * q + pz)/side )); // ponto B
-            textures.push_back(Point((px * i + px)/side ,0, (pz * q + pz)/side )); // ponto D
-            textures.push_back(Point((px * i + px)/side ,0, (pz * q)     /side )); // ponto C
+            textures.push_back(Point((px * i)     /side , (pz * q + pz)/side ,0)); // ponto B
+            textures.push_back(Point((px * i + px)/side , (pz * q + pz)/side ,0)); // ponto D
+            textures.push_back(Point((px * i + px)/side , (pz * q)     /side ,0)); // ponto C
 
         }
     }

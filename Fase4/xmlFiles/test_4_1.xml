@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<world> <>
-=======
 <world>
->>>>>>> 99d5846cc97bfb1a05ac0f7ce5e0980394cf9729
     <camera> 
 	    <position x="1.757135" y="1.799201" z="3.416921" />
 	    <lookAt x="0" y="0" z="0" />
@@ -15,23 +11,14 @@
 	</lights>
 	<group> 
   		<models> 
-<<<<<<< HEAD
-			<model file="box_nt.3d" > <!-- generator box 2 3 box_nt.3d -->
-				<color>
-=======
 			<model file="box.3d" > <!-- generator box 2 3 box_nt.3d -->
 				<!-- <color>
->>>>>>> 99d5846cc97bfb1a05ac0f7ce5e0980394cf9729
                     <diffuse R="200" G="200" B="000" />
                     <ambient R="50" G="50" B="00" />
                     <specular R="0" G="0" B="0" />
                     <emissive R="0" G="0" B="0" />
                     <shininess value="0" />
-<<<<<<< HEAD
-                </color>
-=======
                 </color> -->
->>>>>>> 99d5846cc97bfb1a05ac0f7ce5e0980394cf9729
 			</model>
  		</models>
  	</group>
