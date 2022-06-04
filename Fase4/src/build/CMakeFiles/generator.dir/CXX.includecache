@@ -6,41 +6,21 @@
 
 #IncludeRegexTransform: 
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/bezier.cpp
-headers/bezier.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/bezier.hpp
-math.h
--
-iostream
--
-string
--
-vector
--
-stdio.h
--
-stdlib.h
--
-fstream
--
-sstream
--
-
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/generator.cpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/generator.cpp
 headers/point.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/point.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
 headers/plane.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/plane.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/plane.hpp
 headers/box.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/box.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/box.hpp
 headers/cone.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/cone.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/cone.hpp
 headers/sphere.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/sphere.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/sphere.hpp
 headers/torus.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/torus.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/torus.hpp
 headers/bezier.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/bezier.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/bezier.hpp
 string
 -
 ostream
@@ -49,60 +29,72 @@ iostream
 -
 fstream
 -
+array
+-
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/bezier.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/bezier.hpp
 point.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/point.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
 vector
 -
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/box.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/box.hpp
 point.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/point.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
 vector
 -
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/cone.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/cone.hpp
 vector
 -
 point.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/point.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/plane.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/plane.hpp
 point.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/point.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
 vector
 -
+array
+-
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/point.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
 string
 -
 iostream
 -
 vector.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/vector.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/vector.hpp
 sstream
 -
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/sphere.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/sphere.hpp
 vector
 -
 math.h
 -
 point.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/point.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/torus.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/torus.hpp
 vector
 -
 point.hpp
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/point.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/point.hpp
 
-/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/headers/vector.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/vector.hpp
 string
 -
 iostream
 -
 sstream
 -
+
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/plane.cpp
+string
+-
+array
+-
+headers/plane.hpp
+/home/josejoao/Universidade/3ano/2 Semestre/CG/CG_Project/Fase4/src/headers/plane.hpp
 
