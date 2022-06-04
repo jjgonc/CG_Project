@@ -15,6 +15,7 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
+#include <array>
 
 using namespace std;
 
@@ -32,14 +33,14 @@ class Coordinate
 
 class ModColor{
     public:
-        float ambR, ambG, ambB;
-        float difR, difG, difB;
-        float specR, specG, specB;
-        float emiR, emiG, emiB;
+        array<float, 4> amb;
+        array<float, 4> dif;
+        array<float, 4> spec;
+        array<float, 4> emi;
         float shinnValue;
 
         ModColor();
-        ModColor(float my_ambR, float my_ambG, float my_ambB, float my_difR, float my_difG, float my_difB, float my_specR, float my_specG, float my_specB, float my_emiR, float my_emiG, float my_emiB, float my_shinnValue);
+        ModColor(array<float, 4> my_amb, array<float, 4> my_dif, array<float, 4> my_spec, array<float, 4> my_emi, float my_shinnValue);
 };
 
 

@@ -595,35 +595,19 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
 
 
 ModColor::ModColor(){
-    ambR = 0.0;
-    ambG = 0.0;
-    ambB = 0.0;
-    difR = 0.0;
-    difG = 0.0;
-    difB = 0.0;
-    specR =0.0;
-    specG =0.0;
-    specB =0.0;
-    emiR = 0.0;
-    emiG = 0.0;
-    emiB = 0.0;
+    amb = array<float, 4>();
+    dif = array<float, 4>();
+    spec = array<float, 4>();
+    emi = array<float, 4>();
     shinnValue = 0.0;
 }
 
 
-ModColor::ModColor(float my_ambR, float my_ambG, float my_ambB, float my_difR, float my_difG, float my_difB, float my_specR, float my_specG, float my_specB, float my_emiR, float my_emiG, float my_emiB, float my_shinnValue){
-    ambR = my_ambR;
-    ambG = my_ambG;
-    ambB = my_ambB;
-    difR = my_difR;
-    difG = my_difG;
-    difB = my_difB;
-    specR = my_specR;
-    specG = my_specG;
-    specB = my_specB;
-    emiR = my_emiR;
-    emiG = my_ambG;
-    emiB = my_emiB;
+ModColor::ModColor(array<float, 4> my_amb, array<float, 4> my_dif, array<float, 4> my_spec, array<float, 4> my_emi, float my_shinnValue){
+    amb = my_amb;
+    spec = my_spec;
+    dif = my_dif;
+    emi = my_emi;
     shinnValue = my_shinnValue;
 }
 
@@ -690,8 +674,12 @@ Models modelsParser(tinyxml2::XMLNode *models)
                             value = std::stof(color->ToElement()->Attribute("value"));
                         }
 
-                        mC = ModColor(ambR, ambG, ambB, difR, difG, difB, specR, specG, specB, emiR, emiG, emiB, value);
+                        array<float, 4> emi = {emiR, emiG, emiB, 1};
+                        array<float, 4> dif = {difR, difG, difB, 1};
+                        array<float, 4> amb = {ambR, ambG, ambB, 1};
+                        array<float, 4> spec = {specR, specG, specB, 1};
 
+                        mC = ModColor(amb, dif, spec, emi, value);
 
                         color = color->NextSiblingElement();
                     }
