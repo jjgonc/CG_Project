@@ -5,11 +5,13 @@
 
 Tree::Tree(){
     group = Group();
+    lights = Lights();
     camera = Camera();
 }
 
-Tree::Tree(Group g, Camera cam){
+Tree::Tree(Group g, Camera cam, Lights lgts){
     group = g;
+    lights = lgts;
     camera = cam;
 }
 
@@ -75,91 +77,98 @@ Lights readLights(tinyxml2::XMLNode *pRoot){
     std::vector<Light> lights_Vector = std::vector<Light>();
     
     // tinyxml2::XMLElement *lightElem = pRoot->FirstChildElement("lights");
+    printf("tree:80 - inicio readlights\n");
 
-    tinyxml2::XMLNode *lights = pRoot->FirstChild();
+    if(pRoot != nullptr) {
+        tinyxml2::XMLNode *lights = pRoot->FirstChild();
 
-    while(lights) {
+    
 
-        if(!strcmp(lights->Value(), "light")){
+        while(lights) {
 
-            bool isPoint, isSpotlight, isDirectional;
-            isPoint = isSpotlight = isDirectional = false;
-            if (lights->ToElement()->Attribute("type")){
-                char* type = (char*) lights->ToElement()->Attribute("type");
+            if(!strcmp(lights->Value(), "light")){
+
+                bool isPoint, isSpotlight, isDirectional;
+                isPoint = isSpotlight = isDirectional = false;
+                if (lights->ToElement()->Attribute("type")){
+                    char* type = (char*) lights->ToElement()->Attribute("type");
 
 
-                bool isPoint, isDirectional, isSpotlight;
-                if (!strcmp(type, "point")){
-                    isPoint = true;
-                    isDirectional = false;
-                    isSpotlight = false;
+                    bool isPoint, isDirectional, isSpotlight;
+                    if (!strcmp(type, "point")){
+                        isPoint = true;
+                        isDirectional = false;
+                        isSpotlight = false;
+                    }
+                    else if (strcmp(type, "directional") == 0){
+                        isPoint = false;
+                        isSpotlight = true;
+                        isDirectional = true;
+                    }
+                    else if(!strcmp(type, "spotlight")){
+                        isPoint = false;
+                        isDirectional = false;
+                        isSpotlight = true;
+                    }
+                    else{
+                        printf("Error! Light type is not supported");
+                        exit(1);
+                    }
                 }
-                else if (strcmp(type, "directional") == 0){
-                    isPoint = false;
-                    isSpotlight = true;
-                    isDirectional = true;
+
+                float posX, posY, posZ, dirX, dirY, dirZ, cutoff;
+                bool hasPosX, hasPosY, hasPosZ, hasDirX, hasDirY, hasDirZ, hasCutoff;
+                hasPosX = hasPosY = hasPosZ = hasDirX = hasDirY = hasDirZ = hasCutoff = false;
+
+                if (lights->ToElement()->Attribute("posx")){
+                    posX = std::stof(lights->ToElement()->Attribute("posx"));
+                    hasPosX = true;
                 }
-                else if(!strcmp(type, "spotlight")){
-                    isPoint = false;
-                    isDirectional = false;
-                    isSpotlight = true;
+
+                if (lights->ToElement()->Attribute("posy")){
+                    posY = std::stof(lights->ToElement()->Attribute("posy"));
+                    hasPosY = true;
                 }
-                else{
-                    printf("Error! Light type is not supported");
-                    exit(1);
+
+                if (lights->ToElement()->Attribute("posz")){
+                    posZ = std::stof(lights->ToElement()->Attribute("posz"));
+                    hasPosZ = true;
                 }
+
+                if (lights->ToElement()->Attribute("dirx")){
+                    dirX = std::stof(lights->ToElement()->Attribute("dirx"));
+                    hasDirX = true;
+                }
+                if (lights->ToElement()->Attribute("diry")){
+                    dirY = std::stof(lights->ToElement()->Attribute("diry"));
+                    hasDirY = true;
+                }
+                if (lights->ToElement()->Attribute("dirz")){
+                    dirZ = std::stof(lights->ToElement()->Attribute("dirz"));
+                    hasDirZ = true;
+                }
+
+                if (lights->ToElement()->Attribute("cutoff")){
+                    cutoff = std::stof(lights->ToElement()->Attribute("cutoff"));
+                    hasCutoff = true;
+                }
+
+                Light light = Light(isPoint, isDirectional, isSpotlight, posX, posY, posZ, hasPosX, hasPosY, hasPosZ, dirX, dirY, dirZ, hasDirX, hasDirY, hasDirZ, cutoff, hasCutoff);
+
+                lights_Vector.push_back(light);
             }
 
-            float posX, posY, posZ, dirX, dirY, dirZ, cutoff;
-            bool hasPosX, hasPosY, hasPosZ, hasDirX, hasDirY, hasDirZ, hasCutoff;
-            hasPosX = hasPosY = hasPosZ = hasDirX = hasDirY = hasDirZ = hasCutoff = false;
-
-            if (lights->ToElement()->Attribute("posx")){
-                posX = std::stof(lights->ToElement()->Attribute("posx"));
-                hasPosX = true;
-            }
-
-            if (lights->ToElement()->Attribute("posy")){
-                posY = std::stof(lights->ToElement()->Attribute("posy"));
-                hasPosY = true;
-            }
-
-            if (lights->ToElement()->Attribute("posz")){
-                posZ = std::stof(lights->ToElement()->Attribute("posz"));
-                hasPosZ = true;
-            }
-
-            if (lights->ToElement()->Attribute("dirx")){
-                dirX = std::stof(lights->ToElement()->Attribute("dirx"));
-                hasDirX = true;
-            }
-            if (lights->ToElement()->Attribute("diry")){
-                dirY = std::stof(lights->ToElement()->Attribute("diry"));
-                hasDirY = true;
-            }
-            if (lights->ToElement()->Attribute("dirz")){
-                dirZ = std::stof(lights->ToElement()->Attribute("dirz"));
-                hasDirZ = true;
-            }
-
-            if (lights->ToElement()->Attribute("cutoff")){
-                cutoff = std::stof(lights->ToElement()->Attribute("cutoff"));
-                hasCutoff = true;
-            }
-
-            Light light = Light(isPoint, isDirectional, isSpotlight, posX, posY, posZ, hasPosX, hasPosY, hasPosZ, dirX, dirY, dirZ, hasDirX, hasDirY, hasDirZ, cutoff, hasCutoff);
-
-            lights_Vector.push_back(light);
+            lights = lights->NextSibling();
         }
 
-        lights = lights->NextSibling();
+        printf("size of lights vector: %ld\n", lights_Vector.size());
+
+        printf("%d, %f, %d\n", lights_Vector.at(0).isDirectional, lights_Vector.at(0).dirX, lights_Vector.at(0).hasDirX);
+
+        
     }
-
-    printf("size of lights vector: %ld\n", lights_Vector.size());
-
-    printf("%d, %f, %d\n", lights_Vector.at(0).isDirectional, lights_Vector.at(0).dirX, lights_Vector.at(0).hasDirX);
-
     return lights_Vector;
+
 }
 
 
@@ -291,6 +300,15 @@ Models::Models(){
 }
 
 
+Models::Models(vector<Figure> myFigures){
+
+    for (int i=0; myFigures.size(); i++){
+        figures.push_back(myFigures.at(i));
+    }
+
+}
+
+
 string convertToString(char* a, int size)
 {
     int i;
@@ -342,7 +360,7 @@ int loadTexture(string s) {
 }
 
 
-Figure::Figure(const char * myName, const char * textureAtrib){
+Figure::Figure(const char * myName, const char * textureAtrib, ModColor my_modelColor){
 
     char generated_path[40] = "../../vertices/";
     strcat(generated_path, myName);
@@ -448,6 +466,8 @@ Figure::Figure(const char * myName, const char * textureAtrib){
 
 
     verticesCount = points.size();
+
+    modelColor = my_modelColor;
 
 
     glGenBuffers(3, buffers);
@@ -590,6 +610,42 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
 
 
 
+ModColor::ModColor(){
+    ambR = 0.0;
+    ambG = 0.0;
+    ambB = 0.0;
+    difR = 0.0;
+    difG = 0.0;
+    difB = 0.0;
+    specR =0.0;
+    specG =0.0;
+    specB =0.0;
+    emiR = 0.0;
+    emiG = 0.0;
+    emiB = 0.0;
+    shinnValue = 0.0;
+}
+
+
+ModColor::ModColor(float my_ambR, float my_ambG, float my_ambB, float my_difR, float my_difG, float my_difB, float my_specR, float my_specG, float my_specB, float my_emiR, float my_emiG, float my_emiB, float my_shinnValue){
+    ambR = my_ambR;
+    ambG = my_ambG;
+    ambB = my_ambB;
+    difR = my_difR;
+    difG = my_difG;
+    difB = my_difB;
+    specR = my_specR;
+    specG = my_specG;
+    specB = my_specB;
+    emiR = my_emiR;
+    emiG = my_ambG;
+    emiB = my_emiB;
+    shinnValue = my_shinnValue;
+}
+
+
+
+
 Models modelsParser(tinyxml2::XMLNode *models)
 {
     Models m = Models();
@@ -598,9 +654,9 @@ Models modelsParser(tinyxml2::XMLNode *models)
     const char * texture = "nothing";
     const char * modelName;
 
-    while (type)
-    {
+    while (type){
         if (!strcmp(type->Value(), "model")){
+            ModColor mC = ModColor();
 
         
             modelName = type->ToElement()->Attribute("file");
@@ -610,15 +666,64 @@ Models modelsParser(tinyxml2::XMLNode *models)
 
             while(model){
                 
-             if(!strcmp(model->Value(), "texture"))
-                texture = model->ToElement()->Attribute("file");
+                if(!strcmp(model->Value(), "texture"))
+                   texture = model->ToElement()->Attribute("file"); 
 
-            
+                float emiR, emiG, emiB, difR, difG, difB, specR, specG, specB, ambR, ambG, ambB, value;
+                emiR = emiG = emiB = difR = difG = difB = specR = specG = specB = ambR = ambG = ambB = value = 0;
+    
+                
+                if(!strcmp(model->Value(), "color")){
+                    tinyxml2::XMLElement* color = model->FirstChildElement();
+                    
+                    while(color){
+                    
+                        if (!strcmp(color->Value(), "emissive")){
+                           emiR = std::stof(color->ToElement()->Attribute("R"));
+                           emiG = std::stof(color->ToElement()->Attribute("G"));
+                           emiB = std::stof(color->ToElement()->Attribute("B"));
+                        }
+
+                        else if (!strcmp(color->Value(), "diffuse")){
+                            difR = std::stof(color->ToElement()->Attribute("R"));
+                            difG = std::stof(color->ToElement()->Attribute("G"));
+                            difB = std::stof(color->ToElement()->Attribute("B"));
+                        }
+
+                        else if (!strcmp(color->Value(), "specular")){
+                            specR = std::stof(color->ToElement()->Attribute("R"));
+                            specG = std::stof(color->ToElement()->Attribute("G"));
+                            specB = std::stof(color->ToElement()->Attribute("B"));
+                        }
+
+                        else if (!strcmp(color->Value(), "ambient")){
+                            ambR = std::stof(color->ToElement()->Attribute("R"));
+                            ambG = std::stof(color->ToElement()->Attribute("G"));
+                            ambB = std::stof(color->ToElement()->Attribute("B"));
+                        }
+
+                        else if (!strcmp(color->Value(), "shininess")){
+                            value = std::stof(color->ToElement()->Attribute("value"));
+                        }
+
+                        mC = ModColor(ambR, ambG, ambB, difR, difG, difB, specR, specG, specB, emiR, emiG, emiB, value);
+
+
+                        color = color->NextSiblingElement();
+                    }
+
+                    printf("ambient: ambR: %f | ambG: %f | ambB: %f  \n", ambR, ambG, ambB);
+                    printf("diffuse: difR: %f | difG: %f | difB: %f \n", difR, difG, difB);
+                    printf("specular: specR: %f | specG: %f | specB: %f \n", specR, specG, specB);
+                    printf("emissive: %f | %f | %f \n", emiR, emiG, emiB);
+                    printf("shininess: value: %f \n\n\n", value);
+
+                }
 
                 model = model->NextSibling();
             }
 
-            m.figures.push_back(Figure(modelName,texture));
+            m.figures.push_back(Figure(modelName,texture, mC));
         }
 
             
@@ -627,6 +732,7 @@ Models modelsParser(tinyxml2::XMLNode *models)
 
     return m;
 }
+
 
 Group groupParser(tinyxml2::XMLNode *pRoot)
 {
@@ -685,15 +791,13 @@ Tree readFile(char *filename)
 
     Camera camera = readCamera(pRoot);
 
+    Lights lights = readLights(pRoot->FirstChildElement("lights"));
     
-    //Lights lights = readLights(pRoot->FirstChildElement("lights"));
-
-
     pRoot = pRoot->FirstChildElement("group");
     Group group = groupParser(pRoot);
 
 
-    return Tree(group,camera);
+    return Tree(group,camera, lights);
 
 }
 

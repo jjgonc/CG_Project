@@ -28,15 +28,31 @@ class Coordinate
     Coordinate(float x1, float y2, float z2);
 };
 
+
+
+class ModColor{
+    public:
+        float ambR, ambG, ambB;
+        float difR, difG, difB;
+        float specR, specG, specB;
+        float emiR, emiG, emiB;
+        float shinnValue;
+
+        ModColor();
+        ModColor(float my_ambR, float my_ambG, float my_ambB, float my_difR, float my_difG, float my_difB, float my_specR, float my_specG, float my_specB, float my_emiR, float my_emiG, float my_emiB, float my_shinnValue);
+};
+
+
 class Figure
 {
     public:
     GLuint buffers[3];
     int verticesCount;
     GLuint texture;
+    ModColor modelColor;
 
 
-    Figure(const char * model, const char * texture); 
+    Figure(const char * model, const char * texture, ModColor my_modelColor); 
 
 };
 
@@ -63,6 +79,8 @@ class Transform
     Transform();
     Transform(Coordinate myTranslate, Coordinate myRotate, Coordinate myScale, CatmullRom catmullRom);
 };
+
+
 
 class Models
 {
@@ -132,7 +150,7 @@ class Tree{
         Lights lights;
         Camera camera;
         Tree();
-        Tree(Group g, Camera cam);
+        Tree(Group g, Camera cam, Lights lights);
         void printGroup();
 };
 

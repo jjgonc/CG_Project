@@ -11,14 +11,14 @@
 	</lights>
 	<group> 
   		<models> 
-			<model file="box.3d" > <!-- generator box 2 3 box_nt.3d -->
-				<!-- <color>
+			<model file="box_nt.3d" > <!-- generator box 2 3 box_nt.3d -->
+				<color>
                     <diffuse R="200" G="200" B="000" />
                     <ambient R="50" G="50" B="00" />
                     <specular R="0" G="0" B="0" />
                     <emissive R="0" G="0" B="0" />
                     <shininess value="0" />
-                </color> -->
+                </color>
 			</model>
  		</models>
  	</group>
