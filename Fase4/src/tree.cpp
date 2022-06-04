@@ -360,16 +360,18 @@ int loadTexture(string s) {
 }
 
 
-Figure::Figure(const char * myName, const char * textureAtrib, ModColor my_modelColor){
+
+
+Figure::Figure(const char * myName, const char * textureAtrib,ModColor my_modelColor){
 
     char generated_path[40] = "../../vertices/";
     strcat(generated_path, myName);
 
+    modelColor = my_modelColor;
+
 
     if(strcmp(textureAtrib,"nothing") != 0){
-
-        
-
+    
         char textureName[40] = "../../textures/";
         strcat(textureName, textureAtrib);
 
@@ -379,112 +381,94 @@ Figure::Figure(const char * myName, const char * textureAtrib, ModColor my_model
         
         texture = loadTexture(textureSTR);
     }
+
+
+    vector<Point> points;
+    vector<Point> normals;
+    vector<Point> textureCoords;
+
+    int n;
+    ifstream fileVBO;
+    fileVBO.open(generated_path);
+    fileVBO >> verticesCount;
     
-
-    //points
-
-    int numberPoints;
     float x, y, z;
-    vector<Point> points = vector<Point>();
-    ifstream file(generated_path);
 
-    file >> numberPoints;
-
-    int n = 0;
-
-    // printf("%d\n",numberPoints);
-
-    while (n < numberPoints)
-    {
-        file >> x >> y >> z;
-        points.push_back(Point(x, y, z));
-
-        //printf("%d point %f %f %f\n",n,x,y,z);
-        n++;
-
-    }
-
-    vector<float> pointsXYZ = vector<float>();
-
-    for(int i = 0; i < points.size(); i++){
-        pointsXYZ.push_back(points[i].getX());
-        pointsXYZ.push_back(points[i].getY());
-        pointsXYZ.push_back(points[i].getZ());
-
+    n=0;
+    //Pontos
+    while (n < verticesCount) {
         
-    
-    }
-
-    //ler normais
-
-    vector<Point> normals = vector<Point>();
-
-    n = 0;
-
-    while (n < numberPoints)
-    {
-        file >> x >> y >> z;
-        normals.push_back(Point(x, y, z));
+        fileVBO >> x >> y >> z;
+        Point point = Point(x,y,z);
+        points.push_back(point);
         n++;
-
-        // printf("%d normal %f %f %f\n",n,x,y,z);
-
     }
-
-
-    vector<float> normalsXYZ = vector<float>();
-
-    for(int i = 0; i < points.size(); i++){
-        normalsXYZ.push_back(points[i].getX());
-        normalsXYZ.push_back(points[i].getY());
-        normalsXYZ.push_back(points[i].getZ());
-
+    
+    
+    n=0;
+    //Normais
+    while (n < verticesCount) {
+        
+        fileVBO >> x >> y >> z;
+        Point normal = Point(x,y,z);
+        normals.push_back(normal);
+        n++;
+    }
+    //Pts de textura
+    n=0;
+    while(n < verticesCount && !fileVBO.eof()){
        
-    }
-
-    //ler coords
-  
-    vector<Point> textCoords = vector<Point>();
-    
-    n = 0;
-
-    while (n < numberPoints)
-    {
-        file >> x >> y;
-        textCoords.push_back(Point(x, y, 0));
+        fileVBO >> x >> y;
+        Point tex = Point(x,y,0);
+        textureCoords.push_back(tex);
         n++;
+    }
+    fileVBO.close();
 
-        // printf("%d coord %f %f \n",n,x,y);
+
+   
+    float *bufVertex   = new float[verticesCount * 3];
+    float *bufNormal   = new float[verticesCount * 3];
+    float *bufTextures = new float[verticesCount * 2];
+
+    vector<Point>::iterator it_coords;
+    int it = 0;
+    for (it_coords = points.begin(); it_coords != points.end(); it_coords++) {
+        bufVertex[it++] = it_coords->getX();
+        bufVertex[it++] = it_coords->getY();
+        bufVertex[it++] = it_coords->getZ();
     }
 
-    vector<float> coordsXYZ = vector<float>();
-
-    for(int i = 0; i < points.size(); i++){
-        coordsXYZ.push_back(points[i].getX());
-        coordsXYZ.push_back(points[i].getY());
+    vector<Point>::iterator it_normals;
+    int i = 0;
+    for (it_normals = normals.begin(); it_normals != normals.end(); it_normals++) {
+        bufNormal[i++] = it_normals->getX();
+        bufNormal[i++] = it_normals->getY();
+        bufNormal[i++] = it_normals->getZ();
     }
 
-
-    verticesCount = points.size();
-
-    modelColor = my_modelColor;
-
+    vector<Point>::iterator it_textures;
+    int a = 0;
+    for (it_textures = textureCoords.begin(); it_textures != textureCoords.end(); it_textures++) {
+        bufTextures[a++] = it_textures->getX();
+        bufTextures[a++] = it_textures->getY();
+    }
 
     glGenBuffers(3, buffers);
 
     glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * pointsXYZ.size(), pointsXYZ.data(), GL_STATIC_DRAW);
-    
+    glBufferData(GL_ARRAY_BUFFER, it*sizeof(float), bufVertex, GL_STATIC_DRAW);
+   
 
     glBindBuffer(GL_ARRAY_BUFFER, buffers[1]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * normalsXYZ.size(), normalsXYZ.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, i*sizeof(float), bufNormal, GL_STATIC_DRAW);
 
 
     glBindBuffer(GL_ARRAY_BUFFER,buffers[2]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * coordsXYZ.size(), coordsXYZ.data(), GL_STATIC_DRAW);
-
-
+    glBufferData(GL_ARRAY_BUFFER, a*sizeof(float), bufTextures, GL_STATIC_DRAW);
    
+
+
 }
 
 
