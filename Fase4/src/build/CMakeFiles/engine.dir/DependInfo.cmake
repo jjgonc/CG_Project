@@ -8,11 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/engine.cpp" "CMakeFiles/engine.dir/engine.cpp.o" "gcc" "CMakeFiles/engine.dir/engine.cpp.o.d"
-  "/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/point.cpp" "CMakeFiles/engine.dir/point.cpp.o" "gcc" "CMakeFiles/engine.dir/point.cpp.o.d"
-  "/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/tinyxml2.cpp" "CMakeFiles/engine.dir/tinyxml2.cpp.o" "gcc" "CMakeFiles/engine.dir/tinyxml2.cpp.o.d"
-  "/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/tree.cpp" "CMakeFiles/engine.dir/tree.cpp.o" "gcc" "CMakeFiles/engine.dir/tree.cpp.o.d"
-  "/home/saraiva/Desktop/University/CG/CG_Project/Fase3/src/vector.cpp" "CMakeFiles/engine.dir/vector.cpp.o" "gcc" "CMakeFiles/engine.dir/vector.cpp.o.d"
+  "/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/engine.cpp" "CMakeFiles/engine.dir/engine.cpp.o" "gcc" "CMakeFiles/engine.dir/engine.cpp.o.d"
+  "/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/point.cpp" "CMakeFiles/engine.dir/point.cpp.o" "gcc" "CMakeFiles/engine.dir/point.cpp.o.d"
+  "/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/tinyxml2.cpp" "CMakeFiles/engine.dir/tinyxml2.cpp.o" "gcc" "CMakeFiles/engine.dir/tinyxml2.cpp.o.d"
+  "/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/tree.cpp" "CMakeFiles/engine.dir/tree.cpp.o" "gcc" "CMakeFiles/engine.dir/tree.cpp.o.d"
+  "/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/vector.cpp" "CMakeFiles/engine.dir/vector.cpp.o" "gcc" "CMakeFiles/engine.dir/vector.cpp.o.d"
   )
 
 # Targets to which this target links.

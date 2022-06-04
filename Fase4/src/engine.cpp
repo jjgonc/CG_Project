@@ -10,6 +10,10 @@
 #include <iostream>
 
 
+using namespace tinyxml2;
+using namespace std;
+
+
 using namespace std;
 char *modelFileName;
 
@@ -38,6 +42,8 @@ float scaley = 1.0;
 float scalez = 1.0;
 
 GLenum mode = GL_FILL;
+
+
 
 
 
@@ -94,6 +100,8 @@ void normalize(Point *a) {
     a->setY(a->getY()/l);
     a->setZ(a->getZ()/l);
 }
+
+
 
 
 
@@ -183,10 +191,13 @@ void renderCatmullRomCurve(CatmullRom catR) {
     glBegin(GL_LINE_LOOP);
     for (float gt = 0; gt <= 1; gt += 0.001) {
         getGlobalCatmullRomPoint(gt, pos, deriv, catR);
-        glColor3f(0.8,0,0.15);
+        glColor3f(1,1,1);
         glVertex3f(pos->getX(), pos->getY(), pos->getZ());
+        
     }
     glEnd();
+
+    glColor3f(255,255,255);
 
 }
 
@@ -232,10 +243,30 @@ void drawTriangle(Point p1, Point p2, Point p3)
 void draw_model(Figure fig)
 {
 
-    glBindBuffer(GL_ARRAY_BUFFER, fig.vertices);
-    glVertexPointer(3, GL_FLOAT, 0, 0);
-    glDrawArrays(GL_TRIANGLES, 0, fig.verticesCount);
-        
+    glEnable(GL_TEXTURE_2D);
+
+
+    glBindTexture(GL_TEXTURE_2D, fig.texture);
+	
+    
+    glBindBuffer(GL_ARRAY_BUFFER, fig.buffers[0]);
+	glVertexPointer(3, GL_FLOAT, 0, 0);
+
+	glBindBuffer(GL_ARRAY_BUFFER, fig.buffers[1]);
+	glNormalPointer(GL_FLOAT, 0, 0);
+
+	glBindBuffer(GL_ARRAY_BUFFER, fig.buffers[2]);
+	glTexCoordPointer(2, GL_FLOAT, 0, 0);
+    
+    
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, fig.verticesCount);
+
+
+   
+    glBindTexture(GL_TEXTURE_2D,0);
+    glDisable(GL_TEXTURE_2D);
+   
+
 }
 
 
@@ -296,13 +327,6 @@ void drawModels(Group group){
 
     if(group.transform.hasTime) renderRotate(group.transform.rotate);
    
-  
-
-
-    for(int i = 0; i < group.models.figures.size();i++) {
-        draw_model(group.models.figures[i]);
-    }
-
     if(group.transform.hasTime) renderRotate(group.transform.rotate);
 
     for(Group gs: group.groups){
@@ -310,6 +334,13 @@ void drawModels(Group group){
         drawModels(gs);
         glPopMatrix();
     }
+
+
+    for(int i = 0; i < group.models.figures.size();i++) {
+        draw_model(group.models.figures[i]);
+    }
+
+  
 }
 
 void draw_axis()
@@ -372,8 +403,6 @@ void renderScene(void)
               upX, upY, upZ);
     glPolygonMode(GL_FRONT_AND_BACK, mode);
 
-    // draw xyz
-    draw_axis();
 
     // put the geometric transformations here
     glTranslated(tx, 0.0, tz);
@@ -498,6 +527,8 @@ void onKeyboard(int key_code, int x, int y)
         betha -= M_PI * 2;
 }
 
+
+
 int main(int argc, char **argv)
 {
 
@@ -521,7 +552,17 @@ int main(int argc, char **argv)
     glewInit();
     #endif
 
-    
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
+
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+    glClearColor(0, 0, 0, 0);
+
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
     
     tree = readFile(xml_generated_path);
 
@@ -551,6 +592,9 @@ int main(int argc, char **argv)
     //  OpenGL settings
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
+    glEnable(GL_RESCALE_NORMAL);
+    glEnable(GL_COLOR_MATERIAL);
+
 
 
     

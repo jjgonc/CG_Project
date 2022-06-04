@@ -1,22 +1,7 @@
 #include "headers/tinyxml2.hpp"
 #include "headers/tree.hpp"
 
-
-vector<Point> readPoints(const char * fileName)
-{
-
-    float x, y, z;
-    vector<Point> points = vector<Point>();
-    ifstream file(fileName);
-
-    while (file >> x >> y >> z)
-    {
-        points.push_back(Point(x, y, z));
-
-    }
-
-    return points;
-}
+#include <IL/il.h>
 
 
 
@@ -184,23 +169,100 @@ Models::Models(){
 }
 
 
-
-
-Models::Models(vector<Figure> myFigures){
-
-    for (int i=0; myFigures.size(); i++){
-        figures.push_back(myFigures.at(i));
+string convertToString(char* a, int size)
+{
+    int i;
+    string s = "";
+    for (i = 0; i < size; i++) {
+        s = s + a[i];
     }
+    return s;
+}
 
+int loadTexture(string s) {
+    unsigned int t, tw, th;
+    unsigned char *texData;
+    unsigned int texID;
+
+    // Iniciar o DevIL
+    ilInit();
+
+    // Colocar a origem da textura no canto inferior esquerdo
+    ilEnable(IL_ORIGIN_SET);
+    ilOriginFunc(IL_ORIGIN_LOWER_LEFT);
+
+    // Carregar a textura para memória
+    ilGenImages(1,&t);
+    ilBindImage(t);
+    ilLoadImage((ILstring)s.c_str());
+    tw = ilGetInteger(IL_IMAGE_WIDTH);
+    th = ilGetInteger(IL_IMAGE_HEIGHT);
+
+    ilConvertImage(IL_RGBA, IL_UNSIGNED_BYTE);
+    texData = ilGetData();
+
+    //Gerar a textura para a placa gráfica
+    glGenTextures(1,&texID);
+
+    glBindTexture(GL_TEXTURE_2D,texID);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+
+    //Upload dos dados da imagem
+    gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGBA, tw, th, GL_RGBA, GL_UNSIGNED_BYTE, texData);
+
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    return texID;
 }
 
 
-Figure::Figure(const char * myName){
+Figure::Figure(const char * myName, const char * textureAtrib){
 
     char generated_path[40] = "../../vertices/";
     strcat(generated_path, myName);
-    vector<Point>  points = readPoints(generated_path);
 
+
+    if(strcmp(textureAtrib,"nothing") != 0){
+
+        
+
+        char textureName[40] = "../../textures/";
+        strcat(textureName, textureAtrib);
+
+
+        int size = sizeof(textureName) / sizeof(char);
+        string textureSTR = convertToString(textureName, size); 
+        
+        texture = loadTexture(textureSTR);
+    }
+    
+
+    //points
+
+    int numberPoints;
+    float x, y, z;
+    vector<Point> points = vector<Point>();
+    ifstream file(generated_path);
+
+    file >> numberPoints;
+
+    int n = 0;
+
+    // printf("%d\n",numberPoints);
+
+    while (n < numberPoints)
+    {
+        file >> x >> y >> z;
+        points.push_back(Point(x, y, z));
+
+        //printf("%d point %f %f %f\n",n,x,y,z);
+        n++;
+
+    }
 
     vector<float> pointsXYZ = vector<float>();
 
@@ -208,15 +270,79 @@ Figure::Figure(const char * myName){
         pointsXYZ.push_back(points[i].getX());
         pointsXYZ.push_back(points[i].getY());
         pointsXYZ.push_back(points[i].getZ());
+
+        
+    
+    }
+
+    //ler normais
+
+    vector<Point> normals = vector<Point>();
+
+    n = 0;
+
+    while (n < numberPoints)
+    {
+        file >> x >> y >> z;
+        normals.push_back(Point(x, y, z));
+        n++;
+
+        // printf("%d normal %f %f %f\n",n,x,y,z);
+
+    }
+
+
+    vector<float> normalsXYZ = vector<float>();
+
+    for(int i = 0; i < points.size(); i++){
+        normalsXYZ.push_back(points[i].getX());
+        normalsXYZ.push_back(points[i].getY());
+        normalsXYZ.push_back(points[i].getZ());
+
+       
+    }
+
+    //ler coords
+  
+    vector<Point> textCoords = vector<Point>();
+    
+    n = 0;
+
+    while (n < numberPoints)
+    {
+        file >> x >> y;
+        textCoords.push_back(Point(x, y, 0));
+        n++;
+
+        // printf("%d coord %f %f \n",n,x,y);
+    }
+
+    vector<float> coordsXYZ = vector<float>();
+
+    for(int i = 0; i < points.size(); i++){
+        coordsXYZ.push_back(points[i].getX());
+        coordsXYZ.push_back(points[i].getY());
     }
 
 
     verticesCount = points.size();
 
-    glGenBuffers(1,&vertices);
-    glBindBuffer(GL_ARRAY_BUFFER, vertices);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * pointsXYZ.size(), pointsXYZ.data(),GL_STATIC_DRAW); 
 
+    glGenBuffers(3, buffers);
+
+    glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * pointsXYZ.size(), pointsXYZ.data(), GL_STATIC_DRAW);
+    
+
+    glBindBuffer(GL_ARRAY_BUFFER, buffers[1]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * normalsXYZ.size(), normalsXYZ.data(), GL_STATIC_DRAW);
+
+
+    glBindBuffer(GL_ARRAY_BUFFER,buffers[2]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * coordsXYZ.size(), coordsXYZ.data(), GL_STATIC_DRAW);
+
+
+   
 }
 
 
@@ -239,9 +365,6 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
                     char * align_str = (char *) type->ToElement()->Attribute("align");
                     
                     if (strcmp(align_str, "True") == 0) align = true;
-
-                    if(align) printf("align = true");
-                    else printf("align = false");
                 }
 
                 
@@ -259,7 +382,6 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
 
 
                 for(Point p : nPoints){
-                    printf("x: %f, y:%f, z:%f\n", p.getX(), p.getY(), p.getZ());
                 }
                 CatmullRom cat = CatmullRom(nPoints, time, align);      // TODO REVER ISTO
                 t.catmullRom = cat;
@@ -314,7 +436,6 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
 
             if(!hasTime){
                 t.hasTime = false;
-                printf("hasTime = false  x: %f, y:%f, z:%f\n", x,y,z);
                 t.rotate = Coordinate(x, y, z, angle);
                 t.hasRotate = true;
             }
@@ -352,11 +473,33 @@ Models modelsParser(tinyxml2::XMLNode *models)
     Models m = Models();
     tinyxml2::XMLNode *type = models->FirstChild();
 
+    const char * texture = "nothing";
+    const char * modelName;
+
     while (type)
     {
-        if (!strcmp(type->Value(), "model"))
+        if (!strcmp(type->Value(), "model")){
 
-            m.figures.push_back(Figure(type->ToElement()->Attribute("file")));
+        
+            modelName = type->ToElement()->Attribute("file");
+            
+
+            tinyxml2::XMLNode *model = type -> FirstChild();
+
+            while(model){
+                
+             if(!strcmp(model->Value(), "texture"))
+                texture = model->ToElement()->Attribute("file");
+
+            
+
+                model = model->NextSibling();
+            }
+
+            m.figures.push_back(Figure(modelName,texture));
+        }
+
+            
         type = type->NextSibling();
     }
 

@@ -12,7 +12,10 @@
             </transform>
            
             <models>
-                <model file="sphere.3d" />  
+                <model file="sphere.3d">
+                <texture file = "sun.jpg" />
+                </model>
+                 
             </models>
         </group>
 
@@ -37,7 +40,9 @@
 
              
             <models>
-                <model file="sphere.3d"/>       
+                <model file="sphere.3d">
+                <texture file = "mercurio.jpg" />
+                </model>       
             </models>
         </group>
 
@@ -57,8 +62,10 @@
 		        </translate>
                 <scale x="1.05" y="1.05" z="1.05"/>
             </transform>
-            <models>
-                <model file="sphere.3d"/>       
+             <models>
+                <model file="sphere.3d">
+                <texture file = "venus.jpg" />
+                </model>       
             </models>
         </group>
 
@@ -79,8 +86,10 @@
 		        </translate>
                 <scale x="1.15" y="1.15" z="1.15"/>
             </transform>
-            <models>
-                <model file="sphere.3d"/>       
+             <models>
+                <model file="sphere.3d">
+                <texture file = "terra.jpg" />
+                </model>       
             </models>
 
              <group>     <!--lua-->
@@ -99,8 +108,10 @@
 		        </translate>
                 <scale x="0.5" y="0.5" z="0.5"/>
             </transform>
-            <models>
-                <model file="sphere.3d"/>       
+             <models>
+                <model file="sphere.3d">
+                <texture file = "lua.jpg" />
+                </model>       
             </models>
         </group>
         </group>
@@ -121,8 +132,10 @@
 		        </translate>
                 <scale x="0.8" y="0.8" z="0.8"/>
             </transform>
-            <models>
-                <model file="sphere.3d"/>       
+             <models>
+                <model file="sphere.3d">
+                <texture file = "marte.jpg" />
+                </model>       
             </models>
         </group>
 
@@ -143,7 +156,9 @@
                 <scale x="4.8" y="4.8" z="4.8"/>
             </transform>
             <models>
-                <model file="sphere.3d"/>       
+                <model file="sphere.3d">
+                <texture file = "jupiter.jpg" />
+                </model>       
             </models>
         </group>
 
@@ -165,9 +180,10 @@
 		        </translate>
                     <scale x="3.8" y="3.8" z="3.8"/>
                     </transform>
-                <models>
-                    <model file="sphere.3d"/>       
-                </models>
+                    <model file="sphere.3d">
+                	<texture file = "saturno.jpg" />
+                    </model> 
+               
             </group>
             <group>
                 <transform>
@@ -208,9 +224,9 @@
 		        </translate>
                 <scale x="2.8" y="2.8" z="2.8"/>
             </transform>
-            <models>
-                <model file="sphere.3d"/>       
-            </models>
+            <model file="sphere.3d">
+              	<texture file = "urano.jpg" />
+            </model>
         </group>
 
         <group>     <!--neptuno-->
@@ -229,9 +245,9 @@
 		        </translate>
                  <scale x="2.6" y="2.6" z="2.6"/>
             </transform>
-            <models>
-                <model file="sphere.3d"/>       
-            </models>
+            <model file="sphere.3d">
+              	<texture file = "neptuno.jpg" />
+            </model>
         </group>
 
          <group>     <!--asteroid-->
@@ -341,7 +357,7 @@
 
 
 
-		        </translate>
+	    </translate>
                  <scale x="1" y="1" z="1"/>
             </transform>
             <models>
