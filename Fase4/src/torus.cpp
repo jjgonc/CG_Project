@@ -12,9 +12,11 @@ Torus::Torus(float r, float rR, int s, int st) {
 }
 
 
-vector<Point> Torus::pointsGenerator() {
+array<vector<Point>,3> Torus::pointsGenerator() {
 
-    std::vector<Point> torus;
+    vector<Point> torus;
+    vector<Point> normals;
+    vector<Point> textures;
 
     double sliceStep = (2*M_PI)/slices;
     double stackStep = (2*M_PI)/stacks;
@@ -37,7 +39,9 @@ vector<Point> Torus::pointsGenerator() {
             torus.push_back(p4);
         }
     }
-    return torus;
+
+    array<vector<Point>,3> result = {torus, normals, textures};
+    return result;
 }
 
 

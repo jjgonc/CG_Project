@@ -88,7 +88,9 @@ float multVectorVector(float *v1, float *v2) {
 }
 
 
-Point Bezier::pointBezier(int p, float u, float v) {
+Point Bezier::pointBezier(int p, float u, float v, int option) { // option = 0 nao derivada
+                                                                 // option = 1 derivada em u
+                                                                 // option = 2 derivada em v
 
     float m[4][4] = {{-1.0f, +3.0f, -3.0f, +1.0f},
                      {+3.0f, -6.0f, +3.0f, +0.0f},
@@ -96,8 +98,39 @@ Point Bezier::pointBezier(int p, float u, float v) {
                      {+1.0f, +0.0f, +0.0f, +0.0f}};
 
 
-    float bu[4] = {powf(u,3),powf(u,2),u,1};
-    float bv[4] = {powf(v,3),powf(v,2),v,1};
+    float bu[4], bv[4];
+    if (option == 0){
+        bu[0] = powf(u,3);
+        bu[1] = powf(u,2);
+        bu[2] = u;
+        bu[3] = 1;
+        bv[0] = powf(v,3);
+        bv[1] = powf(v,2);
+        bv[2] = v;
+        bv[3] = 1;
+    }
+
+    if (option == 1) {
+        bu[0] = 3*powf(u,2);
+        bu[1] = 2*u;
+        bu[2] = 1;
+        bu[3] = 0;
+        bv[0] = powf(v,3);
+        bv[1] = powf(v,2);
+        bv[2] = v;
+        bv[3] = 1;
+    }
+
+    if (option == 2){
+        bu[0] = powf(u,3);
+        bu[1] = powf(u,2);
+        bu[2] = u;
+        bu[3] = 1;
+        bv[0] = 3*powf(v,2);
+        bv[1] = 2*v;
+        bv[2] = 1;
+        bv[3] = 0;
+    }
 
     float pointsX[4][4] = {{controlPoints[patches[p * 16]].getX(), controlPoints[patches[p * 16+1]].getX(), controlPoints[patches[p * 16+2]].getX(), controlPoints[patches[p * 16+3]].getX()},
                           {controlPoints[patches[p * 16+4]].getX(), controlPoints[patches[p * 16+5]].getX(), controlPoints[patches[p * 16+6]].getX(), controlPoints[patches[p * 16+7]].getX()},
@@ -142,10 +175,13 @@ Point Bezier::pointBezier(int p, float u, float v) {
 }
 
 
-vector<Point> Bezier::pointsGenerator() {
+array<vector<Point>,3> Bezier::pointsGenerator() {
     parsing(inputFile);
 
     vector<Point> pontos;
+    vector<Point> normals;
+    vector<Point> textures;
+
 
     for (int p=0; p<numPatches; p++) {
 
@@ -156,16 +192,65 @@ vector<Point> Bezier::pointsGenerator() {
                 float u = (float) tu/tessellation;
 
                 // triângulo superior
-                pontos.push_back(pointBezier(p, (u + (1.0f/tessellation)), (v + (1.0f/tessellation))));
-                pontos.push_back(pointBezier(p, u, (v + (1.0f/tessellation))));
-                pontos.push_back(pointBezier(p, u, v));
+                // 0 no fim opçao para nao derivar
+                pontos.push_back(pointBezier(p, (u + (1.0f/tessellation)), (v + (1.0f/tessellation)),0));
+                pontos.push_back(pointBezier(p, u, (v + (1.0f/tessellation)),0));
+                pontos.push_back(pointBezier(p, u, v,0));
+
+                Point normalU1 = pointBezier(p, (u + (1.0f/tessellation)), (v + (1.0f/tessellation)),1); // derivar em ordem a U
+                Point normalV1 = pointBezier(p, (u + (1.0f/tessellation)), (v + (1.0f/tessellation)),2); // derivar em ordem a V
+                float x = (normalU1.getY() * normalV1.getZ()) - (normalU1.getZ() * normalV1.getY());
+                float y = (normalU1.getZ() * normalV1.getX()) - (normalU1.getX() * normalV1.getZ());
+                float z = (normalU1.getX() * normalV1.getY()) - (normalU1.getY() * normalV1.getX());
+                normals.push_back(Point(x,y,z));
+
+                Point normalU2 = pointBezier(p, u, (v + (1.0f/tessellation)),1); // derivar em ordem a U
+                Point normalV2 = pointBezier(p, u, (v + (1.0f/tessellation)),2); // derivar em ordem a V
+                x = (normalU2.getY() * normalV2.getZ()) - (normalU2.getZ() * normalV2.getY());
+                y = (normalU2.getZ() * normalV2.getX()) - (normalU2.getX() * normalV2.getZ());
+                z = (normalU2.getX() * normalV2.getY()) - (normalU2.getY() * normalV2.getX());
+                normals.push_back(Point(x,y,z));
+
+
+                Point normalU3 = pointBezier(p, u, v,1); // derivar em ordem a U
+                Point normalV3 = pointBezier(p, u, v,2); // derivar em ordem a V
+                x = (normalU3.getY() * normalV3.getZ()) - (normalU3.getZ() * normalV3.getY());
+                y = (normalU3.getZ() * normalV3.getX()) - (normalU3.getX() * normalV3.getZ());
+                z = (normalU3.getX() * normalV3.getY()) - (normalU3.getY() * normalV3.getX());
+                normals.push_back(Point(x,y,z));
+
+
                 // triângulo inferior
-                pontos.push_back(pointBezier(p, u, v));
-                pontos.push_back(pointBezier(p, (u + (1.0f/tessellation)), v));
-                pontos.push_back(pointBezier(p, (u + (1.0f/tessellation)), (v + (1.0f/tessellation))));
+                pontos.push_back(pointBezier(p, u, v,0));
+                pontos.push_back(pointBezier(p, (u + (1.0f/tessellation)), v,0));
+                pontos.push_back(pointBezier(p, (u + (1.0f/tessellation)), (v + (1.0f/tessellation)),0));
+
+                Point normalU4 = pointBezier(p, u, v,1); // derivar em ordem a U
+                Point normalV4 = pointBezier(p, u, v,2); // derivar em ordem a V
+                x = (normalU4.getY() * normalV4.getZ()) - (normalU4.getZ() * normalV4.getY());
+                y = (normalU4.getZ() * normalV4.getX()) - (normalU4.getX() * normalV4.getZ());
+                z = (normalU4.getX() * normalV4.getY()) - (normalU4.getY() * normalV4.getX());
+                normals.push_back(Point(x,y,z));
+
+
+                Point normalU5 = pointBezier(p, (u + (1.0f/tessellation)), v,1); // derivar em ordem a U
+                Point normalV5 = pointBezier(p, (u + (1.0f/tessellation)), v,2); // derivar em ordem a V
+                x = (normalU5.getY() * normalV5.getZ()) - (normalU5.getZ() * normalV5.getY());
+                y = (normalU5.getZ() * normalV5.getX()) - (normalU5.getX() * normalV5.getZ());
+                z = (normalU5.getX() * normalV5.getY()) - (normalU5.getY() * normalV5.getX());
+                normals.push_back(Point(x,y,z));
+
+
+                Point normalU6 = pointBezier(p, (u + (1.0f/tessellation)), (v + (1.0f/tessellation)),1); // derivar em ordem a U
+                Point normalV6 = pointBezier(p, (u + (1.0f/tessellation)), (v + (1.0f/tessellation)),2); // derivar em ordem a V
+                x = (normalU6.getY() * normalV6.getZ()) - (normalU6.getZ() * normalV6.getY());
+                y = (normalU6.getZ() * normalV6.getX()) - (normalU6.getX() * normalV6.getZ());
+                z = (normalU6.getX() * normalV6.getY()) - (normalU6.getY() * normalV6.getX());
+                normals.push_back(Point(x,y,z));
             }
         }
     }
 
-    return pontos;
+    array<vector<Point>,3> result = {pontos, normals, textures};
+    return result;
 }

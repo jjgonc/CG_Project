@@ -5,6 +5,7 @@ using namespace std;
 
 #include "point.hpp"
 #include <vector>
+#include <array>
 
 class Plane
 {

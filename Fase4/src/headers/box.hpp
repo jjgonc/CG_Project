@@ -2,6 +2,7 @@
 #define CG_PROJECT_BOX_HPP
 #include "point.hpp"
 #include <vector>
+#include <array>
 
 using namespace std;
 
