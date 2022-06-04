@@ -31,11 +31,12 @@ class Coordinate
 class Figure
 {
     public:
-    GLuint vertices;
+    GLuint buffers[3];
     int verticesCount;
+    GLuint texture;
 
 
-    Figure(const char * name); 
+    Figure(const char * model, const char * texture); 
 
 };
 
@@ -131,7 +132,7 @@ class Tree{
         Lights lights;
         Camera camera;
         Tree();
-        Tree(Group g, Camera cam, Lights lights);
+        Tree(Group g, Camera cam);
         void printGroup();
 };
 
