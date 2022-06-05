@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/generator.dir/bezier.cpp.o.d"
   "CMakeFiles/generator.dir/box.cpp.o"
   "CMakeFiles/generator.dir/box.cpp.o.d"
+  "CMakeFiles/generator.dir/boxUpsideDown.cpp.o"
+  "CMakeFiles/generator.dir/boxUpsideDown.cpp.o.d"
   "CMakeFiles/generator.dir/cone.cpp.o"
   "CMakeFiles/generator.dir/cone.cpp.o.d"
   "CMakeFiles/generator.dir/generator.cpp.o"

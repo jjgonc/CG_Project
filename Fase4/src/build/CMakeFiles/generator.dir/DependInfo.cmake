@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/bezier.cpp" "CMakeFiles/generator.dir/bezier.cpp.o" "gcc" "CMakeFiles/generator.dir/bezier.cpp.o.d"
   "/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/box.cpp" "CMakeFiles/generator.dir/box.cpp.o" "gcc" "CMakeFiles/generator.dir/box.cpp.o.d"
+  "/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/boxUpsideDown.cpp" "CMakeFiles/generator.dir/boxUpsideDown.cpp.o" "gcc" "CMakeFiles/generator.dir/boxUpsideDown.cpp.o.d"
   "/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/cone.cpp" "CMakeFiles/generator.dir/cone.cpp.o" "gcc" "CMakeFiles/generator.dir/cone.cpp.o.d"
   "/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/generator.cpp" "CMakeFiles/generator.dir/generator.cpp.o" "gcc" "CMakeFiles/generator.dir/generator.cpp.o.d"
   "/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/plane.cpp" "CMakeFiles/generator.dir/plane.cpp.o" "gcc" "CMakeFiles/generator.dir/plane.cpp.o.d"

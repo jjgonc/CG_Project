@@ -6,7 +6,7 @@ PROJECT(engine)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 add_executable(${PROJECT_NAME} engine.cpp point.cpp vector.cpp tree.cpp tinyxml2.cpp)
-add_executable(generator generator.cpp point.cpp vector.cpp plane.cpp box.cpp  sphere.cpp cone.cpp torus.cpp bezier.cpp)
+add_executable(generator generator.cpp point.cpp vector.cpp plane.cpp box.cpp boxUpsideDown.cpp sphere.cpp cone.cpp torus.cpp bezier.cpp)
 
 
 find_package(OpenGL REQUIRED)

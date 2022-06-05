@@ -190,6 +190,30 @@ box.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/box.cpp.s
 .PHONY : box.cpp.s
 
+boxUpsideDown.o: boxUpsideDown.cpp.o
+.PHONY : boxUpsideDown.o
+
+# target to build an object file
+boxUpsideDown.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/boxUpsideDown.cpp.o
+.PHONY : boxUpsideDown.cpp.o
+
+boxUpsideDown.i: boxUpsideDown.cpp.i
+.PHONY : boxUpsideDown.i
+
+# target to preprocess a source file
+boxUpsideDown.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/boxUpsideDown.cpp.i
+.PHONY : boxUpsideDown.cpp.i
+
+boxUpsideDown.s: boxUpsideDown.cpp.s
+.PHONY : boxUpsideDown.s
+
+# target to generate assembly for a file
+boxUpsideDown.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/boxUpsideDown.cpp.s
+.PHONY : boxUpsideDown.cpp.s
+
 cone.o: cone.cpp.o
 .PHONY : cone.o
 
@@ -452,6 +476,9 @@ help:
 	@echo "... box.o"
 	@echo "... box.i"
 	@echo "... box.s"
+	@echo "... boxUpsideDown.o"
+	@echo "... boxUpsideDown.i"
+	@echo "... boxUpsideDown.s"
 	@echo "... cone.o"
 	@echo "... cone.i"
 	@echo "... cone.s"

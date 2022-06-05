@@ -139,10 +139,24 @@ CMakeFiles/generator.dir/box.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/generator.dir/box.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/box.cpp -o CMakeFiles/generator.dir/box.cpp.s
 
+CMakeFiles/generator.dir/boxUpsideDown.cpp.o: CMakeFiles/generator.dir/flags.make
+CMakeFiles/generator.dir/boxUpsideDown.cpp.o: ../boxUpsideDown.cpp
+CMakeFiles/generator.dir/boxUpsideDown.cpp.o: CMakeFiles/generator.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/generator.dir/boxUpsideDown.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/generator.dir/boxUpsideDown.cpp.o -MF CMakeFiles/generator.dir/boxUpsideDown.cpp.o.d -o CMakeFiles/generator.dir/boxUpsideDown.cpp.o -c /home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/boxUpsideDown.cpp
+
+CMakeFiles/generator.dir/boxUpsideDown.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/generator.dir/boxUpsideDown.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/boxUpsideDown.cpp > CMakeFiles/generator.dir/boxUpsideDown.cpp.i
+
+CMakeFiles/generator.dir/boxUpsideDown.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/generator.dir/boxUpsideDown.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/boxUpsideDown.cpp -o CMakeFiles/generator.dir/boxUpsideDown.cpp.s
+
 CMakeFiles/generator.dir/sphere.cpp.o: CMakeFiles/generator.dir/flags.make
 CMakeFiles/generator.dir/sphere.cpp.o: ../sphere.cpp
 CMakeFiles/generator.dir/sphere.cpp.o: CMakeFiles/generator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/generator.dir/sphere.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/generator.dir/sphere.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/generator.dir/sphere.cpp.o -MF CMakeFiles/generator.dir/sphere.cpp.o.d -o CMakeFiles/generator.dir/sphere.cpp.o -c /home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/sphere.cpp
 
 CMakeFiles/generator.dir/sphere.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/generator.dir/sphere.cpp.s: cmake_force
 CMakeFiles/generator.dir/cone.cpp.o: CMakeFiles/generator.dir/flags.make
 CMakeFiles/generator.dir/cone.cpp.o: ../cone.cpp
 CMakeFiles/generator.dir/cone.cpp.o: CMakeFiles/generator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/generator.dir/cone.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/generator.dir/cone.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/generator.dir/cone.cpp.o -MF CMakeFiles/generator.dir/cone.cpp.o.d -o CMakeFiles/generator.dir/cone.cpp.o -c /home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/cone.cpp
 
 CMakeFiles/generator.dir/cone.cpp.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/generator.dir/cone.cpp.s: cmake_force
 CMakeFiles/generator.dir/torus.cpp.o: CMakeFiles/generator.dir/flags.make
 CMakeFiles/generator.dir/torus.cpp.o: ../torus.cpp
 CMakeFiles/generator.dir/torus.cpp.o: CMakeFiles/generator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/generator.dir/torus.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/generator.dir/torus.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/generator.dir/torus.cpp.o -MF CMakeFiles/generator.dir/torus.cpp.o.d -o CMakeFiles/generator.dir/torus.cpp.o -c /home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/torus.cpp
 
 CMakeFiles/generator.dir/torus.cpp.i: cmake_force
@@ -184,7 +198,7 @@ CMakeFiles/generator.dir/torus.cpp.s: cmake_force
 CMakeFiles/generator.dir/bezier.cpp.o: CMakeFiles/generator.dir/flags.make
 CMakeFiles/generator.dir/bezier.cpp.o: ../bezier.cpp
 CMakeFiles/generator.dir/bezier.cpp.o: CMakeFiles/generator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/generator.dir/bezier.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/generator.dir/bezier.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/generator.dir/bezier.cpp.o -MF CMakeFiles/generator.dir/bezier.cpp.o.d -o CMakeFiles/generator.dir/bezier.cpp.o -c /home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/bezier.cpp
 
 CMakeFiles/generator.dir/bezier.cpp.i: cmake_force
@@ -202,6 +216,7 @@ generator_OBJECTS = \
 "CMakeFiles/generator.dir/vector.cpp.o" \
 "CMakeFiles/generator.dir/plane.cpp.o" \
 "CMakeFiles/generator.dir/box.cpp.o" \
+"CMakeFiles/generator.dir/boxUpsideDown.cpp.o" \
 "CMakeFiles/generator.dir/sphere.cpp.o" \
 "CMakeFiles/generator.dir/cone.cpp.o" \
 "CMakeFiles/generator.dir/torus.cpp.o" \
@@ -215,13 +230,14 @@ generator: CMakeFiles/generator.dir/point.cpp.o
 generator: CMakeFiles/generator.dir/vector.cpp.o
 generator: CMakeFiles/generator.dir/plane.cpp.o
 generator: CMakeFiles/generator.dir/box.cpp.o
+generator: CMakeFiles/generator.dir/boxUpsideDown.cpp.o
 generator: CMakeFiles/generator.dir/sphere.cpp.o
 generator: CMakeFiles/generator.dir/cone.cpp.o
 generator: CMakeFiles/generator.dir/torus.cpp.o
 generator: CMakeFiles/generator.dir/bezier.cpp.o
 generator: CMakeFiles/generator.dir/build.make
 generator: CMakeFiles/generator.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable generator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/saraiva/Desktop/University/CG/CG_Project/Fase4/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable generator"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/generator.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -6,6 +6,7 @@
 #include "headers/sphere.hpp"
 #include "headers/torus.hpp"
 #include "headers/bezier.hpp"
+#include "headers/boxUpsideDown.hpp"
 #include <string>
 #include <ostream>
 #include <iostream>
@@ -53,6 +54,13 @@ int main(int argc, char **argv)
         float edge = stof(argv[2]);
         int grid = stoi(argv[3]);
         write3D(Box(edge, grid), argv[4]);
+    }
+
+      else if (primitive == "boxUpsideDown" && argc == 5)
+    {
+        float edge = stof(argv[2]);
+        int grid = stoi(argv[3]);
+        write3D(BoxUpsideDown(edge, grid), argv[4]);
     }
 
     else if (primitive == "sphere" && argc == 6)
