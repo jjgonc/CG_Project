@@ -36,8 +36,8 @@ array<vector<Point>,3> Cone::pointsGenerator() {
         normals.push_back(Point(0,-1,0));
 
         textures.push_back(Point(0,0,0));
-        textures.push_back(Point(0,1,0));
-        textures.push_back(Point(1,1,0));
+        textures.push_back(Point((i+1)/slices,1,0));
+        textures.push_back(Point(i/slices,1,0));
 
         float nextRadius, nextRadius2, stackHeight, stackHeight2;   
         
