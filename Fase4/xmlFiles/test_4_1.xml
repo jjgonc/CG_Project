@@ -10,8 +10,9 @@
 		<light type="directional" dirx="1" diry="0.7" dirz="0.5"/>
 	</lights>
 	<group> 
-  		<models> 
-			<model file="box_nt.3d" > <!-- generator box 2 3 box_nt.3d -->
+  		<models>
+			<model file="box.3d">
+				<texture file = "earth.jpg" />
 				<color>
                     <diffuse R="200" G="200" B="000" />
                     <ambient R="50" G="50" B="00" />

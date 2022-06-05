@@ -18,8 +18,8 @@ array<vector<Point>,3> Plane::pointsGenerator()
     float px = side / divisions;
     float pz = side / divisions;
 
-    for (int i = 0; i < divisions; i++) {
-        for (int q = 0; q < divisions; q++) {
+    for (float i = 0; i < divisions; i++) {
+        for (float q = 0; q < divisions; q++) {
             // triangulo superior
 
             points.push_back(Point(px * i - side/2      ,0, pz * q - side/2)); // ponto A
@@ -31,12 +31,10 @@ array<vector<Point>,3> Plane::pointsGenerator()
             normals.push_back(Point(0,1,0));
             normals.push_back(Point(0,1,0));
 
-            // tirar o -side/2 de cima (linha 22-24) para por o plano/grelha a comecar do (0,0)
-            // para por entre 0 e 1 / side por exemplo se side = 4 dividir por side o ultimo ponto fica 1
-            // ver imagem 1 do plano do relatorio da fase 1 para ajudar a perceber se for necessário
-            textures.push_back(Point((px * i)/side      , (pz * q)/side ,0)); // ponto A
-            textures.push_back(Point((px * i)/side      , (pz * q + pz)/side ,0)); // ponto B
-            textures.push_back(Point((px * i + px)/side , (pz * q)/side ,0)); // ponto C
+
+            textures.push_back(Point(i/divisions      , q/divisions ,0)); // ponto A
+            textures.push_back(Point(i/divisions      , (q+1)/divisions ,0)); // ponto B
+            textures.push_back(Point((i+1)/divisions  , q/divisions ,0)); // ponto C
 
 
 
@@ -51,9 +49,9 @@ array<vector<Point>,3> Plane::pointsGenerator()
             normals.push_back(Point(0,1,0));
             normals.push_back(Point(0,1,0));
 
-            textures.push_back(Point((px * i)     /side , (pz * q + pz)/side ,0)); // ponto B
-            textures.push_back(Point((px * i + px)/side , (pz * q + pz)/side ,0)); // ponto D
-            textures.push_back(Point((px * i + px)/side , (pz * q)     /side ,0)); // ponto C
+            textures.push_back(Point(i/divisions      , (q+1)/divisions ,0)); // ponto B
+            textures.push_back(Point((i+1)/divisions , (q+1)/divisions ,0)); // ponto D
+            textures.push_back(Point((i+1)/divisions  , q/divisions ,0)); // ponto C
 
         }
     }

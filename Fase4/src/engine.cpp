@@ -259,7 +259,7 @@ void draw_model(Figure fig)
 	glTexCoordPointer(2, GL_FLOAT, 0, 0);
     
     
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, fig.verticesCount);
+    glDrawArrays(GL_TRIANGLES, 0, fig.verticesCount);
 
 
    
@@ -403,6 +403,7 @@ void renderScene(void)
               upX, upY, upZ);
     glPolygonMode(GL_FRONT_AND_BACK, mode);
 
+    //draw_axis();
 
     // put the geometric transformations here
     glTranslated(tx, 0.0, tz);

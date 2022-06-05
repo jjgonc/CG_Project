@@ -1,7 +1,8 @@
 #include "headers/tinyxml2.hpp"
 #include "headers/tree.hpp"
 
-#include <IL/il.h>
+// #include <IL/il.h>
+#include </usr/local/Cellar/devil/1.8.0_3/include/IL/il.h>
 
 Tree::Tree(){
     group = Group();
