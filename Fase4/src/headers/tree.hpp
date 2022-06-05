@@ -79,6 +79,11 @@ class Transform
     public:
     bool hasRotate, hasTranslate, hasScale, isCatmullRom, hasTime;
     Coordinate rotate, translate, scale;
+    vector<Coordinate> transforms;
+    vector<int> transformsNames;
+    // 1- Translate
+    // 2 - Rotate
+    // 3 -Scale
     CatmullRom catmullRom;
 
     Transform();

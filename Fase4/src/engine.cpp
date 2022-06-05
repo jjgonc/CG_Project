@@ -284,21 +284,6 @@ void draw_model(Figure fig)
 
 void drawModels(Group group){
 
-    float tx = group.transform.translate.x;
-    float ty = group.transform.translate.y;
-    float tz = group.transform.translate.z;
-
-    float angle = group.transform.rotate.value;
-    float rx = group.transform.rotate.x;
-    float ry = group.transform.rotate.y;
-    float rz = group.transform.rotate.z;
- 
-
-    float sx = group.transform.scale.x;
-    float sy = group.transform.scale.y;
-    float sz = group.transform.scale.z;
-
-
      
     Point* pos = new Point();
     Point* deriv = new Point();
@@ -332,12 +317,40 @@ void drawModels(Group group){
     }
 
 
-    if(group.transform.hasTranslate) glTranslatef(tx,ty,tz);
-    if(group.transform.hasRotate) glRotatef(angle,rx,ry,rz);
-    if(group.transform.hasScale) glScalef(sx,sy,sz);
+    for(int i = 0; i < group.transform.transformsNames.size(); i++){
+
+        if(group.transform.transformsNames[i] == 1){
+            float tx = group.transform.transforms[i].x;
+            float ty = group.transform.transforms[i].y;
+            float tz = group.transform.transforms[i].z;
+            glTranslatef(tx,ty,tz);
+        }
+
+        if(group.transform.transformsNames[i] == 2){
+            float angle = group.transform.transforms[i].value;
+            float rx = group.transform.transforms[i].x;
+            float ry = group.transform.transforms[i].y;
+            float rz = group.transform.transforms[i].z;
+             glRotatef(angle,rx,ry,rz);
+
+        }
+
+        if(group.transform.transformsNames[i] == 3){
+            float sx = group.transform.transforms[i].x;
+            float sy = group.transform.transforms[i].y;
+            float sz = group.transform.transforms[i].z;
+             glScalef(sx,sy,sz);
+        }
+
+
+
+    }
+
+
 
     if(group.transform.hasTime) renderRotate(group.transform.rotate);
    
+
 
     for(Group gs: group.groups){
         glPushMatrix();

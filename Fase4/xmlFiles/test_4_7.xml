@@ -50,7 +50,7 @@
 			</transform>
 			<models>
 				<model file="bezier_nt.3d" > <!-- generator bezier teapot.patch 10 bezier_nt.3d -->
-					<texture file = "teapot.jpg" />
+					<texture file = "sun.jpg" />
 				</model>
 			</models>
 		</group>

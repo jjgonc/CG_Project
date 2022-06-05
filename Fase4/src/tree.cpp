@@ -275,6 +275,8 @@ Transform::Transform()
     rotate = Coordinate();
     scale = Coordinate();
     catmullRom = CatmullRom();
+    transforms = vector<Coordinate>();
+    transformsNames = vector<int>();
 }
 
 
@@ -459,9 +461,11 @@ Figure::Figure(const char * myName, const char * textureAtrib,ModColor my_modelC
 Transform parseTransform(tinyxml2::XMLNode *pRoot)
 {
     Coordinate translate, rotate, scale;
+   
 
     tinyxml2::XMLNode *type = pRoot->FirstChild();
     Transform t = Transform();
+  
     while (type)
     {
         if (!strcmp(type->Value(), "translate"))
@@ -511,8 +515,9 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
                 z = std::stof(type->ToElement()->Attribute("z"));
             else
                 z = 0;
-            t.translate = Coordinate(x, y, z, 0);
-            t.hasTranslate = true; 
+            
+            t.transforms.push_back(Coordinate(x, y, z, 0));
+            t.transformsNames.push_back(1);
             }            
         }
         else if (!strcmp(type->Value(), "rotate"))
@@ -542,7 +547,8 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
                 hasTime = true;
             }
             
-            t.rotate = Coordinate(x, y, z, time);
+            t.transforms.push_back(Coordinate(x, y, z, time));
+            t.transformsNames.push_back(2);
 
             if(!hasTime){
                 t.hasTime = false;
@@ -565,8 +571,9 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
                 z = std::stof(type->ToElement()->Attribute("z"));
             else
                 z = 0;
-            t.scale = Coordinate(x, y, z);
-            t.hasScale = true;
+        
+            t.transforms.push_back(Coordinate(x, y, z));
+            t.transformsNames.push_back(3);
         }
 
 
