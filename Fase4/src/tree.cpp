@@ -45,24 +45,18 @@ Coordinate::Coordinate()
 
 
 
-Light::Light(bool my_isPoint, bool my_isDirectional, bool my_isSpotlight, float my_posX, float my_posY, float my_posZ, bool my_hasPosX, bool my_hasPosY, bool my_hasPosZ, float my_dirX, float my_dirY, float my_dirZ, bool my_hasDirX, bool my_hasDirY, bool my_hasDirZ, float my_cutoff, bool my_hasCutoff){
+Light::Light(bool my_isPoint, bool my_isDirectional, bool my_isSpotlight, float my_posX, float my_posY, float my_posZ, float my_dirX, float my_dirY, float my_dirZ, float my_cutoff){
     isPoint = my_isPoint;
     isDirectional = my_isDirectional;
     isSpotlight = my_isSpotlight;
     posX = my_posX;
     posY = my_posY;
     posZ = my_posZ;
-    hasPosX = my_hasPosX;
-    hasPosY = my_hasPosY;
-    hasPosZ = my_hasPosZ;
     dirX = my_dirX;
     dirY = my_dirY;
     dirZ = my_dirZ;
-    hasDirX = my_hasDirX;
-    hasDirY = my_hasDirY;
-    hasDirZ = my_hasDirZ;
     cutoff = my_cutoff;
-    hasCutoff = my_hasCutoff;
+
 }
 
 
@@ -77,8 +71,6 @@ Lights::Lights(vector<Light> lightsVector){
 Lights readLights(tinyxml2::XMLNode *pRoot){
     std::vector<Light> lights_Vector = std::vector<Light>();
     
-    // tinyxml2::XMLElement *lightElem = pRoot->FirstChildElement("lights");
-    printf("tree:80 - inicio readlights\n");
 
     if(pRoot != nullptr) {
         tinyxml2::XMLNode *lights = pRoot->FirstChild();
@@ -94,21 +86,13 @@ Lights readLights(tinyxml2::XMLNode *pRoot){
                 if (lights->ToElement()->Attribute("type")){
                     char* type = (char*) lights->ToElement()->Attribute("type");
 
-
-                    bool isPoint, isDirectional, isSpotlight;
                     if (!strcmp(type, "point")){
                         isPoint = true;
-                        isDirectional = false;
-                        isSpotlight = false;
                     }
                     else if (strcmp(type, "directional") == 0){
-                        isPoint = false;
-                        isSpotlight = true;
-                        isDirectional = true;
+                       isDirectional = true;
                     }
                     else if(!strcmp(type, "spotlight")){
-                        isPoint = false;
-                        isDirectional = false;
                         isSpotlight = true;
                     }
                     else{
@@ -154,7 +138,7 @@ Lights readLights(tinyxml2::XMLNode *pRoot){
                     hasCutoff = true;
                 }
 
-                Light light = Light(isPoint, isDirectional, isSpotlight, posX, posY, posZ, hasPosX, hasPosY, hasPosZ, dirX, dirY, dirZ, hasDirX, hasDirY, hasDirZ, cutoff, hasCutoff);
+                Light light = Light(isPoint, isDirectional, isSpotlight, posX, posY, posZ,dirX, dirY, dirZ,cutoff);
 
                 lights_Vector.push_back(light);
             }
@@ -162,15 +146,14 @@ Lights readLights(tinyxml2::XMLNode *pRoot){
             lights = lights->NextSibling();
         }
 
-        printf("size of lights vector: %ld\n", lights_Vector.size());
-
-        printf("%d, %f, %d\n", lights_Vector.at(0).isDirectional, lights_Vector.at(0).dirX, lights_Vector.at(0).hasDirX);
 
         
     }
     return lights_Vector;
 
 }
+
+
 
 
 
@@ -604,11 +587,15 @@ ModColor::ModColor(){
 }
 
 
-ModColor::ModColor(array<float, 4> my_amb, array<float, 4> my_dif, array<float, 4> my_spec, array<float, 4> my_emi, float my_shinnValue){
+ModColor::ModColor(array<float, 4> my_amb, array<float, 4> my_dif, array<float, 4> my_spec, array<float, 4> my_emi, float my_shinnValue, bool myhasAmb, bool myhasDif, bool myhasSpec, bool myhasEmi){
     amb = my_amb;
     spec = my_spec;
     dif = my_dif;
     emi = my_emi;
+    hasAmb = myhasAmb;
+    hasDif = myhasDif;
+    hasSpec = myhasSpec;
+    hasEmi = myhasEmi;
     shinnValue = my_shinnValue;
 }
 
@@ -640,10 +627,16 @@ Models modelsParser(tinyxml2::XMLNode *models)
 
                 float emiR, emiG, emiB, difR, difG, difB, specR, specG, specB, ambR, ambG, ambB, value;
                 emiR = emiG = emiB = difR = difG = difB = specR = specG = specB = ambR = ambG = ambB = value = 0;
+              
     
                 
                 if(!strcmp(model->Value(), "color")){
                     tinyxml2::XMLElement* color = model->FirstChildElement();
+
+                    bool hasAmb = false;
+                    bool hasDif = false;
+                    bool hasSpec = false;
+                    bool hasEmi = false;
                     
                     while(color){
                     
@@ -651,45 +644,48 @@ Models modelsParser(tinyxml2::XMLNode *models)
                            emiR = std::stof(color->ToElement()->Attribute("R"));
                            emiG = std::stof(color->ToElement()->Attribute("G"));
                            emiB = std::stof(color->ToElement()->Attribute("B"));
+                           if(emiR != 0 || emiG != 0 || emiB != 0){
+                               hasEmi = true;
+                           }
                         }
 
                         else if (!strcmp(color->Value(), "diffuse")){
                             difR = std::stof(color->ToElement()->Attribute("R"));
                             difG = std::stof(color->ToElement()->Attribute("G"));
                             difB = std::stof(color->ToElement()->Attribute("B"));
+                            if(difR != 0 || difG != 0 || difB != 0)hasDif = true;
                         }
 
                         else if (!strcmp(color->Value(), "specular")){
                             specR = std::stof(color->ToElement()->Attribute("R"));
                             specG = std::stof(color->ToElement()->Attribute("G"));
                             specB = std::stof(color->ToElement()->Attribute("B"));
+                            if(specR != 0 || specG != 0 || specB != 0)hasSpec = true;
                         }
 
                         else if (!strcmp(color->Value(), "ambient")){
                             ambR = std::stof(color->ToElement()->Attribute("R"));
                             ambG = std::stof(color->ToElement()->Attribute("G"));
                             ambB = std::stof(color->ToElement()->Attribute("B"));
+                            if(ambR != 0 || ambG != 0 || ambB != 0)hasAmb = true;
                         }
 
                         else if (!strcmp(color->Value(), "shininess")){
                             value = std::stof(color->ToElement()->Attribute("value"));
                         }
 
-                        array<float, 4> emi = {emiR, emiG, emiB, 1};
-                        array<float, 4> dif = {difR, difG, difB, 1};
-                        array<float, 4> amb = {ambR, ambG, ambB, 1};
-                        array<float, 4> spec = {specR, specG, specB, 1};
-
-                        mC = ModColor(amb, dif, spec, emi, value);
-
                         color = color->NextSiblingElement();
                     }
+                    array<float, 4> emi = {emiR, emiG, emiB, 1};
+                    array<float, 4> dif = {difR, difG, difB, 1};
+                    array<float, 4> amb = {ambR, ambG, ambB, 1};
+                    array<float, 4> spec = {specR, specG, specB, 1};
 
-                    printf("ambient: ambR: %f | ambG: %f | ambB: %f  \n", ambR, ambG, ambB);
-                    printf("diffuse: difR: %f | difG: %f | difB: %f \n", difR, difG, difB);
-                    printf("specular: specR: %f | specG: %f | specB: %f \n", specR, specG, specB);
-                    printf("emissive: %f | %f | %f \n", emiR, emiG, emiB);
-                    printf("shininess: value: %f \n\n\n", value);
+                    mC = ModColor(amb, dif, spec, emi, value,hasAmb,hasDif,hasSpec,hasEmi);
+                    
+
+                    printf("%d %d %d %d\n",hasAmb,hasDif,hasSpec,hasEmi);
+
 
                 }
 

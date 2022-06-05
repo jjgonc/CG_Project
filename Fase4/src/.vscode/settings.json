@@ -4,6 +4,7 @@
     "cmath": "cpp",
     "cstdio": "cpp",
     "*.tcc": "cpp",
-    "string": "cpp"
+    "string": "cpp",
+    "array": "cpp"
   }
 }

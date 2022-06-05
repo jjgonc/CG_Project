@@ -244,7 +244,7 @@ void draw_model(Figure fig)
 {
 
     glEnable(GL_TEXTURE_2D);
-
+    
 
     glBindTexture(GL_TEXTURE_2D, fig.texture);
 	
@@ -254,6 +254,17 @@ void draw_model(Figure fig)
 
 	glBindBuffer(GL_ARRAY_BUFFER, fig.buffers[1]);
 	glNormalPointer(GL_FLOAT, 0, 0);
+
+   
+    float red[4] = {200,200,0,1.0};
+
+
+    glMaterialfv(GL_FRONT, GL_AMBIENT,fig.modelColor.amb.data());
+    glMaterialfv(GL_FRONT, GL_SPECULAR, fig.modelColor.spec.data());
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, fig.modelColor.dif.data());
+    glMaterialf(GL_FRONT, GL_SHININESS, fig.modelColor.shinnValue);
+
+
 
 	glBindBuffer(GL_ARRAY_BUFFER, fig.buffers[2]);
 	glTexCoordPointer(2, GL_FLOAT, 0, 0);
@@ -389,6 +400,22 @@ void changeSize(int w, int h)
     glMatrixMode(GL_MODELVIEW);
 }
 
+int getLightN(int nLight) {
+    int CLight;
+    switch (nLight) {
+        case 0: CLight = GL_LIGHT0; break;
+        case 1: CLight = GL_LIGHT1; break;
+        case 2: CLight = GL_LIGHT2; break;
+        case 3: CLight = GL_LIGHT3; break;
+        case 4: CLight = GL_LIGHT4; break;
+        case 5: CLight = GL_LIGHT5; break;
+        case 6: CLight = GL_LIGHT6; break;
+        case 7: CLight = GL_LIGHT7; break;
+        default: puts("Error - too many light sources."); exit(1);
+    }
+    return CLight;
+}
+
 void renderScene(void)
 {
     // clear buffers
@@ -404,6 +431,43 @@ void renderScene(void)
     glPolygonMode(GL_FRONT_AND_BACK, mode);
 
     //draw_axis();
+
+    //set Lights
+
+     for(size_t i = 0; i < tree.lights.lights.size(); i++) {
+        
+        int CLight = getLightN(i);
+        
+        Light light = tree.lights.lights[i];
+        
+
+        if(light.isPoint){
+            array<float, 4> pos = {light.posX,light.posY,light.posZ,1};
+            glLightfv(CLight, GL_POSITION, pos.data());
+        }
+
+
+        if(light.isDirectional){
+            array<float, 4> dir = {light.dirX,light.dirY,light.dirZ,0};
+            glLightfv(CLight, GL_SPOT_DIRECTION, dir.data());
+
+        }
+
+        if(light.isSpotlight){
+            
+            array<float, 4> pos = {light.posX,light.posY,light.posZ,1};
+            array<float, 4> dir = {light.dirX,light.dirY,light.dirZ,0};
+            glLightfv(CLight, GL_POSITION, pos.data());
+            glLightfv(CLight, GL_SPOT_DIRECTION, dir.data());
+            glLightfv(CLight, GL_SPOT_CUTOFF, &light.cutoff);
+        }
+
+
+        
+     }
+
+     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
 
     // put the geometric transformations here
     glTranslated(tx, 0.0, tz);
@@ -530,6 +594,7 @@ void onKeyboard(int key_code, int x, int y)
 
 
 
+
 int main(int argc, char **argv)
 {
 
@@ -538,9 +603,9 @@ int main(int argc, char **argv)
     char xml_generated_path[40] = "../../xmlFiles/";
     strcat(xml_generated_path, modelFileName);
     
-
     
 
+    
     // init GLUT and the window
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
@@ -555,6 +620,9 @@ int main(int argc, char **argv)
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
+    glEnable(GL_RESCALE_NORMAL);
+    glEnable(GL_COLOR_MATERIAL);
+
 
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
@@ -562,9 +630,6 @@ int main(int argc, char **argv)
 
     glClearColor(0, 0, 0, 0);
 
-    glEnable(GL_LIGHTING);
-    glEnable(GL_LIGHT0);
-    
     tree = readFile(xml_generated_path);
 
     radius = tree.camera.radius;
@@ -577,7 +642,21 @@ int main(int argc, char **argv)
     upY = tree.camera.up.getY();
     upZ = tree.camera.up.getZ();
 
+    if(tree.lights.lights.size() != 0){
 
+       glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+
+    GLfloat dark[4] = {0.2,0.2,0.2,1.0};
+    GLfloat white[4] = {1.0,1.0,1.0,1.0};
+
+    glLightfv(GL_LIGHT0, GL_AMBIENT, dark);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, white);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, white);
+        }
+    }
+  
+   
     
     // Required callback registry
     glutDisplayFunc(renderScene);
