@@ -197,7 +197,6 @@ void renderCatmullRomCurve(CatmullRom catR) {
     }
     glEnd();
 
-    glColor3f(255,255,255);
 
 }
 
@@ -333,14 +332,12 @@ void drawModels(Group group){
     }
 
 
-
-    if(group.transform.hasRotate) glRotatef(angle,rx,ry,rz);
     if(group.transform.hasTranslate) glTranslatef(tx,ty,tz);
+    if(group.transform.hasRotate) glRotatef(angle,rx,ry,rz);
     if(group.transform.hasScale) glScalef(sx,sy,sz);
 
     if(group.transform.hasTime) renderRotate(group.transform.rotate);
    
-    if(group.transform.hasTime) renderRotate(group.transform.rotate);
 
     for(Group gs: group.groups){
         glPushMatrix();
@@ -402,21 +399,6 @@ void changeSize(int w, int h)
     glMatrixMode(GL_MODELVIEW);
 }
 
-int getLightN(int nLight) {
-    int CLight;
-    switch (nLight) {
-        case 0: CLight = GL_LIGHT0; break;
-        case 1: CLight = GL_LIGHT1; break;
-        case 2: CLight = GL_LIGHT2; break;
-        case 3: CLight = GL_LIGHT3; break;
-        case 4: CLight = GL_LIGHT4; break;
-        case 5: CLight = GL_LIGHT5; break;
-        case 6: CLight = GL_LIGHT6; break;
-        case 7: CLight = GL_LIGHT7; break;
-        default: puts("Error - too many light sources."); exit(1);
-    }
-    return CLight;
-}
 
 void renderScene(void)
 {
@@ -430,7 +412,7 @@ void renderScene(void)
     gluLookAt(radius * cos(betha) * sin(alpha), radius * sin(betha), radius * cos(betha) * cos(alpha),
               lookAtX, lookAtY, lookAtZ,
               upX, upY, upZ);
-    glPolygonMode(GL_FRONT_AND_BACK, mode);
+  
 
     //draw_axis();
 
@@ -438,30 +420,27 @@ void renderScene(void)
 
      for(int i = 0; i < tree.lights.lights.size(); i++) {
         
-        int CLight = getLightN(i);
-        
         Light light = tree.lights.lights[i];
         
 
         if(light.isPoint){
             array<float, 4> pos = {light.posX,light.posY,light.posZ,1};
-            glLightfv(CLight, GL_POSITION, pos.data()); // posição da luz
+            glLightfv(0x4000 + i, GL_POSITION, pos.data()); // posição da luz
         }
 
 
         if(light.isDirectional){
             array<float, 4> dir = {light.dirX,light.dirY,light.dirZ,0};
-            glLightfv(GL_LIGHT0, GL_POSITION, dir.data());
-
+            glLightfv(0x4000 + i, GL_SPOT_DIRECTION, dir.data());
         }
 
         if(light.isSpotlight){
             
             array<float, 4> pos = {light.posX,light.posY,light.posZ,1};
             array<float, 4> dir = {light.dirX,light.dirY,light.dirZ,0};
-            glLightfv(CLight, GL_POSITION, pos.data());
-            glLightfv(CLight, GL_SPOT_DIRECTION, dir.data());
-            glLightfv(CLight, GL_SPOT_CUTOFF, &light.cutoff);
+            glLightfv(0x4000 + i, GL_POSITION, pos.data());
+            glLightfv(0x4000 + i, GL_SPOT_DIRECTION, dir.data());
+            glLightfv(0x4000 + i, GL_SPOT_CUTOFF, &light.cutoff);
         }
      }
 
@@ -645,21 +624,23 @@ int main(int argc, char **argv)
     if(tree.lights.lights.size() != 0){
 
     glEnable(GL_LIGHTING);
+
+    GLfloat dark[4] = {0.2,0.2,0.2,1.0};
+    GLfloat white[4] = {1.0,1.0,1.0,1.0};
+
+    float amb[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, amb);
     
 
     for(int i = 0; i < tree.lights.lights.size(); i++){
-       
+        
 
-        int CLight = getLightN(i);
+        glEnable(0x4000 + i);
 
-        glEnable(CLight);
+        glLightfv(0x4000 + i, GL_AMBIENT, dark);
+        glLightfv(0x4000 + i, GL_DIFFUSE, white);
+        glLightfv(0x4000 + i, GL_SPECULAR, white);
 
-        GLfloat dark[4] = {0.1,0.1,0.1,1.0};
-        GLfloat white[4] = {0.9,0.9,0.9,1.0};
-
-        glLightfv(CLight, GL_AMBIENT, dark);
-        glLightfv(CLight, GL_DIFFUSE, white);
-        glLightfv(CLight, GL_SPECULAR, white);
     }
     
         
