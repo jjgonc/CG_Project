@@ -11,8 +11,8 @@
 	</lights>
 	<group> 
   		<models>
-			<model file="box.3d">
-				<texture file = "earth.jpg" />
+			<model file="bezier_nt.3d">
+				<texture file = "teapot.jpg" />
 				<color>
                     <diffuse R="200" G="200" B="000" />
                     <ambient R="50" G="50" B="00" />

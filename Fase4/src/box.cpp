@@ -46,6 +46,7 @@ array<vector<Point>,3> Box::pointsGenerator()
             textures.push_back(Point(i/grid     ,j/grid ,0)); // ponto 1
             textures.push_back(Point((i+1) /grid,j/grid ,0)); // ponto 2
             textures.push_back(Point(i/grid     ,(j+1)/grid ,0)); // ponto 4
+
             textures.push_back(Point((i+1)/grid ,j/grid ,0)); // ponto 2
             textures.push_back(Point((i+1)/grid ,(j+1)/grid ,0)); // ponto 3
             textures.push_back(Point(i/ grid    ,(j+1)/grid ,0)); // ponto 4
@@ -71,12 +72,13 @@ array<vector<Point>,3> Box::pointsGenerator()
             normals.push_back(Point(-1,0,0));
             normals.push_back(Point(-1,0,0));
 
-            textures.push_back(Point(i/grid     ,j/grid ,0)); // ponto 1
-            textures.push_back(Point(i/grid     ,(j+1)/grid ,0)); // ponto 4
-            textures.push_back(Point((i+1) /grid,j/grid ,0)); // ponto 2
-            textures.push_back(Point((i+1)/grid ,j/grid ,0)); // ponto 2
-            textures.push_back(Point(i/ grid    ,(j+1)/grid ,0)); // ponto 4
-            textures.push_back(Point((i+1)/grid ,(j+1)/grid ,0)); // ponto 3
+            textures.push_back(Point(j/grid ,i/grid     ,0)); // ponto 1
+            textures.push_back(Point((j+1)/grid ,i/grid     ,0)); // ponto 4
+            textures.push_back(Point(j/grid ,(i+1) /grid,0)); // ponto 2
+
+            textures.push_back(Point(j/grid ,(i+1)/grid ,0)); // ponto 2
+            textures.push_back(Point((j+1)/grid ,i/ grid    ,0)); // ponto 4
+            textures.push_back(Point((j+1)/grid ,(i+1)/grid ,0)); // ponto 3
 
 
             // face 3 - virada para a direita
@@ -100,12 +102,12 @@ array<vector<Point>,3> Box::pointsGenerator()
             normals.push_back(Point(1,0,0));
             normals.push_back(Point(1,0,0));
 
-            textures.push_back(Point(i/grid     ,j/grid ,0)); // ponto 1
-            textures.push_back(Point((i+1) /grid,j/grid ,0)); // ponto 2
-            textures.push_back(Point(i/grid     ,(j+1)/grid ,0)); // ponto 4
-            textures.push_back(Point((i+1)/grid ,j/grid ,0)); // ponto 2
-            textures.push_back(Point((i+1)/grid ,(j+1)/grid ,0)); // ponto 3
-            textures.push_back(Point(i/ grid    ,(j+1)/grid ,0)); // ponto 4
+            textures.push_back(Point(1-(j/grid) ,i/grid     ,0)); // ponto 1
+            textures.push_back(Point(1-(j/grid) ,(i+1) /grid,0)); // ponto 2
+            textures.push_back(Point(1-((j+1)/grid),i/grid     ,0)); // ponto 4
+            textures.push_back(Point(1-(j/grid) ,(i+1)/grid ,0)); // ponto 2
+            textures.push_back(Point(1-((j+1)/grid) ,(i+1)/grid ,0)); // ponto 3
+            textures.push_back(Point(1-((j+1)/grid) ,i/ grid    ,0)); // ponto 4
 
             // face 4 - virada para trás
             Point p1_tras = Point(-halfEdge + i * subEdge, -halfEdge + j * subEdge, -halfEdge);
@@ -128,12 +130,12 @@ array<vector<Point>,3> Box::pointsGenerator()
             normals.push_back(Point(0,0,-1));
             normals.push_back(Point(0,0,-1));
 
-            textures.push_back(Point(i/grid     ,j/grid ,0)); // ponto 1
-            textures.push_back(Point(i/grid     ,(j+1)/grid ,0)); // ponto 4
-            textures.push_back(Point((i+1) /grid,j/grid ,0)); // ponto 2
-            textures.push_back(Point((i+1)/grid ,j/grid ,0)); // ponto 2
-            textures.push_back(Point(i/ grid    ,(j+1)/grid ,0)); // ponto 4
-            textures.push_back(Point((i+1)/grid ,(j+1)/grid ,0)); // ponto 3
+            textures.push_back(Point(1-(i/grid)     ,j/grid     ,0)); // ponto 1
+            textures.push_back(Point(1-(i/grid)     ,(j+1)/grid ,0)); // ponto 4
+            textures.push_back(Point(1-((i+1) /grid),j/grid     ,0)); // ponto 2
+            textures.push_back(Point(1-((i+1)/grid) ,j/grid     ,0)); // ponto 2
+            textures.push_back(Point(1-(i/ grid)    ,(j+1)/grid ,0)); // ponto 4
+            textures.push_back(Point(1-((i+1)/grid) ,(j+1)/grid ,0)); // ponto 3
 
             // face 5 - virada para cima
 
@@ -162,12 +164,12 @@ array<vector<Point>,3> Box::pointsGenerator()
             normals.push_back(Point(0,1,0));
             normals.push_back(Point(0,1,0));
 
-            textures.push_back(Point(i/grid     ,j/grid ,0)); // ponto 1
-            textures.push_back(Point(i/grid     ,(j+1)/grid ,0)); // ponto 4
-            textures.push_back(Point((i+1) /grid,j/grid ,0)); // ponto 2
-            textures.push_back(Point((i+1)/grid ,j/grid ,0)); // ponto 2
-            textures.push_back(Point(i/ grid    ,(j+1)/grid ,0)); // ponto 4
-            textures.push_back(Point((i+1)/grid ,(j+1)/grid ,0)); // ponto 3
+            textures.push_back(Point(i/grid     ,1-(j/grid) ,0)); // ponto 1
+            textures.push_back(Point(i/grid     ,1-((j+1)/grid) ,0)); // ponto 4
+            textures.push_back(Point((i+1) /grid,1-(j/grid) ,0)); // ponto 2
+            textures.push_back(Point((i+1)/grid ,1-(j/grid) ,0)); // ponto 2
+            textures.push_back(Point(i/ grid    ,1-((j+1)/grid) ,0)); // ponto 4
+            textures.push_back(Point((i+1)/grid ,1-((j+1)/grid),0)); // ponto 3
 
 
             // face 6 - virada para baixo

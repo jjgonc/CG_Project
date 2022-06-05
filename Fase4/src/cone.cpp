@@ -21,7 +21,7 @@ array<vector<Point>,3> Cone::pointsGenerator() {
     float alpha = (2*M_PI) / slices;        //usando apenas coordenadas polares
     // float beta = M_PI / stacks;   
 
-    for(int i=0; i<slices; i++) {
+    for(float i=0; i<slices; i++) {
         Point p1 = Point(0,0,0);
         Point p2 = Point(radius*cos((i+1)*alpha), 0, radius*-sin((i+1)*alpha));
         Point p3 = Point(radius*cos(i*alpha), 0, radius*-sin(i*alpha));
@@ -41,7 +41,7 @@ array<vector<Point>,3> Cone::pointsGenerator() {
 
         float nextRadius, nextRadius2, stackHeight, stackHeight2;   
         
-        for(int j=0; j<stacks; j++) {
+        for(float j=0; j<stacks; j++) {
             stackHeight = (height / stacks) * j;
             nextRadius = (height - stackHeight) * radius / height;
             stackHeight2 = (height / stacks) * (j + 1);
@@ -72,9 +72,9 @@ array<vector<Point>,3> Cone::pointsGenerator() {
             normals.push_back(Point(p3_cima.getX(),p3_cima.getY()- (height - h3),p3_cima.getZ()).normalize());
 
 
-            textures.push_back(Point( i/slices     , (j+1)/stacks ,0));
-            textures.push_back(Point( (i+1)/slices , (j+1)/stacks ,0));
-            textures.push_back(Point( i/slices     , j / stacks   ,0));
+            textures.push_back(Point( 1-(i/slices )    , (j+1)/stacks ,0));
+            textures.push_back(Point( 1-((i+1)/slices) , (j+1)/stacks ,0));
+            textures.push_back(Point( 1-(i/slices)     , j / stacks   ,0));
 
             //triangulo de baixo
             Point p1_baixo = Point(nextRadius * cos(alpha*i), stackHeight, nextRadius * sin(alpha*i));
@@ -97,9 +97,9 @@ array<vector<Point>,3> Cone::pointsGenerator() {
             float h3_b = cos(atan(radius/height)) * dist3_b;
             normals.push_back(Point(p3_baixo.getX(),p3_baixo.getY()- (height - h3_b),p3_baixo.getZ()).normalize());
 
-            textures.push_back(Point( i/slices    , j/stacks ,0));
-            textures.push_back(Point( (i+1)/slices, (j+1)/stacks ,0));
-            textures.push_back(Point( (i+1)/slices, j/stacks ,0));
+            textures.push_back(Point( 1-(i/slices)    , j/stacks ,0));
+            textures.push_back(Point( 1-((i+1)/slices), (j+1)/stacks ,0));
+            textures.push_back(Point( 1-((i+1)/slices), j/stacks ,0));
 
 
         }

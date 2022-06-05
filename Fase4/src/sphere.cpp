@@ -13,56 +13,153 @@ Sphere::Sphere(float r, int sli, int sta)
 
 array<vector<Point>,3> Sphere::pointsGenerator()
 {
-   vector<Point> pontos;
-        vector<Point> normais;
-        vector<Point> texturas;
-        float alpha = 2 * M_PI / slices;
-        float beta = M_PI / stacks;
-        float itStacks = 1.0f/((float) stacks);
-        float itSlices = 1.0f/((float) slices);
-        float cSlices = 0;
-        float cStacks = 0;
+    vector<Point> points;
+    vector<Point> normals;
+    vector<Point> textures;
 
-        //metade superior da esfera
-        for (int stack = stacks/2; stack >= 0; stack--){
-            for (int slice=0; slice <= slices; slice++) {
+    float alpha = (2 * M_PI) / slices;
+    float beta = (M_PI) / stacks;
 
-                pontos.push_back(Point(radius * cosf(stack*beta) * sinf(slice*alpha), radius * sinf(stack*beta), radius * cosf(stack*beta) * cosf(slice*alpha)));
-                pontos.push_back(Point(radius * cosf((stack - 1)*beta) * sinf(slice*alpha), radius * sinf((stack - 1)*beta), radius * cosf((stack - 1)*beta) * cosf(slice*alpha)));
+    float itSlice = 1.0/slices;
+    float itStack = 1.0/stacks;
 
-                normais.push_back(Point(cosf(stack*beta) * sinf(slice*alpha), sinf(stack*beta), cosf(stack*beta) * cosf(slice*alpha)));
-                normais.push_back(Point(cosf((stack - 1)*beta) * sinf(slice*alpha), sinf((stack - 1)*beta), cosf((stack - 1)*beta) * cosf(slice*alpha)));
 
-                texturas.push_back(Point(cSlices, cStacks, 0));
-                texturas.push_back(Point(cSlices, cStacks - itStacks, 0));
+    for (float i = 0; i < slices; i++)
+    {
+        for (float j = 0; j < stacks / 2; j++)
+        {
 
-                cSlices = cSlices + itSlices;
-            }
-            cStacks = cStacks - itStacks;
-            cSlices = 0.0;
+            // parte superior da esfera
+            /*  6 --- 1=5
+             *  |   /  |
+             *  |  /   |
+             *  | /    |
+             *  2=4 ---3
+             */
+
+            // Triângulo inferior
+
+            // ponto de cima
+            Point p1 = Point(radius * cos((j + 1) * beta) * sin((i + 1) * alpha), radius * sin((j + 1) * beta),
+                             radius * cos((j + 1) * beta) * cos((i + 1) * alpha));
+            points.push_back(p1);
+
+
+            // pontos de baixo
+            Point p2 = Point(radius * cos(j * beta) * sin(i * alpha), radius * sin(j * beta),
+                             radius * cos(j * beta) * cos(i * alpha));
+            points.push_back(p2);
+
+            Point p3 = Point(radius * cos(j * beta) * sin((i + 1) * alpha), radius * sin(j * beta),
+                             radius * cos(j * beta) * cos((i + 1) * alpha));
+            points.push_back(p3);
+
+            // Triângulo superior
+
+            // Ponto de baixo
+
+            Point p4 = Point(radius * cos(j * beta) * sin(i * alpha), radius * sin(j * beta),
+                             radius * cos(j * beta) * cos(i * alpha));
+            points.push_back(p4);
+
+            // Pontos de cima
+
+            Point p5 = Point(radius * cos((j + 1) * beta) * sin((i + 1) * alpha), radius * sin((j + 1) * beta),
+                             radius * cos((j + 1) * beta) * cos((i + 1) * alpha));
+            points.push_back(p5);
+
+            Point p6 = Point(radius * cos((j + 1) * beta) * sin(i * alpha), radius * sin((j + 1) * beta),
+                             radius * cos((j + 1) * beta) * cos(i * alpha));
+            points.push_back(p6);
+
+
+
+
+            // Parte inferior da esfera
+            /*  11 --- 10=9
+             *  |   /  |
+             *  |  /   |
+             *  | /    |
+             * 7=12 ---8
+             */
+
+            // Triângulo inferior
+
+            Point p7 = Point(radius * cos(-(j + 1) * beta) * sin(i * alpha), radius * sin(-(j + 1) * beta),
+                             radius * cos(-(j + 1) * beta) * cos(i * alpha));
+            points.push_back(p7);
+
+            Point p8 = Point(radius * cos(-(j + 1) * beta) * sin((i + 1) * alpha), radius * sin(-(j + 1) * beta),
+                             radius * cos(-(j + 1) * beta) * cos((i + 1) * alpha));
+            points.push_back(p8);
+
+
+            Point p9 = Point(radius * cos(-j * beta) * sin((i + 1) * alpha), radius * sin(-j * beta),
+                             radius * cos(-j * beta) * cos((i + 1) * alpha));
+            points.push_back(p9);
+
+            // Triângulo superior
+
+            Point p10 = Point(radius * cos(-j * beta) * sin((i + 1) * alpha), radius * sin(-j * beta),
+                              radius * cos(-j * beta) * cos((i + 1) * alpha));
+            points.push_back(p10);
+
+
+            Point p11 = Point(radius * cos(-j * beta) * sin(i * alpha), radius * sin(-j * beta),
+                              radius * cos(-j * beta) * cos(i * alpha));
+            points.push_back(p11);
+
+
+
+            Point p12 = Point(radius * cos(-(j + 1) * beta) * sin(i * alpha), radius * sin(-(j + 1) * beta),
+                              radius * cos(-(j + 1) * beta) * cos(i * alpha));
+            points.push_back(p12);
+
+
+            normals.push_back(p1.normalize());
+            normals.push_back(p2.normalize());
+            normals.push_back(p3.normalize());
+            normals.push_back(p4.normalize());
+            normals.push_back(p5.normalize());
+            normals.push_back(p6.normalize());
+            normals.push_back(p7.normalize());
+            normals.push_back(p8.normalize());
+            normals.push_back(p9.normalize());
+            normals.push_back(p10.normalize());
+            normals.push_back(p11.normalize());
+            normals.push_back(p12.normalize());
+
+
+            /*      i      i+1   j+1 => 0.25 (0.5 - (j+1)/stacks)
+             * j+1  6 --- 1=5
+             *      |   /  |
+             *      |  /   |
+             *      | /    |
+             * j    2=4 ---3                 (0.5 - j/stacks)
+             * j    11 --- 10=9   j=0 => 0.5  (0.5 + j/stacks)
+             *      |   /  |
+             *      |  /   |
+             *      | /    |
+             * j+1  7=12 ---8      j+1 => 0.75 (0.5 + (j+1)/stacks)
+             */
+
+
+            textures.push_back(Point( (i+1)/slices, 0.5 + ((j+1)/stacks) ,0)); // Ponto 1
+            textures.push_back(Point( i/slices    , 0.5 + (j/stacks)     ,0)); // Ponto 2
+            textures.push_back(Point( (i+1)/slices, 0.5 + (j/stacks)     ,0)); // Ponto 3
+            textures.push_back(Point( i/slices    , 0.5 + (j/stacks)     ,0)); // Ponto 4
+            textures.push_back(Point( (i+1)/slices, 0.5 + ((j+1)/stacks) ,0)); // Ponto 5
+            textures.push_back(Point( i/slices    , 0.5 + ((j+1)/stacks) ,0)); // Ponto 6
+            textures.push_back(Point( i/slices    , 0.5 - ((j+1)/stacks) ,0)); // Ponto 7
+            textures.push_back(Point( (i+1)/slices, 0.5 - ((j+1)/stacks) ,0)); // Ponto 8
+            textures.push_back(Point( (i+1)/slices, 0.5 - (j/stacks)     ,0)); // Ponto 9
+            textures.push_back(Point( (i+1)/slices, 0.5 - (j/stacks)     ,0)); // Ponto 10
+            textures.push_back(Point( i/slices    , 0.5 - (j/stacks)     ,0)); // Ponto 11
+            textures.push_back(Point( i/slices    , 0.5 - ((j+1)/stacks) ,0)); // Ponto 12
+
         }
+    }
 
-        cSlices = 0;
-        cStacks = 0.5;
-
-        //metade inferior da esfera
-        for (int stack = 0; stack <= stacks/2; stack++){
-            for (int slice=0; slice <= slices; slice++) {
-                pontos.push_back(Point(radius * cosf(-stack * beta) * sinf(slice*alpha), radius * sinf(-stack * beta), radius * cosf(-stack * beta) * cosf(slice*alpha)));
-                pontos.push_back(Point(radius * cosf(-(stack + 1)*beta) * sinf(slice*alpha), radius * sinf(-(stack + 1)*beta), radius * cosf(-(stack + 1)*beta) * cosf(slice*alpha)));
-
-                normais.push_back(Point(cosf(-stack * beta) * sinf(slice*alpha), sinf(-stack * beta), cosf(-stack * beta) * cosf(slice*alpha)));
-                normais.push_back(Point(cosf(-(stack + 1)*beta) * sinf(slice*alpha), sinf(-(stack + 1)*beta), cosf(-(stack + 1)*beta) * cosf(slice*alpha)));
-
-                texturas.push_back(Point(cSlices, cStacks, 0));
-                texturas.push_back(Point(cSlices, cStacks - itStacks, 0));
-
-                cSlices = cSlices + itSlices;
-            }
-            cStacks = cStacks - itStacks;
-            cSlices = 0.0;
-        }
-
-    array<vector<Point>,3> result = {pontos, normais, texturas};
+    array<vector<Point>,3> result = {points, normals, textures};
     return result;
 }

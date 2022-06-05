@@ -6,9 +6,37 @@
 
 #IncludeRegexTransform: 
 
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/bezier.cpp
+headers/bezier.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/bezier.hpp
+math.h
+-
+iostream
+-
+string
+-
+vector
+-
+stdio.h
+-
+stdlib.h
+-
+fstream
+-
+sstream
+-
+
 /Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/box.cpp
 headers/box.hpp
 /Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/box.hpp
+
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/bezier.hpp
+point.hpp
+/Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/point.hpp
+vector
+-
+array
+-
 
 /Users/ruimoreira/Desktop/MIEI/3º ano/2º Semestre/Computação Gráfica/CG_Project/Fase4/src/headers/box.hpp
 point.hpp

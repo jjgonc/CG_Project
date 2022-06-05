@@ -219,6 +219,10 @@ array<vector<Point>,3> Bezier::pointsGenerator() {
                 z = (normalU3.getX() * normalV3.getY()) - (normalU3.getY() * normalV3.getX());
                 normals.push_back(Point(x,y,z));
 
+                textures.push_back(Point(u + (1.0f/tessellation), v + (1.0f/tessellation),0));
+                textures.push_back(Point(u, v + (1.0f/tessellation),0));
+                textures.push_back(Point(u,v,0));
+
 
                 // triângulo inferior
                 pontos.push_back(pointBezier(p, u, v,0));
@@ -247,6 +251,12 @@ array<vector<Point>,3> Bezier::pointsGenerator() {
                 y = (normalU6.getZ() * normalV6.getX()) - (normalU6.getX() * normalV6.getZ());
                 z = (normalU6.getX() * normalV6.getY()) - (normalU6.getY() * normalV6.getX());
                 normals.push_back(Point(x,y,z));
+
+
+                textures.push_back(Point(u,v,0));
+                textures.push_back(Point(u + (1.0f/tessellation), v,0));
+                textures.push_back(Point(u + (1.0f/tessellation), v + (1.0f/tessellation),0));
+
             }
         }
     }
