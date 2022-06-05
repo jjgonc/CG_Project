@@ -66,7 +66,7 @@
 			<models> 
 				<model file="bezier_nt.3d" > <!-- generator bezier teapot.patch 10 bezier_nt.3d -->
 					<color>
-						<diffuse R="00" G="87" B="184" />
+						<diffuse R="0" G="87" B="184" />
 						<ambient R="0" G="8" B="18" />
 						<specular R="255" G="255" B="255" />
 						<emissive R="0" G="0" B="0" />
@@ -83,7 +83,7 @@
 			<models> 
 				<model file="box_nt.3d" > <!-- generator box 2 3 box_nt.3d -->
 					<color>
-						<diffuse R="00" G="87" B="184" />
+						<diffuse R="0" G="87" B="184" />
 						<ambient R="0" G="8" B="18" />
 						<specular R="255" G="255" B="255" />
 						<emissive R="0" G="0" B="0" />
@@ -92,6 +92,5 @@
 				</model>
 			</models>
 		</group>
-		
  	</group>
 </world>
