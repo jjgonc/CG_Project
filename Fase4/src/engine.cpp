@@ -243,12 +243,23 @@ void drawTriangle(Point p1, Point p2, Point p3)
 void draw_model(Figure fig)
 {
 
+    float red[4] = {200,200,0,1.0};
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT,fig.modelColor.amb.data());
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, fig.modelColor.spec.data());
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, fig.modelColor.dif.data());
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, fig.modelColor.shinnValue);
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+
     glEnable(GL_TEXTURE_2D);
     
 
     glBindTexture(GL_TEXTURE_2D, fig.texture);
 	
-    
+ 
+
+
     glBindBuffer(GL_ARRAY_BUFFER, fig.buffers[0]);
 	glVertexPointer(3, GL_FLOAT, 0, 0);
 
@@ -256,16 +267,6 @@ void draw_model(Figure fig)
 	glNormalPointer(GL_FLOAT, 0, 0);
 
    
-    float red[4] = {200,200,0,1.0};
-
-
-    glMaterialfv(GL_FRONT, GL_AMBIENT,fig.modelColor.amb.data());
-    glMaterialfv(GL_FRONT, GL_SPECULAR, fig.modelColor.spec.data());
-    glMaterialfv(GL_FRONT, GL_DIFFUSE, fig.modelColor.dif.data());
-    glMaterialf(GL_FRONT, GL_SHININESS, fig.modelColor.shinnValue);
-
-
-
 	glBindBuffer(GL_ARRAY_BUFFER, fig.buffers[2]);
 	glTexCoordPointer(2, GL_FLOAT, 0, 0);
     
@@ -276,6 +277,7 @@ void draw_model(Figure fig)
    
     glBindTexture(GL_TEXTURE_2D,0);
     glDisable(GL_TEXTURE_2D);
+
    
 
 }
@@ -434,7 +436,7 @@ void renderScene(void)
 
     //set Lights
 
-     for(size_t i = 0; i < tree.lights.lights.size(); i++) {
+     for(int i = 0; i < tree.lights.lights.size(); i++) {
         
         int CLight = getLightN(i);
         
@@ -443,13 +445,13 @@ void renderScene(void)
 
         if(light.isPoint){
             array<float, 4> pos = {light.posX,light.posY,light.posZ,1};
-            glLightfv(CLight, GL_POSITION, pos.data());
+            glLightfv(CLight, GL_POSITION, pos.data()); // posição da luz
         }
 
 
         if(light.isDirectional){
             array<float, 4> dir = {light.dirX,light.dirY,light.dirZ,0};
-            glLightfv(CLight, GL_SPOT_DIRECTION, dir.data());
+            glLightfv(GL_LIGHT0, GL_POSITION, dir.data());
 
         }
 
@@ -461,12 +463,9 @@ void renderScene(void)
             glLightfv(CLight, GL_SPOT_DIRECTION, dir.data());
             glLightfv(CLight, GL_SPOT_CUTOFF, &light.cutoff);
         }
-
-
-        
      }
 
-     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+     
 
 
     // put the geometric transformations here
@@ -622,6 +621,7 @@ int main(int argc, char **argv)
     glEnable(GL_CULL_FACE);
     glEnable(GL_RESCALE_NORMAL);
     glEnable(GL_COLOR_MATERIAL);
+    glEnable(GL_NORMALIZE);
 
 
     glEnableClientState(GL_VERTEX_ARRAY);
@@ -644,16 +644,25 @@ int main(int argc, char **argv)
 
     if(tree.lights.lights.size() != 0){
 
-       glEnable(GL_LIGHTING);
-    glEnable(GL_LIGHT0);
+    glEnable(GL_LIGHTING);
+    
 
-    GLfloat dark[4] = {0.2,0.2,0.2,1.0};
-    GLfloat white[4] = {1.0,1.0,1.0,1.0};
+    for(int i = 0; i < tree.lights.lights.size(); i++){
+       
 
-    glLightfv(GL_LIGHT0, GL_AMBIENT, dark);
-    glLightfv(GL_LIGHT0, GL_DIFFUSE, white);
-    glLightfv(GL_LIGHT0, GL_SPECULAR, white);
-        }
+        int CLight = getLightN(i);
+
+        glEnable(CLight);
+
+        GLfloat dark[4] = {0.1,0.1,0.1,1.0};
+        GLfloat white[4] = {0.9,0.9,0.9,1.0};
+
+        glLightfv(CLight, GL_AMBIENT, dark);
+        glLightfv(CLight, GL_DIFFUSE, white);
+        glLightfv(CLight, GL_SPECULAR, white);
+    }
+    
+        
     }
   
    
