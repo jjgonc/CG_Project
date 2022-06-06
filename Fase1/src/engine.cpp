@@ -39,7 +39,7 @@ float far;
 vector<string> readModels;
 
 float alpha;
-float beta;
+float betha;
 float radius;
 
 GLenum mode = GL_FILL;
@@ -84,7 +84,7 @@ void readFile(char *filename)
     far = stof(projection->Attribute("far"));
 
     radius = sqrt(positionX * positionX + positionY * positionY + positionZ * positionZ);
-    beta = atan2(positionY, positionX);
+    betha = atan2(positionY, positionX);
     alpha = acos(positionZ / radius);
 
         tinyxml2::XMLElement *scenefiguras = pRoot->FirstChildElement("group")->FirstChildElement("models")->FirstChildElement("model");
@@ -187,10 +187,10 @@ void renderScene(void)
     // set the camera
     glLoadIdentity();
 
-    // radius * cos(beta) * sin(alpha), radius * sin(beta), radius * cos(beta) * cos(alpha)
+    // radius * cos(betha) * sin(alpha), radius * sin(betha), radius * cos(betha) * cos(alpha)
     // positionX, positionY, positionZ,
 
-    gluLookAt(radius * cos(beta) * sin(alpha), radius * sin(beta), radius * cos(beta) * cos(alpha),
+    gluLookAt(radius * cos(betha) * sin(alpha), radius * sin(betha), radius * cos(betha) * cos(alpha),
               lookAtX, lookAtY, lookAtZ,
               upX, upY, upZ);
     glPolygonMode(GL_FRONT_AND_BACK, mode);
@@ -283,12 +283,12 @@ void onKeyboard(int key_code, int x, int y)
     else if (key_code == GLUT_KEY_UP)
     {
 
-        beta += M_PI / 16;
+        betha += M_PI / 16;
         glutPostRedisplay();
     }
     else if (key_code == GLUT_KEY_DOWN)
     {
-        beta -= M_PI / 16;
+        betha -= M_PI / 16;
         glutPostRedisplay();
     }
 
@@ -298,11 +298,11 @@ void onKeyboard(int key_code, int x, int y)
     else if (alpha > M_PI * 2)
         alpha -= M_PI * 2;
 
-    if (beta < -M_PI)
-        beta += M_PI * 2;
+    if (betha < -M_PI)
+        betha += M_PI * 2;
 
-    else if (beta > M_PI)
-        beta -= M_PI * 2;
+    else if (betha > M_PI)
+        betha -= M_PI * 2;
 }
 
 int main(int argc, char **argv)
