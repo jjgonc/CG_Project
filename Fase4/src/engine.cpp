@@ -246,6 +246,7 @@ void draw_model(Figure fig)
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT,fig.modelColor.amb.data());
     glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, fig.modelColor.spec.data());
     glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, fig.modelColor.dif.data());
+    glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, fig.modelColor.emi.data());
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, fig.modelColor.shinnValue);
 
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -341,8 +342,6 @@ void drawModels(Group group){
             float sz = group.transform.transforms[i].z;
              glScalef(sx,sy,sz);
         }
-
-
 
     }
 
@@ -609,13 +608,7 @@ int main(int argc, char **argv)
     glewInit();
     #endif
 
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
-    glEnable(GL_RESCALE_NORMAL);
-    glEnable(GL_COLOR_MATERIAL);
-    glEnable(GL_NORMALIZE);
-
-
+    
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -677,6 +670,7 @@ int main(int argc, char **argv)
     glEnable(GL_CULL_FACE);
     glEnable(GL_RESCALE_NORMAL);
     glEnable(GL_COLOR_MATERIAL);
+    glEnable(GL_NORMALIZE);
 
 
 
