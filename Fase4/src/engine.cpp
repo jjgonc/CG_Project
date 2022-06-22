@@ -333,6 +333,7 @@ void drawModels(Group group){
             float ry = group.transform.transforms[i].y;
             float rz = group.transform.transforms[i].z;
              glRotatef(angle,rx,ry,rz);
+             printf("%f %f %f %f \n", angle, rx,ry,rz);
 
         }
 
@@ -443,7 +444,7 @@ void renderScene(void)
 
         if(light.isDirectional){
             array<float, 4> dir = {light.dirX,light.dirY,light.dirZ,0};
-            glLightfv(0x4000 + i, GL_SPOT_DIRECTION, dir.data());
+            glLightfv(0x4000 + i, GL_POSITION, dir.data());
         }
 
         if(light.isSpotlight){
@@ -669,8 +670,6 @@ int main(int argc, char **argv)
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
     glEnable(GL_RESCALE_NORMAL);
-    glEnable(GL_COLOR_MATERIAL);
-    glEnable(GL_NORMALIZE);
 
 
 

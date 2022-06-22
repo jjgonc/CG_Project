@@ -202,14 +202,14 @@ array<vector<Point>,3> Bezier::pointsGenerator() {
                 float x = (normalU1.getY() * normalV1.getZ()) - (normalU1.getZ() * normalV1.getY());
                 float y = (normalU1.getZ() * normalV1.getX()) - (normalU1.getX() * normalV1.getZ());
                 float z = (normalU1.getX() * normalV1.getY()) - (normalU1.getY() * normalV1.getX());
-                normals.push_back(Point(x,y,z));
+                normals.push_back(Point(x,y,z).normalize());
 
                 Point normalU2 = pointBezier(p, u, (v + (1.0f/tessellation)),1); // derivar em ordem a U
                 Point normalV2 = pointBezier(p, u, (v + (1.0f/tessellation)),2); // derivar em ordem a V
                 x = (normalU2.getY() * normalV2.getZ()) - (normalU2.getZ() * normalV2.getY());
                 y = (normalU2.getZ() * normalV2.getX()) - (normalU2.getX() * normalV2.getZ());
                 z = (normalU2.getX() * normalV2.getY()) - (normalU2.getY() * normalV2.getX());
-                normals.push_back(Point(x,y,z));
+                normals.push_back(Point(x,y,z).normalize());
 
 
                 Point normalU3 = pointBezier(p, u, v,1); // derivar em ordem a U
@@ -217,11 +217,12 @@ array<vector<Point>,3> Bezier::pointsGenerator() {
                 x = (normalU3.getY() * normalV3.getZ()) - (normalU3.getZ() * normalV3.getY());
                 y = (normalU3.getZ() * normalV3.getX()) - (normalU3.getX() * normalV3.getZ());
                 z = (normalU3.getX() * normalV3.getY()) - (normalU3.getY() * normalV3.getX());
-                normals.push_back(Point(x,y,z));
+                normals.push_back(Point(x,y,z).normalize());
 
                 textures.push_back(Point(u + (1.0f/tessellation), v + (1.0f/tessellation),0));
                 textures.push_back(Point(u, v + (1.0f/tessellation),0));
                 textures.push_back(Point(u,v,0));
+
 
 
                 // triângulo inferior
@@ -234,7 +235,7 @@ array<vector<Point>,3> Bezier::pointsGenerator() {
                 x = (normalU4.getY() * normalV4.getZ()) - (normalU4.getZ() * normalV4.getY());
                 y = (normalU4.getZ() * normalV4.getX()) - (normalU4.getX() * normalV4.getZ());
                 z = (normalU4.getX() * normalV4.getY()) - (normalU4.getY() * normalV4.getX());
-                normals.push_back(Point(x,y,z));
+                normals.push_back(Point(x,y,z).normalize());
 
 
                 Point normalU5 = pointBezier(p, (u + (1.0f/tessellation)), v,1); // derivar em ordem a U
@@ -242,7 +243,7 @@ array<vector<Point>,3> Bezier::pointsGenerator() {
                 x = (normalU5.getY() * normalV5.getZ()) - (normalU5.getZ() * normalV5.getY());
                 y = (normalU5.getZ() * normalV5.getX()) - (normalU5.getX() * normalV5.getZ());
                 z = (normalU5.getX() * normalV5.getY()) - (normalU5.getY() * normalV5.getX());
-                normals.push_back(Point(x,y,z));
+                normals.push_back(Point(x,y,z).normalize());
 
 
                 Point normalU6 = pointBezier(p, (u + (1.0f/tessellation)), (v + (1.0f/tessellation)),1); // derivar em ordem a U
@@ -250,7 +251,7 @@ array<vector<Point>,3> Bezier::pointsGenerator() {
                 x = (normalU6.getY() * normalV6.getZ()) - (normalU6.getZ() * normalV6.getY());
                 y = (normalU6.getZ() * normalV6.getX()) - (normalU6.getX() * normalV6.getZ());
                 z = (normalU6.getX() * normalV6.getY()) - (normalU6.getY() * normalV6.getX());
-                normals.push_back(Point(x,y,z));
+                normals.push_back(Point(x,y,z).normalize());
 
 
                 textures.push_back(Point(u,v,0));

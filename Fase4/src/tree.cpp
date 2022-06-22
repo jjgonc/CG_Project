@@ -547,7 +547,7 @@ Transform parseTransform(tinyxml2::XMLNode *pRoot)
                 hasTime = true;
             }
             
-            t.transforms.push_back(Coordinate(x, y, z, time));
+            t.transforms.push_back(Coordinate(x, y, z, angle));
             t.transformsNames.push_back(2);
 
             if(!hasTime){
@@ -683,17 +683,13 @@ Models modelsParser(tinyxml2::XMLNode *models)
 
                         color = color->NextSiblingElement();
                     }
-                    array<float, 4> emi = {emiR, emiG, emiB, 1};
-                    array<float, 4> dif = {difR, difG, difB, 1};
-                    array<float, 4> amb = {ambR, ambG, ambB, 1};
-                    array<float, 4> spec = {specR, specG, specB, 1};
+                    array<float, 4> emi = {emiR/255, emiG/255, emiB/255, 1};
+                    array<float, 4> dif = {difR/255, difG/255, difB/255, 1};
+                    array<float, 4> amb = {ambR/255, ambG/255, ambB/255, 1};
+                    array<float, 4> spec = {specR/255, specG/255, specB/255, 1};
 
                     mC = ModColor(amb, dif, spec, emi, value,hasAmb,hasDif,hasSpec,hasEmi);
-                    
-
-                    printf("%d %d %d %d\n",hasAmb,hasDif,hasSpec,hasEmi);
-
-
+                
                 }
 
                 model = model->NextSibling();
